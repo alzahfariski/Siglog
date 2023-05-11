@@ -26,15 +26,15 @@
                 <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="#"
-                        class="nav-link active">
+                    <a href="{{ route('dashboard.index') }}"
+                        class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Dashboard
                         </p>
                     </a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item {{ Request::is('administrator/data/*') ? 'menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-database"></i>
                         <p>
@@ -44,27 +44,27 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('barang.jenis') }}" class="nav-link {{ Request::is('administrator/data/jenis') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>jenis Barang</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/barang" class="nav-link">
+                            <a href="{{ route('barang.barang') }}" class="nav-link {{ Request::is('administrator/data/barang') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Barang</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#"
-                                class="nav-link ">
+                            <a href="{{ route('barang.masuk') }}"
+                                class="nav-link {{ Request::is('administrator/data/masuk') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Barang Masuk</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#"
-                                class="nav-link ">
+                            <a href="{{ route('barang.keluar') }}"
+                                class="nav-link {{ Request::is('administrator/data/keluar') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Barang keluar</p>
                             </a>

@@ -2,12 +2,12 @@
 @section('content')
 <div class="row">
     <div class="col-12 mb-2">
-        <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah jenis</button>    
+        <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah barang</button>    
     </div>        
     <div class="col-12">    
     <div class="card">
     <div class="card-header">
-    <h3 class="card-title">Tabel data jenis</h3>    
+    <h3 class="card-title">Tabel data barang</h3>    
     <div class="card-tools">    
     <div class="input-group input-group-sm" style="width: 150px;">       
     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -25,16 +25,22 @@
     <thead>
     <tr>
     <th>ID</th>
-    <th>Nama jenis</th>
-    <th>Nama Stauan</th>
+    <th>Nama Barang</th>
+    <th>Jumlah Masuk</th>
+    <th>Penyimpanan</th>
+    <th>Pemasok</th>
+    <th>Tgl</th>
     <th style="width: 40px">Aksi</th>
     </tr>
     </thead>
     <tbody>
     <tr>
     <td>183</td>
-    <td>buku</td>
-    <td>pak</td>
+    <td>logistik 1</td>
+    <td>11</td>
+    <td>gudang 1</td>    
+    <td>pt.xyz</td>
+    <td>11-05-2023</td>
     <td class="project-actions text-right">
         <a class="btn btn-primary btn-sm" href="#">
         <i class="fas fa-folder">
@@ -55,8 +61,11 @@
     </tr>
     <tr>
     <td>219</td>
-    <td>aqua</td>
-    <td>dus</td>
+    <td>logistik 2</td>
+    <td>11</td>
+    <td>gudang 2</td>    
+    <td>pt.xyz</td> 
+    <td>11-05-2023</td>
     <td class="project-actions text-right">
         <a class="btn btn-primary btn-sm" href="#">
         <i class="fas fa-folder">
