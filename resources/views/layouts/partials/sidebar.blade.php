@@ -27,7 +27,7 @@
               with font-awesome or any other icon font library -->
                 <li class="nav-item">
                     <a href="{{ route('dashboard.index') }}"
-                        class="nav-link">
+                        class="nav-link {{ Request::is('administrator/dashboard') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Dashboard
@@ -72,7 +72,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('gudang.index') }}" class="nav-link {{ Request::is('administrator/gudang') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-warehouse"></i>
                         <p>
                             Gudang
@@ -80,7 +80,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('lokasi.index') }}" class="nav-link {{ Request::is('administrator/lokasi') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-map"></i>
                         <p>
                             Lokasi
@@ -88,7 +88,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">                        
+                    <a href="{{ route('pemasok.index') }}" class="nav-link {{ Request::is('administrator/pemasok') ? 'active' : '' }}">                        
                         <i class="nav-icon fas fa-boxes"></i>
                         <p>
                             pemasok
@@ -96,7 +96,7 @@
                     </a>
                 </li>                
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('permintaan.index') }}" class="nav-link {{ Request::is('administrator/permintaan') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Permintaan
@@ -104,7 +104,7 @@
                     </a>
                 </li>                
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('jadwal.index') }}" class="nav-link {{ Request::is('administrator/jadwal') ? 'active' : '' }}">
                         <i class="nav-icon far fa-calendar-alt"></i>
                         <p>
                             Jadwal
