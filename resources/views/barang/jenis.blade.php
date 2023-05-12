@@ -2,7 +2,8 @@
 @section('content')
 <div class="row">    
     <div class="col-12 mb-2">
-        <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah jenis</button>    
+        <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah jenis</button>               
+             
     </div>        
     <div class="col-12">    
     <div class="card">
@@ -31,10 +32,11 @@
     </tr>
     </thead>
     <tbody>
+        @foreach ($jenis as $j)
     <tr>
-    <td>183</td>
-    <td>buku</td>
-    <td>pak</td>
+    <td>{{$j->id_jenis}}</td>
+    <td>{{$j->nama_jenis}}</td>
+    <td>{{$j->nama_satuan}}</td>
     <td class="project-actions text-right">
         <a class="btn btn-primary btn-sm" href="#">
         <i class="fas fa-folder">
@@ -53,28 +55,7 @@
         </a>
         </td>
     </tr>
-    <tr>
-    <td>219</td>
-    <td>aqua</td>
-    <td>dus</td>
-    <td class="project-actions text-right">
-        <a class="btn btn-primary btn-sm" href="#">
-        <i class="fas fa-folder">
-        </i>
-        View
-        </a>
-        <a class="btn btn-info btn-sm" href="#">
-        <i class="fas fa-pencil-alt">
-        </i>
-        Edit
-        </a>
-        <a class="btn btn-danger btn-sm" href="#">
-        <i class="fas fa-trash">
-        </i>
-        Delete
-        </a>
-        </td>
-    </tr>    
+    @endforeach  
     </tbody>
     </table>
     </div>
@@ -82,5 +63,32 @@
     </div>
     
     </div>
+</div>
+<div class="card-body">
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+    Launch Default Modal
+</button>
+</div>
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+    <h4 class="modal-title">Default Modal</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
     </div>
+    <div class="modal-body">
+    <p>One fine body&hellip;</p>
+    </div>
+    <div class="modal-footer justify-content-between">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+    </div>
+    
+    </div>    
+</div>
+
+
 @endsection

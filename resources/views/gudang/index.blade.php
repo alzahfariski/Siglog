@@ -25,11 +25,8 @@
     <thead>
     <tr>
     <th>ID</th>
-    <th>Nama Barang</th>
-    <th>Jumlah Masuk</th>
-    <th>Penyimpanan</th>
-    <th>Pemasok</th>
-    <th>Tgl</th>
+    <th>Nama Gudang</th>
+    <th>Keterangan</th>
     <th style="width: 40px">Aksi</th>
     </tr>
     </thead>
@@ -37,10 +34,7 @@
     <tr>
     <td>183</td>
     <td>logistik 1</td>
-    <td>11</td>
-    <td>gudang 1</td>    
-    <td>pt.xyz</td>
-    <td>11-05-2023</td>
+    <td>gudang 1</td>
     <td class="project-actions text-right">
         <a class="btn btn-primary btn-sm" href="#">
         <i class="fas fa-folder">
@@ -59,31 +53,7 @@
         </a>
         </td>
     </tr>
-    <tr>
-    <td>219</td>
-    <td>logistik 2</td>
-    <td>11</td>
-    <td>gudang 2</td>    
-    <td>pt.xyz</td> 
-    <td>11-05-2023</td>
-    <td class="project-actions text-right">
-        <a class="btn btn-primary btn-sm" href="#">
-        <i class="fas fa-folder">
-        </i>
-        View
-        </a>
-        <a class="btn btn-info btn-sm" href="#">
-        <i class="fas fa-pencil-alt">
-        </i>
-        Edit
-        </a>
-        <a class="btn btn-danger btn-sm" href="#">
-        <i class="fas fa-trash">
-        </i>
-        Delete
-        </a>
-        </td>
-    </tr>    
+    
     </tbody>
     </table>
     </div>
