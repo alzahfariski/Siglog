@@ -12,7 +12,8 @@ class JenisController extends Controller
     {
         $jenis = Jenis_barang::all();
         return view('barang.jenis',
-        compact(['jenis']),[
+        compact(['jenis']),
+        [
             'page_title' => 'Data jenis'
         ]); 
     }

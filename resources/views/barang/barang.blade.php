@@ -26,7 +26,9 @@
     <tr>
     <th>ID</th>
     <th>Nama Barang</th>
+    <th>Jenis</th>
     <th>Jumlah</th>
+    <th>Satuan</th>
     <th>Penyimpanan</th>
     <th style="width: 40px">Aksi</th>
     </tr>
@@ -34,8 +36,10 @@
     <tbody>
     <tr>
     <td>183</td>
-    <td>logistik 1</td>
+    <td>baju pdh</td>
+    <td>pakaian</td>
     <td>11</td>
+    <td>Setel</td>
     <td><span class="tag">gudang 1</span></td>
     <td class="project-actions text-right">
         <a class="btn btn-primary btn-sm" href="#">

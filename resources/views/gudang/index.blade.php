@@ -27,14 +27,17 @@
     <th>ID</th>
     <th>Nama Gudang</th>
     <th>Keterangan</th>
+    <th>lokasi</th>
     <th style="width: 40px">Aksi</th>
     </tr>
     </thead>
     <tbody>
+        @foreach ($gudang as $g) 
     <tr>
-    <td>183</td>
-    <td>logistik 1</td>
-    <td>gudang 1</td>
+    <td>{{$g->id_gudang}}</td>
+    <td>{{$g->nama_gudang}}</td>
+    <td>{{$g->keterangan }}</td>
+    <td>{{$g->id_lokasi}}</td>
     <td class="project-actions text-right">
         <a class="btn btn-primary btn-sm" href="#">
         <i class="fas fa-folder">
@@ -53,6 +56,7 @@
         </a>
         </td>
     </tr>
+        @endforeach
     
     </tbody>
     </table>

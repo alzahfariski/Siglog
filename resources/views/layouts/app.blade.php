@@ -61,7 +61,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
-    @vite('resources/js/app.js')    
+    @vite('resources/js/app.js') 
+    
 </body>
 
 </html>
