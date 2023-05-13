@@ -3,14 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pemasok;
 use Illuminate\Http\Request;
 
 class PemasokController extends Controller
 {
     public function index()
     {
-        return view('pemasok.index',[
-            'page_title' => 'Data pemasok'
-        ]); 
+        $pemasok = Pemasok::all();
+        return view(
+            'pemasok.index',
+            compact(['pemasok']),
+            [
+                'page_title' => 'Data pemasok'
+            ]
+        );
     }
 }

@@ -16,4 +16,12 @@ class Gudang extends Model
     {
         return $this->hasOne(Lokasi::class, 'id_lokasi');
     }
+    public function barang()
+    {
+        return $this->hasOne(Barang::class, 'id_barang');
+    }
+    public function keluar()
+    {
+        return $this->hasOne(BarangKeluar::class, 'id_keluar');
+    }
 }
