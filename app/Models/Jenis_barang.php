@@ -10,6 +10,7 @@ class Jenis_barang extends Model
     use HasFactory;
     protected $table = "jenis_barang";
     protected $primaryKey = 'id_jenis';
+    protected $guarded = [];
 
     public function barang()
     {

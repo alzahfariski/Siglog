@@ -24,17 +24,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login',[LoginController::class, 'index']);
-Route::post('/login',[LoginController::class, 'authenticate'])->name('authenticate');
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
 
-Route::prefix('administrator')->group(function () {    
+Route::prefix('administrator')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-    
+
     Route::prefix('data')->group(function () {
         Route::get('/barang', [BarangController::class, 'index'])->name('barang.barang');
+        Route::post('/barang/store', [BarangController::class, 'store'])->name('barang.store');
         Route::get('/jenis', [JenisController::class, 'index'])->name('barang.jenis');
+        Route::post('/jenis/store', [JenisController::class, 'store'])->name('jenis.store');
         Route::get('/masuk', [BarangMasukController::class, 'index'])->name('barang.masuk');
-        Route::get('/keluar', [BarangKeluarController::class, 'index'])->name('barang.keluar');        
+        Route::get('/keluar', [BarangKeluarController::class, 'index'])->name('barang.keluar');
     });
 
     Route::get('/gudang', [GudangController::class, 'index'])->name('gudang.index');
@@ -42,4 +44,5 @@ Route::prefix('administrator')->group(function () {
     Route::get('/pemasok', [PemasokController::class, 'index'])->name('pemasok.index');
     Route::get('/permintaan', [PermintaanController::class, 'index'])->name('permintaan.index');
     Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
+    Route::post('/jadwal/store', [JadwalController::class, 'store'])->name('jadwal.store');
 });

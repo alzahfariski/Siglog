@@ -11,6 +11,8 @@ class Barang extends Model
 
     protected $table = 'barang';
     protected $primaryKey = 'id_barang';
+    protected $guarded = [];
+
 
     public function jenis()
     {

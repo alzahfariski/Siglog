@@ -2,9 +2,8 @@
 @section('content')
     <div class="row">
         <div class="col-12 mb-2">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah"><i
-                    class="fas fa-plus"></i> Tambah jenis</button>
-
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
+                <i class="fas fa-plus"></i> Tambah jenis</button>
         </div>
         <div class="col-12">
             <div class="card">
@@ -39,11 +38,6 @@
                                     <td>{{ $j->nama_jenis }}</td>
                                     <td>{{ $j->nama_satuan }}</td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="#">
-                                            <i class="fas fa-folder">
-                                            </i>
-                                            View
-                                        </a>
                                         <a class="btn btn-info btn-sm" href="#">
                                             <i class="fas fa-pencil-alt">
                                             </i>
@@ -68,27 +62,31 @@
 
     <div class="modal fade" id="modal-tambah">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Tambah Jenis Barang</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input type="text" placeholder="nama jenis" class="form-control">
+            <form action="{{ route('jenis.store') }}" method="POST">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Tambah Jenis Barang</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="nama satuan" class="form-control">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nama_barang">Nama Jenis</label>
+                            <input type="text" placeholder="masukan nama barang" class="form-control" name="nama_jenis">
+                        </div>
+                        <div class="form-group">
+                            <label for="nama_barang">Nama Satuan</label>
+                            <input type="text" placeholder="masukan nama barang" class="form-control" name="nama_satuan">
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" name="submit" value="save" class="btn btn-primary">Simpan</button>
                     </div>
                 </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Simpan</button>
-                </div>
-            </div>
-
+            </form>
         </div>
     </div>
 @endsection

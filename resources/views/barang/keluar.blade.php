@@ -39,7 +39,7 @@
                                     <td>{{ $k->barang->nama_barang }}</td>
                                     <td>{{ $k->jumlah_keluar }}</td>
                                     <td>{{ $k->gudang->nama_gudang }}</td>
-                                    <td>11-05-2023</td>
+                                    <td>11</td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="#">
                                             <i class="fas fa-folder">

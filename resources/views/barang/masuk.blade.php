@@ -39,7 +39,7 @@
                                     <td>{{ $m->barang->nama_barang }}</td>
                                     <td>{{ $m->jumlah_masuk }}</td>
                                     <td>{{ $m->pemasok->nama_pemasok }}</td>
-                                    <td>11-05-2023</td>
+                                    <td>{{ $m->created_at->format('Y-m-d') }}</td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="#">
                                             <i class="fas fa-folder">
