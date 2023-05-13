@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GudangController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\JenisController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\PemasokController;
 use App\Http\Controllers\PermintaanController;
@@ -23,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/login',[LoginController::class, 'index']);
+Route::post('/login',[LoginController::class, 'authenticate'])->name('authenticate');
 
 Route::prefix('administrator')->group(function () {    
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');

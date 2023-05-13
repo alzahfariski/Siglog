@@ -10,9 +10,10 @@ class Gudang extends Model
     use HasFactory;
 
     protected $table = 'gudang';
+    protected $primaryKey = 'id_gudang';
 
     public function lokasi()
     {
-        return $this->hasOne(Lokasi::class, 'lokasi_id');
+        return $this->hasOne(Lokasi::class, 'id_lokasi');
     }
 }
