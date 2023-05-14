@@ -40,7 +40,7 @@
                                     <td>{{ $g->keterangan }}</td>
                                     <td>{{ $g->lokasi->nama_jalan }}</td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="#">
+                                        <a class="btn btn-primary btn-sm" href="{{ route('gudang.view', $g->id_gudang) }}">
                                             <i class="fas fa-folder">
                                             </i>
                                             View

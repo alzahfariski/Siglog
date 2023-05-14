@@ -8,9 +8,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <h4>
-                                    <b>{{ $barang->nama_barang }}</b>
-                                    <small class="float-right">Tanggal barang ditambahkan :
-                                        {{ $barang->created_at->format('Y-m-d') }}</small>
+                                    <b>{{ $jadwal->nama_jadwal }}</b>
+                                    <small class="float-right">Tanggal jadwal ditambahkan :
+                                        {{ $jadwal->created_at->format('Y-m-d') }}</small>
                                 </h4>
                             </div>
                         </div>
@@ -19,20 +19,18 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Id barang</th>
-                                            <th>Nama Barang</th>
-                                            <th>Jenis</th>
-                                            <th>penyimpanan</th>
-                                            <th>Jumlah barang</th>
+                                            <th>Id jadwal</th>
+                                            <th>Nama jadwal</th>
+                                            <th>Jumlah</th>
+                                            <th>Tanggal Jadwal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{{ $barang->id_barang }}</td>
-                                            <td>{{ $barang->nama_barang }}</td>
-                                            <td>{{ $barang->jenis->nama_jenis }}</td>
-                                            <td>{{ $barang->gudang->nama_gudang }}</td>
-                                            <td>{{ $barang->jumlah }} {{ $barang->jenis->nama_satuan }}</td>
+                                            <td>{{ $jadwal->id_jadwal }}</td>
+                                            <td>{{ $jadwal->nama_jadwal }}</td>
+                                            <td>{{ $jadwal->jumlah }}</td>
+                                            <td>{{ $jadwal->tgl_jadwal }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -40,17 +38,9 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4 invoice-col">
-                                Penyimpanan :
+                                Keterangan :
                                 <address>
-                                    <strong>{{ $barang->gudang->nama_gudang }}</strong><br>
-                                    {{ $barang->gudang->keterangan }}<br>
-                                </address>
-                            </div>
-                            <div class="col-sm-4 invoice-col">
-                                Lokasi :
-                                <address>
-                                    <strong>{{ $barang->gudang->lokasi->nama_jalan }}</strong><br>
-                                    {{ $barang->gudang->lokasi->alamat }}<br>
+                                    <strong>{{ $jadwal->keterangan }}</strong><br>
                                 </address>
                             </div>
                         </div>

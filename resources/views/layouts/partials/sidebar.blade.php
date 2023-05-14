@@ -75,7 +75,7 @@
                  </li>
                  <li class="nav-item">
                      <a href="{{ route('gudang.index') }}"
-                         class="nav-link {{ Request::is('administrator/gudang') ? 'active' : '' }}">
+                         class="nav-link {{ Request::is('administrator/gudang*') ? 'active' : '' }}">
                          <i class="nav-icon fas fa-warehouse"></i>
                          <p>
                              Gudang
@@ -111,7 +111,7 @@
                  </li>
                  <li class="nav-item">
                      <a href="{{ route('jadwal.index') }}"
-                         class="nav-link {{ Request::is('administrator/jadwal') ? 'active' : '' }}">
+                         class="nav-link {{ Request::is('administrator/jadwal*') ? 'active' : '' }}">
                          <i class="nav-icon far fa-calendar-alt"></i>
                          <p>
                              Jadwal

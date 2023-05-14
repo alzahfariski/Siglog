@@ -27,4 +27,15 @@ class GudangController extends Controller
         Gudang::create($request->except('_token', 'submit'));
         return redirect('administrator/gudang');
     }
+    public function view($id_gudang)
+    {
+        $gudang = Gudang::find($id_gudang);
+        return view(
+            'gudang.detail',
+            compact(['gudang']),
+            [
+                'page_title' => 'Detail gudang'
+            ]
+        );
+    }
 }

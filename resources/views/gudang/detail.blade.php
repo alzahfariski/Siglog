@@ -8,9 +8,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <h4>
-                                    <b>{{ $barang->nama_barang }}</b>
-                                    <small class="float-right">Tanggal barang ditambahkan :
-                                        {{ $barang->created_at->format('Y-m-d') }}</small>
+                                    <b>{{ $gudang->nama_gudang }}</b>
+                                    <small class="float-right">Tanggal gudang ditambahkan :
+                                        {{ $gudang->created_at->format('Y-m-d') }}</small>
                                 </h4>
                             </div>
                         </div>
@@ -19,20 +19,17 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Id barang</th>
-                                            <th>Nama Barang</th>
-                                            <th>Jenis</th>
-                                            <th>penyimpanan</th>
-                                            <th>Jumlah barang</th>
+                                            <th>Id gudang</th>
+                                            <th>Nama gudang</th>
+                                            <th>Keterangan</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{{ $barang->id_barang }}</td>
-                                            <td>{{ $barang->nama_barang }}</td>
-                                            <td>{{ $barang->jenis->nama_jenis }}</td>
-                                            <td>{{ $barang->gudang->nama_gudang }}</td>
-                                            <td>{{ $barang->jumlah }} {{ $barang->jenis->nama_satuan }}</td>
+                                            <td>{{ $gudang->id_gudang }}</td>
+                                            <td>{{ $gudang->nama_gudang }}</td>
+                                            <td>{{ $gudang->keterangan }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -40,17 +37,24 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4 invoice-col">
-                                Penyimpanan :
+                                Lokasi :
                                 <address>
-                                    <strong>{{ $barang->gudang->nama_gudang }}</strong><br>
-                                    {{ $barang->gudang->keterangan }}<br>
+                                    <strong>{{ $gudang->lokasi->nama_jalan }}</strong><br>
+                                    {{ $gudang->lokasi->alamat }}<br>
                                 </address>
                             </div>
                             <div class="col-sm-4 invoice-col">
-                                Lokasi :
+                                Keterangan :
                                 <address>
-                                    <strong>{{ $barang->gudang->lokasi->nama_jalan }}</strong><br>
-                                    {{ $barang->gudang->lokasi->alamat }}<br>
+                                    <strong>{{ $gudang->lokasi->keterangan }}</strong><br>
+                                    {{ $gudang->lokasi->kategori }}<br>
+                                </address>
+                            </div>
+                            <div class="col-sm-4 invoice-col">
+                                koordinat :
+                                <address>
+                                    longitude: {{ $gudang->lokasi->longitude }}<br>
+                                    latitude: {{ $gudang->lokasi->latitude }}<br>
                                 </address>
                             </div>
                         </div>

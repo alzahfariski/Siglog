@@ -24,4 +24,15 @@ class JadwalController extends Controller
         Jadwal::create($request->except('_token', 'submit'));
         return redirect('administrator/jadwal');
     }
+    public function view($id_jadwal)
+    {
+        $jadwal = Jadwal::find($id_jadwal);
+        return view(
+            'jadwal.detail',
+            compact(['jadwal']),
+            [
+                'page_title' => 'Detail jadwal'
+            ]
+        );
+    }
 }

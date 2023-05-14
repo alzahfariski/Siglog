@@ -30,7 +30,6 @@
                                 <th>Tgl jadwal</th>
                                 <th>Tgl selesai</th>
                                 <th>Jumlah</th>
-                                <th>Keterangan</th>
                                 <th style="width: 40px">Aksi</th>
                             </tr>
                         </thead>
@@ -42,9 +41,8 @@
                                     <td>{{ $j->created_at->format('Y-m-d') }}</td>
                                     <td>{{ $j->tgl_jadwal }}</td>
                                     <td>{{ $j->jumlah }}</td>
-                                    <td>{{ $j->keterangan }}</td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="#">
+                                        <a class="btn btn-primary btn-sm" href="{{ route('jadwal.view', $j->id_jadwal) }}">
                                             <i class="fas fa-folder">
                                             </i>
                                             View
