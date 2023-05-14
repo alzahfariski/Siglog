@@ -22,6 +22,6 @@ class JadwalController extends Controller
     public function store(Request $request)
     {
         Jadwal::create($request->except('_token', 'submit'));
-        return redirect('administrator/data/jadwal');
+        return redirect('administrator/jadwal');
     }
 }

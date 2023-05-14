@@ -44,7 +44,7 @@
                                     <td>{{ $b->jenis->nama_satuan }}</td>
                                     <td><span class="tag">{{ $b->gudang->nama_gudang }}</span></td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="#">
+                                        <a class="btn btn-primary btn-sm" href="{{ route('barang.view', $b->id_barang) }}">
                                             <i class="fas fa-folder">
                                             </i>
                                             View

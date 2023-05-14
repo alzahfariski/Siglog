@@ -15,7 +15,7 @@ class Gudang extends Model
 
     public function lokasi()
     {
-        return $this->hasOne(Lokasi::class, 'id_lokasi');
+        return $this->belongsTo(Lokasi::class, 'id_lokasi');
     }
     public function barang()
     {

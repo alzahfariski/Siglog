@@ -14,6 +14,6 @@ class Lokasi extends Model
 
     public function gudang()
     {
-        return $this->belongsTo(Gudang::class, 'id_lokasi');
+        return $this->hasMany(Gudang::class, 'id_gudang');
     }
 }

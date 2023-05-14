@@ -28,6 +28,7 @@
                                 <th>ID</th>
                                 <th>Nama Permintaan</th>
                                 <th>Tgl jadwal</th>
+                                <th>Tgl selesai</th>
                                 <th>Jumlah</th>
                                 <th>Keterangan</th>
                                 <th style="width: 40px">Aksi</th>
@@ -39,6 +40,7 @@
                                     <td>{{ $j->id_jadwal }}</td>
                                     <td>{{ $j->nama_jadwal }}</td>
                                     <td>{{ $j->created_at->format('Y-m-d') }}</td>
+                                    <td>{{ $j->tgl_jadwal }}</td>
                                     <td>{{ $j->jumlah }}</td>
                                     <td>{{ $j->keterangan }}</td>
                                     <td class="project-actions text-right">
