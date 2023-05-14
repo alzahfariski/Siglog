@@ -11,6 +11,7 @@ class Gudang extends Model
 
     protected $table = 'gudang';
     protected $primaryKey = 'id_gudang';
+    protected $guarded = [];
 
     public function lokasi()
     {

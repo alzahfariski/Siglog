@@ -40,8 +40,10 @@ Route::prefix('administrator')->group(function () {
     });
 
     Route::get('/gudang', [GudangController::class, 'index'])->name('gudang.index');
+    Route::post('/gudang', [GudangController::class, 'store'])->name('gudang.store');
     Route::get('/lokasi', [LokasiController::class, 'index'])->name('lokasi.index');
     Route::get('/pemasok', [PemasokController::class, 'index'])->name('pemasok.index');
+    Route::post('/pemasok', [PemasokController::class, 'store'])->name('pemasok.store');
     Route::get('/permintaan', [PermintaanController::class, 'index'])->name('permintaan.index');
     Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
     Route::post('/jadwal/store', [JadwalController::class, 'store'])->name('jadwal.store');

@@ -2,7 +2,8 @@
 @section('content')
     <div class="row">
         <div class="col-12 mb-2">
-            <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah barang</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
+                <i class="fas fa-plus"></i> Tambah Gudang</button>
         </div>
         <div class="col-12">
             <div class="card">
@@ -57,13 +58,46 @@
                                     </td>
                                 </tr>
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>
-
             </div>
-
+        </div>
+    </div>
+    <div class="modal fade" id="modal-tambah">
+        <div class="modal-dialog">
+            <form action="{{ route('gudang.store') }}" method="POST">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Tambah Gudang</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nama_gudang">Nama Gudang</label>
+                            <input type="text" placeholder="masukan nama gudang" class="form-control" name="nama_gudang">
+                        </div>
+                        <div class="form-group">
+                            <label for="keterangan">Keterangan</label>
+                            <input type="text" placeholder="masukan keterangan gudang" class="form-control"
+                                name="keterangan">
+                        </div>
+                        <label for="id_lokasi">Lokasi Gudang</label>
+                        <select class="form-control select2" style="width: 100%;" name="id_lokasi">
+                            @foreach ($lokasi as $l)
+                                <option value="{{ $l->id_lokasi }}">{{ $l->nama_jalan }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" type="submit" name="submit" value="save">Simpan</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 @endsection

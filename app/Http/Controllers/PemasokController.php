@@ -19,4 +19,10 @@ class PemasokController extends Controller
             ]
         );
     }
+    public function store(Request $request)
+    {
+        // dd($request->except('_token','submit'));
+        Pemasok::create($request->except('_token', 'submit'));
+        return redirect('administrator/pemasok');
+    }
 }
