@@ -11,4 +11,9 @@ class Pemasok extends Model
     protected $table = 'pemasok';
     protected $primaryKey = 'id_pemasok';
     protected $guarded = [];
+
+    public function masuk()
+    {
+        return $this->hasMany(BarangMasuk::class, 'id_masuk');
+    }
 }

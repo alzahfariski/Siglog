@@ -10,13 +10,14 @@ class BarangMasuk extends Model
     use HasFactory;
     protected $table = 'barang_masuk';
     protected $primaryKey = 'id_masuk';
+    protected $guarded = [];
 
     public function barang()
     {
-        return $this->hasOne(Barang::class, 'id_barang');
+        return $this->belongsTo(Barang::class, 'id_barang');
     }
     public function pemasok()
     {
-        return $this->hasOne(Pemasok::class, 'id_pemasok');
+        return $this->belongsTo(Pemasok::class, 'id_pemasok');
     }
 }

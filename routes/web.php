@@ -37,6 +37,7 @@ Route::prefix('administrator')->group(function () {
         Route::get('/jenis', [JenisController::class, 'index'])->name('barang.jenis');
         Route::post('/jenis/store', [JenisController::class, 'store'])->name('jenis.store');
         Route::get('/masuk', [BarangMasukController::class, 'index'])->name('barang.masuk');
+        Route::post('/masuk/store', [BarangMasukController::class, 'store'])->name('masuk.store');
         Route::get('/keluar', [BarangKeluarController::class, 'index'])->name('barang.keluar');
     });
 

@@ -24,7 +24,7 @@ class Barang extends Model
     }
     public function masuk()
     {
-        return $this->belongsTo(BarangMasuk::class, 'id_masuk');
+        return $this->hasMany(BarangMasuk::class, 'id_masuk');
     }
     public function keluar()
     {

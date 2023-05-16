@@ -35,11 +35,14 @@
                         </thead>
                         <tbody>
                             @foreach ($jadwal as $j)
+                                @php
+                                    $tanggal = \Carbon\Carbon::parse($j->tgl_jadwal);
+                                @endphp
                                 <tr>
                                     <td>{{ $j->id_jadwal }}</td>
                                     <td>{{ $j->nama_jadwal }}</td>
                                     <td>{{ $j->created_at->format('Y-m-d') }}</td>
-                                    <td>{{ $j->tgl_jadwal }}</td>
+                                    <td>{{ $tanggal->format('Y-m-d') }}</td>
                                     <td>{{ $j->jumlah }}</td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="{{ route('jadwal.view', $j->id_jadwal) }}">
