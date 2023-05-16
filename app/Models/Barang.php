@@ -28,6 +28,6 @@ class Barang extends Model
     }
     public function keluar()
     {
-        return $this->belongsTo(BarangMasuk::class, 'id_keluar');
+        return $this->hasMany(BarangKeluar::class, 'id_keluar');
     }
 }

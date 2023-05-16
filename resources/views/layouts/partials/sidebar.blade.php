@@ -154,7 +154,8 @@
                      </ul>
                  </li>
                  <li class="nav-item">
-                     <a href="#" class="nav-link">
+                     <a href="{{ route('user.index') }}"
+                         class="nav-link {{ Request::is('administrator/user*') ? 'active' : '' }}">
                          <i class="nav-icon far fa-user"></i>
                          <p>
                              Data User

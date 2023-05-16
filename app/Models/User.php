@@ -18,6 +18,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $guarded = [];
+    protected $table = 'users';
+    protected $primaryKey = 'id_user';
+
+    public function keluar()
+    {
+        return $this->hasMany(BarangKeluar::class, 'id_keluar');
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -27,6 +34,4 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
-
-    
 }

@@ -10,6 +10,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "admin-lte": "3.2"
+        "admin-lte": "3.2",
+        "mapbox-gl": "^2.14.1"
     }
 }

@@ -2,7 +2,8 @@
 @section('content')
     <div class="row">
         <div class="col-12 mb-2">
-            <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Kirim barang</button>
+            <button type="button" class="btn btn-primary" id="tambah-btn" data-toggle="modal" data-target="#modal-tambah">
+                <i class="fas fa-plus"></i> kirim barang</button>
         </div>
         <div class="col-12">
             <div class="card">
@@ -27,7 +28,7 @@
                                 <th>ID</th>
                                 <th>Nama Barang</th>
                                 <th>Jumlah Keluar</th>
-                                <th>Pengiriman</th>
+                                <th>Di kirim</th>
                                 <th>Tgl</th>
                                 <th style="width: 40px">Aksi</th>
                             </tr>
@@ -38,8 +39,8 @@
                                     <td>{{ $k->id_keluar }}</td>
                                     <td>{{ $k->barang->nama_barang }}</td>
                                     <td>{{ $k->jumlah_keluar }}</td>
-                                    <td>{{ $k->gudang->nama_gudang }}</td>
-                                    <td>{{ $k->create_at }}</td>
+                                    <td>{{ $k->user->nama }}</td>
+                                    <td>{{ $k->created_at }}</td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="#">
                                             <i class="fas fa-folder">
@@ -57,14 +58,62 @@
                                             Delete
                                         </a>
                                     </td>
+                                    {{-- MODAL ADD --}}
+                                    <div class="modal fade" id="modal-tambah">
+                                        <div class="modal-dialog">
+                                            <form action="{{ route('keluar.store') }}" method="POST">
+                                                @csrf
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title"> kirim barang</h4>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <label for="id_barang">Nama Barang</label>
+                                                            <select class="form-control select2" style="width: 100%;"
+                                                                name="id_barang">
+                                                                @foreach ($barang as $b)
+                                                                    <option value="{{ $b->id_barang }}">
+                                                                        {{ $b->nama_barang }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="id_user">kirim ke</label>
+                                                            <select class="form-control select2" style="width: 100%;"
+                                                                name="id_user">
+                                                                @foreach ($user as $u)
+                                                                    <option value="{{ $u->id_user }}">
+                                                                        {{ $u->nama }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="nama_barang">Jumlah Barang</label>
+                                                            <input type="number" placeholder="masukan jumlah barang"
+                                                                class="form-control" name="jumlah_keluar">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-between">
+                                                        <button type="button" class="btn btn-default"
+                                                            data-dismiss="modal">Close</button>
+                                                        <button type="submit" name="submit" value="save"
+                                                            class="btn btn-primary">Simpan</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-
             </div>
-
         </div>
     </div>
 @endsection

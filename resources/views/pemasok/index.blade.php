@@ -77,7 +77,7 @@
                                 name="nama_pemasok">
                         </div>
                         <div class="form-group">
-                            <label for="email">Nama Satuan</label>
+                            <label for="email">Email pemasok</label>
                             <input type="email" placeholder="masukan email" class="form-control" name="email">
                         </div>
                         <div class="form-group">

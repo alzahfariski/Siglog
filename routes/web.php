@@ -11,6 +11,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\PemasokController;
 use App\Http\Controllers\PermintaanController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,9 +25,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
+});
 
+// Route::middleware('auth')->group(function () {
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::prefix('administrator')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
@@ -39,6 +44,7 @@ Route::prefix('administrator')->group(function () {
         Route::get('/masuk', [BarangMasukController::class, 'index'])->name('barang.masuk');
         Route::post('/masuk/store', [BarangMasukController::class, 'store'])->name('masuk.store');
         Route::get('/keluar', [BarangKeluarController::class, 'index'])->name('barang.keluar');
+        Route::post('/keluar/store', [BarangKeluarController::class, 'store'])->name('keluar.store');
     });
 
     Route::get('/gudang', [GudangController::class, 'index'])->name('gudang.index');
@@ -54,4 +60,6 @@ Route::prefix('administrator')->group(function () {
     Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
     Route::get('/jadwal/{id_jadwal}/view', [JadwalController::class, 'view'])->name('jadwal.view');
     Route::post('/jadwal/store', [JadwalController::class, 'store'])->name('jadwal.store');
+    Route::get('/user', [UserController::class, 'index'])->name('user.index');
 });
+// });
