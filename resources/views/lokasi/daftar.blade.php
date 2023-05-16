@@ -2,7 +2,9 @@
 @section('content')
     <div class="row">
         <div class="col-12 mb-2">
-            <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Kirim barang</button>
+            <a href="{{ route('lokasi.create') }}">
+                <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Lokasi</button>
+            </a>
         </div>
         <div class="col-12">
             <div class="card">
@@ -25,23 +27,21 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nama Barang</th>
-                                <th>Jumlah Keluar</th>
-                                <th>Pengiriman</th>
-                                <th>Tgl</th>
+                                <th>Nama jalan</th>
+                                <th>Alamat</th>
+                                <th>kategori</th>
                                 <th style="width: 40px">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($keluar as $k)
+                            @foreach ($lokasi as $l)
                                 <tr>
-                                    <td>{{ $k->id_keluar }}</td>
-                                    <td>{{ $k->barang->nama_barang }}</td>
-                                    <td>{{ $k->jumlah_keluar }}</td>
-                                    <td>{{ $k->gudang->nama_gudang }}</td>
-                                    <td>{{ $k->create_at }}</td>
+                                    <td>{{ $l->id_lokasi }}</td>
+                                    <td>{{ $l->nama_jalan }}</td>
+                                    <td>{{ $l->alamat }}</td>
+                                    <td>{{ $l->kategori }}</td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="#">
+                                        <a class="btn btn-primary btn-sm" href="{{ route('lokasi.view', $l->id_lokasi) }}">
                                             <i class="fas fa-folder">
                                             </i>
                                             View

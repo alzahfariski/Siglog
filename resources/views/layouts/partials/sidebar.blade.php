@@ -84,7 +84,7 @@
                  </li>
                  <li class="nav-item">
                      <a href="{{ route('lokasi.index') }}"
-                         class="nav-link {{ Request::is('administrator/lokasi') ? 'active' : '' }}">
+                         class="nav-link {{ Request::is('administrator/lokasi*') ? 'active' : '' }}">
                          <i class="nav-icon fas fa-map"></i>
                          <p>
                              Lokasi
