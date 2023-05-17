@@ -41,4 +41,15 @@ class BarangController extends Controller
             ]
         );
     }
+    public function cetakDetail($id_barang)
+    {
+        $barang = Barang::find($id_barang);
+        return view(
+            'barang.cetakDetail',
+            compact(['barang']),
+            [
+                'page_title' => 'STOK BARANG'
+            ]
+        );
+    }
 }

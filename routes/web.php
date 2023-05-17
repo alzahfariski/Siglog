@@ -38,6 +38,7 @@ Route::prefix('administrator')->group(function () {
     Route::prefix('data')->group(function () {
         Route::get('/barang', [BarangController::class, 'index'])->name('barang.barang');
         Route::get('/barang/{id_barang}/view', [BarangController::class, 'view'])->name('barang.view');
+        Route::get('/barang/{id_barang}/view/cetak', [BarangController::class, 'cetakDetail'])->name('barang.cetakDetail');
         Route::post('/barang/store', [BarangController::class, 'store'])->name('barang.store');
         Route::get('/jenis', [JenisController::class, 'index'])->name('barang.jenis');
         Route::post('/jenis/store', [JenisController::class, 'store'])->name('jenis.store');

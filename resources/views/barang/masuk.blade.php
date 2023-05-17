@@ -58,64 +58,57 @@
                                             Delete
                                         </a>
                                     </td>
-
-                                    {{-- MODAL ADD --}}
-                                    <div class="modal fade" id="modal-tambah">
-                                        <div class="modal-dialog">
-                                            <form action="{{ route('masuk.store') }}" method="POST">
-                                                @csrf
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Tambah Barang Masuk</h4>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <input type="hidden" name="id_barang" value="{{ $m->id_barang }}">
-                                                        <div class="form-group">
-                                                            <label for="id_barang">Nama Barang</label>
-                                                            <select class="form-control select2" style="width: 100%;"
-                                                                name="id_barang">
-                                                                @foreach ($barang as $b)
-                                                                    <option value="{{ $b->id_barang }}">
-                                                                        {{ $b->nama_barang }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="id_pemasok">Nama pemasok</label>
-                                                            <select class="form-control select2" style="width: 100%;"
-                                                                name="id_pemasok">
-                                                                @foreach ($pemasok as $p)
-                                                                    <option value="{{ $p->id_pemasok }}">
-                                                                        {{ $p->nama_pemasok }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="nama_barang">Jumlah Barang</label>
-                                                            <input type="number" placeholder="masukan nama barang"
-                                                                class="form-control" name="jumlah_masuk">
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer justify-content-between">
-                                                        <button type="button" class="btn btn-default"
-                                                            data-dismiss="modal">Close</button>
-                                                        <button type="submit" name="submit" value="save"
-                                                            class="btn btn-primary">Simpan</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
+        </div>
+    </div>
+    {{-- MODAL ADD --}}
+    <div class="modal fade" id="modal-tambah">
+        <div class="modal-dialog">
+            <form action="{{ route('masuk.store') }}" method="POST">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Tambah Barang Masuk</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="id_barang">Nama Barang</label>
+                            <select class="form-control select2" style="width: 100%;" name="id_barang">
+                                @foreach ($barang as $b)
+                                    <option value="{{ $b->id_barang }}">
+                                        {{ $b->nama_barang }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_pemasok">Nama pemasok</label>
+                            <select class="form-control select2" style="width: 100%;" name="id_pemasok">
+                                @foreach ($pemasok as $p)
+                                    <option value="{{ $p->id_pemasok }}">
+                                        {{ $p->nama_pemasok }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nama_barang">Jumlah Barang</label>
+                            <input type="number" placeholder="masukan nama barang" class="form-control"
+                                name="jumlah_masuk">
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" name="submit" value="save" class="btn btn-primary">Simpan</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 @endsection
