@@ -2,9 +2,8 @@
 <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-        Anything you want
+        <small>by: alzah fariski</small>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2023 <a href="#">SIGLOG POLRESTA BENGKULU</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2023 <a href="{{ route('dashboard.index') }}">SIGLOG POLRESTA BENGKULU</a>.</strong>
 </footer>

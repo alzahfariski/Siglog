@@ -43,13 +43,19 @@
         </div>
     </div>
     <br><br><br>
+    @php
+        $mytime = Carbon\Carbon::now();
+        $mytime->toDateTimeString();
+    @endphp
+
     <div class="row">
         <div class="col-6"></div>
         <div class="col-6">
-            <p class="text-center">Dikeluarkan di: Kota Bengkulu</p>
+            <p class="text-center">Kota Bengkulu , {{ $mytime->format('d M Y') }}</p>
             <hr size="10" width="30%" color="black">
             <p class="text-center">a.n.KEPALA BAGIAN LOGISTIK</p>
-            <p class="text-center">POLRESTA BENGKULU</p><br><br><br><br>
+            <p class="text-center">POLRESTA BENGKULU</p>
+            <br><br><br><br>
             <p class="text-center">BUDI HARTONO S.H</p>
             <hr size="10" width="30%" color="black">
             <p class="text-center">KOMPOL NRP.12345</p>

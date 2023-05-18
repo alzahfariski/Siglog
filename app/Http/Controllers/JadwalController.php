@@ -35,4 +35,13 @@ class JadwalController extends Controller
             ]
         );
     }
+    public function kalender()
+    {
+        return view(
+            'jadwal.kalender',
+            [
+                'page_title' => 'kalender jadwal'
+            ]
+        );
+    }
 }

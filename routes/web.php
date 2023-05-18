@@ -59,6 +59,7 @@ Route::prefix('administrator')->group(function () {
     Route::post('/pemasok', [PemasokController::class, 'store'])->name('pemasok.store');
     Route::get('/permintaan', [PermintaanController::class, 'index'])->name('permintaan.index');
     Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
+    Route::get('/jadwal/kalender', [JadwalController::class, 'kalender'])->name('jadwal.kalender');
     Route::get('/jadwal/{id_jadwal}/view', [JadwalController::class, 'view'])->name('jadwal.view');
     Route::post('/jadwal/store', [JadwalController::class, 'store'])->name('jadwal.store');
     Route::get('/user', [UserController::class, 'index'])->name('user.index');

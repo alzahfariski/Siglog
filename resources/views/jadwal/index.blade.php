@@ -4,6 +4,11 @@
         <div class="col-12 mb-2">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
                 <i class="fas fa-plus"></i> Tambah jadwal</button>
+            <a href="{{ route('jadwal.kalender') }}">
+                <button type="button" class="btn btn-primary">
+                    <i class="fas fa-calendar"></i> Kalender jadwal</button>
+            </a>
+
         </div>
         <div class="col-12">
             <div class="card">

@@ -25,12 +25,15 @@
                                             <th>Tanggal Jadwal</th>
                                         </tr>
                                     </thead>
+                                    @php
+                                        $tanggal = \Carbon\Carbon::parse($jadwal->tgl_jadwal);
+                                    @endphp
                                     <tbody>
                                         <tr>
                                             <td>{{ $jadwal->id_jadwal }}</td>
                                             <td>{{ $jadwal->nama_jadwal }}</td>
                                             <td>{{ $jadwal->jumlah }}</td>
-                                            <td>{{ $jadwal->tgl_jadwal }}</td>
+                                            <td>{{ $tanggal->format('d-m-Y') }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
