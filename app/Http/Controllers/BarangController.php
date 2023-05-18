@@ -52,4 +52,10 @@ class BarangController extends Controller
             ]
         );
     }
+    public function update($id_barang, Request $request)
+    {
+        $barang = Barang::find($id_barang);
+        $barang->update($request->except('_token', 'submit'));
+        return redirect('administrator/data/barang');
+    }
 }

@@ -49,7 +49,8 @@
                                             </i>
                                             View
                                         </a>
-                                        <a class="btn btn-info btn-sm" href="#">
+                                        <a class="btn btn-info btn-sm" data-toggle="modal"
+                                            data-target="#modal-edit-{{ $b->id_barang }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
@@ -108,4 +109,50 @@
             </form>
         </div>
     </div>
+    @foreach ($barang as $b)
+        <div class="modal fade" id="modal-edit-{{ $b->id_barang }}">
+            <div class="modal-dialog">
+                <form action="{{ route('barang.update', $b->id_barang) }}" method="POST">
+                    @method('put')
+                    @csrf
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Tambah Barang</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" hidden value="{{ $b->id_barang }}">
+                            <div class="form-group">
+                                <label for="nama_barang">Nama Barang</label>
+                                <input type="text" value="{{ $b->nama_barang }}" class="form-control"
+                                    name="nama_barang">
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_barang">Nama Jenis</label>
+                                <select class="form-control select2" style="width: 100%;" name="id_jenis">
+                                    <option value="{{ $b->jenis->id_jenis }}"
+                                        @if ($b->jenis->id_jenis == $b->jenis->id_barang) selected @endif>{{ $b->jenis->nama_jenis }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_barang">Gudang</label>
+                                <select class="form-control select2" style="width: 100%;" name="id_gudang">
+                                    <option value="{{ $b->gudang->id_gudang }}"
+                                        @if ($b->gudang->id_gudang == $b->gudang->id_barang) selected @endif>{{ $b->gudang->nama_gudang }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="submit" name="submit" value="save">Simpan</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    @endforeach
 @endsection

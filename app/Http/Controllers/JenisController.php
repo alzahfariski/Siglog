@@ -25,4 +25,10 @@ class JenisController extends Controller
         Jenis_barang::create($request->except('_token', 'submit'));
         return redirect('administrator/data/jenis');
     }
+    public function update($id_jenis, Request $request)
+    {
+        $jenis = Jenis_barang::find($id_jenis);
+        $jenis->update($request->except('_token', 'submit'));
+        return redirect('administrator/data/jenis');
+    }
 }

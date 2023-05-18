@@ -38,7 +38,8 @@
                                     <td>{{ $j->nama_jenis }}</td>
                                     <td>{{ $j->nama_satuan }}</td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-info btn-sm" href="#">
+                                        <a class="btn btn-info btn-sm"data-toggle="modal"
+                                            data-target="#modal-edit-{{ $j->id_jenis }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
@@ -89,4 +90,38 @@
             </form>
         </div>
     </div>
+    @foreach ($jenis as $j)
+        <div class="modal fade" id="modal-edit-{{ $j->id_jenis }}">
+            <div class="modal-dialog">
+                <form action="{{ route('jenis.update', $j->id_jenis) }}" method="POST">
+                    @method('put')
+                    @csrf
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Edit Jenis</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" hidden value="{{ $j->id_jenis }}">
+                            <div class="form-group">
+                                <label for="nama_jenis">Nama Jenis</label>
+                                <input type="text" value="{{ $j->nama_jenis }}" class="form-control" name="nama_jenis">
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_satuan">Nama Satuan</label>
+                                <input type="text" value="{{ $j->nama_satuan }}" class="form-control" name="nama_satuan">
+                            </div>
+
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="submit" name="submit" value="save">Simpan</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    @endforeach
 @endsection

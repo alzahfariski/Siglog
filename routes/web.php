@@ -40,7 +40,9 @@ Route::prefix('administrator')->group(function () {
         Route::get('/barang/{id_barang}/view', [BarangController::class, 'view'])->name('barang.view');
         Route::get('/barang/{id_barang}/view/cetak', [BarangController::class, 'cetakDetail'])->name('barang.cetakDetail');
         Route::post('/barang/store', [BarangController::class, 'store'])->name('barang.store');
+        Route::put('/barang/{id_barang}', [BarangController::class, 'update'])->name('barang.update');
         Route::get('/jenis', [JenisController::class, 'index'])->name('barang.jenis');
+        Route::put('/jenis/{id_jenis}', [JenisController::class, 'update'])->name('jenis.update');
         Route::post('/jenis/store', [JenisController::class, 'store'])->name('jenis.store');
         Route::get('/masuk', [BarangMasukController::class, 'index'])->name('barang.masuk');
         Route::get('/masuk/{id_masuk}/view', [BarangMasukController::class, 'view'])->name('masuk.view');
