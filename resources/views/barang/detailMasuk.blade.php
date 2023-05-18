@@ -8,9 +8,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <h4>
-                                    <b>{{ $jadwal->nama_jadwal }}</b>
-                                    <small class="float-right">Tanggal jadwal ditambahkan :
-                                        {{ $jadwal->created_at->format('Y-m-d') }}</small>
+                                    <b>{{ $masuk->barang->nama_barang }}</b>
+                                    <small class="float-right">Tanggal barang Masuk :
+                                        {{ $masuk->created_at->format('Y-m-d') }}</small>
                                 </h4>
                             </div>
                         </div>
@@ -19,21 +19,18 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Id jadwal</th>
-                                            <th>Nama jadwal</th>
-                                            <th>Jumlah</th>
-                                            <th>Tanggal Jadwal</th>
+                                            <th>Id barang</th>
+                                            <th>Nama Barang</th>
+                                            <th>Jumlah Masuk</th>
+                                            <th>Pemasok</th>
                                         </tr>
                                     </thead>
-                                    @php
-                                        $tanggal = \Carbon\Carbon::parse($jadwal->tgl_jadwal);
-                                    @endphp
                                     <tbody>
                                         <tr>
-                                            <td>{{ $jadwal->id_jadwal }}</td>
-                                            <td>{{ $jadwal->nama_jadwal }}</td>
-                                            <td>{{ $jadwal->jumlah }}</td>
-                                            <td>{{ $tanggal->format('d-m-Y') }}</td>
+                                            <td>{{ $masuk->id_masuk }}</td>
+                                            <td>{{ $masuk->barang->nama_barang }}</td>
+                                            <td>{{ $masuk->jumlah_masuk }}</td>
+                                            <td>{{ $masuk->pemasok->nama_pemasok }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -41,15 +38,23 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4 invoice-col">
-                                Keterangan :
+                                Penyimpanan :
                                 <address>
-                                    <strong>{{ $jadwal->keterangan }}</strong><br>
+                                    <strong>{{ $masuk->barang->gudang->nama_gudang }}</strong><br>
+                                    {{ $masuk->barang->gudang->keterangan }}<br>
+                                </address>
+                            </div>
+                            <div class="col-sm-4 invoice-col">
+                                Lokasi :
+                                <address>
+                                    <strong>{{ $masuk->barang->gudang->lokasi->nama_jalan }}</strong><br>
+                                    {{ $masuk->barang->gudang->lokasi->alamat }}<br>
                                 </address>
                             </div>
                         </div>
                         <div class="row no-print">
                             <div class="col-12">
-                                <a href="{{ route('jadwal.cetak', $jadwal->id_jadwal) }}" target="_blank">
+                                <a href="{{ route('masuk.cetakMasuk', $masuk->id_masuk) }}" target="_blank">
                                     <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
                                         <i class="fas fa-download"></i> Cetak PDF
                                     </button>

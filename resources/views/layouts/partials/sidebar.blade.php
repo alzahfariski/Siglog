@@ -30,7 +30,7 @@
                          </p>
                      </a>
                  </li>
-                 <li class="nav-item {{ Request::is('administrator/data/*') ? 'menu-is-opening menu-open' : '' }}">
+                 <li class="nav-item {{ Request::is('administrator/data*') ? 'menu-is-opening menu-open' : '' }}">
                      <a href="#" class="nav-link ">
                          <i class="nav-icon fas fa-database"></i>
                          <p>
@@ -55,14 +55,14 @@
                          </li>
                          <li class="nav-item">
                              <a href="{{ route('barang.masuk') }}"
-                                 class="nav-link {{ Request::is('administrator/data/masuk') ? 'active' : '' }}">
+                                 class="nav-link {{ Request::is('administrator/data/masuk*') ? 'active' : '' }}">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Barang Masuk</p>
                              </a>
                          </li>
                          <li class="nav-item">
                              <a href="{{ route('barang.keluar') }}"
-                                 class="nav-link {{ Request::is('administrator/data/keluar') ? 'active' : '' }}">
+                                 class="nav-link {{ Request::is('administrator/data/keluar*') ? 'active' : '' }}">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Barang keluar</p>
                              </a>

@@ -38,4 +38,26 @@ class BarangMasukController extends Controller
         BarangMasuk::create($request->except('_token', 'submit'));
         return redirect('administrator/data/masuk');
     }
+    public function view($id_masuk)
+    {
+        $masuk = BarangMasuk::find($id_masuk);
+        return view(
+            'barang.detailMasuk',
+            compact(['masuk']),
+            [
+                'page_title' => 'Detail Barang Masuk'
+            ]
+        );
+    }
+    public function cetakMasuk($id_masuk)
+    {
+        $masuk = BarangMasuk::find($id_masuk);
+        return view(
+            'barang.cetakMasuk',
+            compact(['masuk']),
+            [
+                'page_title' => 'BARANG MASUK'
+            ]
+        );
+    }
 }

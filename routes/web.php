@@ -43,8 +43,12 @@ Route::prefix('administrator')->group(function () {
         Route::get('/jenis', [JenisController::class, 'index'])->name('barang.jenis');
         Route::post('/jenis/store', [JenisController::class, 'store'])->name('jenis.store');
         Route::get('/masuk', [BarangMasukController::class, 'index'])->name('barang.masuk');
+        Route::get('/masuk/{id_masuk}/view', [BarangMasukController::class, 'view'])->name('masuk.view');
+        Route::get('/masuk/{id_masuk}/view/cetak', [BarangMasukController::class, 'cetakMasuk'])->name('masuk.cetakMasuk');
         Route::post('/masuk/store', [BarangMasukController::class, 'store'])->name('masuk.store');
         Route::get('/keluar', [BarangKeluarController::class, 'index'])->name('barang.keluar');
+        Route::get('/keluar/{id_keluar}/view', [BarangKeluarController::class, 'view'])->name('keluar.view');
+        Route::get('/keluar/{id_keluar}/view/cetak', [BarangKeluarController::class, 'cetakKeluar'])->name('keluar.cetakKeluar');
         Route::post('/keluar/store', [BarangKeluarController::class, 'store'])->name('keluar.store');
     });
 
@@ -62,6 +66,7 @@ Route::prefix('administrator')->group(function () {
     Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
     Route::get('/jadwal/kalender', [JadwalController::class, 'kalender'])->name('jadwal.kalender');
     Route::get('/jadwal/{id_jadwal}/view', [JadwalController::class, 'view'])->name('jadwal.view');
+    Route::get('/jadwal/{id_jadwal}/view/cetak', [JadwalController::class, 'cetak'])->name('jadwal.cetak');
     Route::post('/jadwal/store', [JadwalController::class, 'store'])->name('jadwal.store');
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
 });

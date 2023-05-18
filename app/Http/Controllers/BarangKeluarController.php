@@ -38,4 +38,26 @@ class BarangKeluarController extends Controller
         BarangKeluar::create($request->except('_token', 'submit'));
         return redirect('administrator/data/keluar');
     }
+    public function view($id_keluar)
+    {
+        $keluar = BarangKeluar::find($id_keluar);
+        return view(
+            'barang.detailKeluar',
+            compact(['keluar']),
+            [
+                'page_title' => 'Detail Barang keluar'
+            ]
+        );
+    }
+    public function cetakKeluar($id_keluar)
+    {
+        $keluar = BarangKeluar::find($id_keluar);
+        return view(
+            'barang.cetakKeluar',
+            compact(['keluar']),
+            [
+                'page_title' => 'BARANG KELUAR'
+            ]
+        );
+    }
 }

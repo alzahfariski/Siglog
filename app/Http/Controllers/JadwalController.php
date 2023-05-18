@@ -44,4 +44,15 @@ class JadwalController extends Controller
             ]
         );
     }
+    public function cetak($id_jadwal)
+    {
+        $jadwal = Jadwal::find($id_jadwal);
+        return view(
+            'jadwal.cetak',
+            compact(['jadwal']),
+            [
+                'page_title' => 'JADWAL'
+            ]
+        );
+    }
 }

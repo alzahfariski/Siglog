@@ -42,7 +42,7 @@
                                     <td>{{ $m->pemasok->nama_pemasok }}</td>
                                     <td>{{ $m->created_at->format('Y-m-d') }}</td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="#">
+                                        <a class="btn btn-primary btn-sm" href="{{ route('masuk.view', $m->id_masuk) }}">
                                             <i class="fas fa-folder">
                                             </i>
                                             View

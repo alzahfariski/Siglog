@@ -42,7 +42,7 @@
                                     <td>{{ $k->user->nama }}</td>
                                     <td>{{ $k->created_at }}</td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="#">
+                                        <a class="btn btn-primary btn-sm" href="{{ route('keluar.view', $k->id_keluar) }}">
                                             <i class="fas fa-folder">
                                             </i>
                                             View
