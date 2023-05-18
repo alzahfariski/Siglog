@@ -45,4 +45,9 @@ class LokasiController extends Controller
             ]
         );
     }
+    public function store(Request $request)
+    {
+        Lokasi::create($request->except('_token', 'submit'));
+        return redirect('administrator/lokasi');
+    }
 }

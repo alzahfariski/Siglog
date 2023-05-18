@@ -53,6 +53,7 @@ Route::prefix('administrator')->group(function () {
     Route::get('/gudang/{id_gudang}/view', [GudangController::class, 'view'])->name('gudang.view');
     Route::get('/lokasi', [LokasiController::class, 'index'])->name('lokasi.index');
     Route::get('/lokasi/tambah', [LokasiController::class, 'create'])->name('lokasi.create');
+    Route::post('/lokasi/tambah/store', [LokasiController::class, 'store'])->name('lokasi.store');
     Route::get('/lokasi/{id_lokasi}/view', [LokasiController::class, 'view'])->name('lokasi.view');
     Route::get('/lokasi/daftar', [LokasiController::class, 'daftar'])->name('lokasi.daftar');
     Route::get('/pemasok', [PemasokController::class, 'index'])->name('pemasok.index');
