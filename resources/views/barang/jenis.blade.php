@@ -38,7 +38,7 @@
                                     <td>{{ $j->nama_jenis }}</td>
                                     <td>{{ $j->nama_satuan }}</td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-info btn-sm"data-toggle="modal"
+                                        <a class="btn btn-info btn-sm" data-toggle="modal"
                                             data-target="#modal-edit-{{ $j->id_jenis }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>

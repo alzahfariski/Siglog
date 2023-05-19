@@ -26,7 +26,7 @@ class BarangMasukController extends Controller
     public function store(Request $request)
     {
         // dd($request->except('_token','submit'));
-        $barang = Barang::where('id_barang', $request->id_barang)->get()->first();
+        $barang = Barang::where('id_barang', $request->id_barang)->first();
 
         $stok_lama = $barang->jumlah;
         $stok_masuk = $request->jumlah_masuk;
@@ -59,5 +59,30 @@ class BarangMasukController extends Controller
                 'page_title' => 'BARANG MASUK'
             ]
         );
+    }
+    public function update($id_masuk, Request $request)
+    {
+
+        $barang_update = BarangMasuk::where('id_masuk', $id_masuk)->first();
+        $barang_update->update($request->all());
+
+        $masuk = BarangMasuk::where('id_barang', $request->id_barang)->get();
+        $barang = Barang::where('id_barang', $request->id_barang)->first();
+
+        $filtered = $masuk->map(function ($barang) {
+            return $barang->jumlah_masuk;
+        });
+
+        $total_barang = 0;
+
+        foreach ($filtered as $barang_masuk) {
+            $total_barang += $barang_masuk;
+        }
+
+        $barang->update([
+            'jumlah' => $total_barang
+        ]);
+
+        return redirect('administrator/data/masuk');
     }
 }

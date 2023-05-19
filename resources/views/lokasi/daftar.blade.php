@@ -46,7 +46,7 @@
                                             </i>
                                             View
                                         </a>
-                                        <a class="btn btn-info btn-sm" href="#">
+                                        <a class="btn btn-info btn-sm" href="{{ route('lokasi.edit', $l->id_lokasi) }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit

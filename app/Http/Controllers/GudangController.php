@@ -38,4 +38,10 @@ class GudangController extends Controller
             ]
         );
     }
+    public function update($id_gudang, Request $request)
+    {
+        $gudang = Gudang::find($id_gudang);
+        $gudang->update($request->except('_token', 'submit'));
+        return redirect('administrator/gudang');
+    }
 }

@@ -55,7 +55,8 @@
                                             </i>
                                             View
                                         </a>
-                                        <a class="btn btn-info btn-sm" href="#">
+                                        <a class="btn btn-info btn-sm" data-toggle="modal"
+                                            data-target="#modal-edit-{{ $j->id_jadwal }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
@@ -111,4 +112,49 @@
             </form>
         </div>
     </div>
+    @foreach ($jadwal as $j)
+        <div class="modal fade" id="modal-edit-{{ $j->id_jadwal }}">
+            <div class="modal-dialog">
+                <form action="{{ route('jadwal.update', $j->id_jadwal) }}" method="POST">
+                    @method('put')
+                    @csrf
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Edit Jadwal</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" hidden value="{{ $j->id_jadwal }}">
+                            <div class="form-group">
+                                <label for="nama_jadwal">Nama Jenis</label>
+                                <input type="text" value="{{ $j->nama_jadwal }}" class="form-control"
+                                    name="nama_jadwal">
+                            </div>
+                            <div class="form-group">
+                                <label for="keterangan">keterangan</label>
+                                <input type="text" value="{{ $j->keterangan }}" class="form-control"
+                                    name="keterangan">
+                            </div>
+                            <div class="form-group">
+                                <label for="jumlah">Jumlah</label>
+                                <input type="number" value="{{ $j->jumlah }}" class="form-control" name="jumlah">
+                            </div>
+                            <div class="form-group">
+                                <label for="tgl_jadwal">tanggal</label>
+                                <input type="date" value="{{ $j->tgl_jadwal }}" class="form-control"
+                                    name="tgl_jadwal">
+                            </div>
+
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="submit" name="submit" value="save">Simpan</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    @endforeach
 @endsection

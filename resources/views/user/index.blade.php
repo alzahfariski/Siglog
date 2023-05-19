@@ -40,7 +40,8 @@
                                     <td>{{ $u->username }}</td>
                                     <td>{{ $u->role }}</td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-info btn-sm" href="#">
+                                        <a class="btn btn-info btn-sm"data-toggle="modal"
+                                            data-target="#modal-edit-{{ $u->id_user }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
@@ -59,4 +60,84 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="modal-tambah">
+        <div class="modal-dialog">
+            <form action="{{ route('user.store') }}" method="POST">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Tambah User</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nama">Nama User</label>
+                            <input type="text" placeholder="masukan nama user" class="form-control" name="nama">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" placeholder="masukan Username" class="form-control" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Role</label>
+                            <select class="form-control select2" style="width: 100%;" name="role">
+                                <option value="admin">admin</option>
+                                <option value="personel">personel</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" placeholder="masukan Password" class="form-control" name="password">
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" name="submit" value="save" class="btn btn-primary">Simpan</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    @foreach ($user as $u)
+        <div class="modal fade" id="modal-edit-{{ $u->id_user }}">
+            <div class="modal-dialog">
+                <form action="{{ route('user.update', $u->id_user) }}" method="POST">
+                    @method('put')
+                    @csrf
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Edit User</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" hidden value="{{ $u->id_user }}">
+                            <div class="form-group">
+                                <label for="nama">Nama User</label>
+                                <input type="text" value="{{ $u->nama }}" class="form-control" name="nama">
+                            </div>
+                            <div class="form-group">
+                                <label for="username">username</label>
+                                <input type="username" value="{{ $u->username }}" class="form-control"
+                                    name="username">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">password</label>
+                                <input type="password" value="{{ $u->password }}" class="form-control"
+                                    name="password">
+                            </div>
+
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="submit" name="submit" value="save">Simpan</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    @endforeach
 @endsection

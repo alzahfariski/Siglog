@@ -40,7 +40,8 @@
                                     <td>{{ $p->no_telp }}</td>
                                     <td>{{ $p->email }}</td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-info btn-sm" href="#">
+                                        <a class="btn btn-info btn-sm" data-toggle="modal"
+                                            data-target="#modal-edit-{{ $p->id_pemasok }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
@@ -93,4 +94,43 @@
             </form>
         </div>
     </div>
+    @foreach ($pemasok as $p)
+        <div class="modal fade" id="modal-edit-{{ $p->id_pemasok }}">
+            <div class="modal-dialog">
+                <form action="{{ route('pemasok.update', $p->id_pemasok) }}" method="POST">
+                    @method('put')
+                    @csrf
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Edit Pemasok</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" hidden value="{{ $p->id_pemasok }}">
+                            <div class="form-group">
+                                <label for="nama_pemasok">Nama Pemasok</label>
+                                <input type="text" value="{{ $p->nama_pemasok }}" class="form-control"
+                                    name="nama_pemasok">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" value="{{ $p->email }}" class="form-control" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="no_telp">Email</label>
+                                <input type="number" value="{{ $p->no_telp }}" class="form-control" name="no_telp">
+                            </div>
+
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="submit" name="submit" value="save">Simpan</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    @endforeach
 @endsection

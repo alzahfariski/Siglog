@@ -45,7 +45,8 @@
                                             </i>
                                             View
                                         </a>
-                                        <a class="btn btn-info btn-sm" href="#">
+                                        <a class="btn btn-info btn-sm" data-toggle="modal"
+                                            data-target="#modal-edit-{{ $g->id_gudang }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
@@ -100,4 +101,53 @@
             </form>
         </div>
     </div>
+    @foreach ($gudang as $g)
+        <div class="modal fade" id="modal-edit-{{ $g->id_gudang }}">
+            <div class="modal-dialog">
+                <form action="{{ route('gudang.update', $g->id_gudang) }}" method="POST">
+                    @method('put')
+                    @csrf
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Edit Gudang</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" hidden value="{{ $g->id_gudang }}">
+                            <div class="form-group">
+                                <label for="nama_gudang">Nama Gudang</label>
+                                <input type="text" value="{{ $g->nama_gudang }}" class="form-control"
+                                    name="nama_gudang">
+                            </div>
+                            <div class="form-group">
+                                <label for="keterangan">Keterangan</label>
+                                <input type="text" value="{{ $g->keterangan }}" class="form-control"
+                                    name="keterangan">
+                            </div>
+                            <div class="form-group">
+                                <label for="id_lokasi">Lokasi</label>
+                                <select class="form-control select2" style="width: 100%;" name="id_lokasi">
+                                    @foreach ($lokasi as $l)
+                                        <option value="{{ $l->id_lokasi }}"
+                                            @if ($l->id_lokasi == $g->Lokasi->id_lokasi) selected @endif>
+
+                                            {{ $l->nama_jalan }}
+
+
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="submit" name="submit" value="save">Simpan</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    @endforeach
 @endsection

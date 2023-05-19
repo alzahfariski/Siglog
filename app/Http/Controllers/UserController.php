@@ -15,4 +15,22 @@ class UserController extends Controller
             'page_title' => 'Data user'
         ]);
     }
+    public function store(Request $request)
+    {
+        $data = [
+            'nama' => $request->nama,
+            'username' => $request->username,
+            'role' => $request->role,
+            'password' => bcrypt($request->password),
+        ];
+
+        User::create($data);
+        return redirect('administrator/user');
+    }
+    public function update($id_user, Request $request)
+    {
+        $user = User::find($id_user);
+        $user->update($request->except('_token', 'submit'));
+        return redirect('administrator/user');
+    }
 }

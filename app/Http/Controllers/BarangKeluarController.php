@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Barang;
 use App\Models\BarangKeluar;
+use App\Models\BarangMasuk;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -59,5 +60,31 @@ class BarangKeluarController extends Controller
                 'page_title' => 'BARANG KELUAR'
             ]
         );
+    }
+    public function update($id_keluar, Request $request)
+    {
+        $barang_update = BarangKeluar::where('id_keluar', $id_keluar)->first();
+        $barang_update->update($request->all());
+
+        $masuk = BarangMasuk::where('id_barang', $request->id_barang)->get();
+        $keluar = BarangKeluar::where('id_barang', $request->id_barang)->get();
+        $barang = Barang::where('id_barang', $request->id_barang)->first();
+
+        $filtered = $masuk->map(function ($barang) {
+            return $barang->jumlah_masuk;
+        });
+
+        $total_barang = 0;
+
+        foreach ($filtered as $barang_masuk) {
+            $total_barang += $barang_masuk;
+        }
+
+        $total_keluar = $total_barang - $request->jumlah_keluar;
+
+        $barang->update([
+            'jumlah' => $total_keluar
+        ]);
+        return redirect('administrator/data/keluar');
     }
 }

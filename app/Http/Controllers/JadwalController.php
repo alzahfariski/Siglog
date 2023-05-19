@@ -55,4 +55,10 @@ class JadwalController extends Controller
             ]
         );
     }
+    public function update($id_jadwal, Request $request)
+    {
+        $jadwal = Jadwal::find($id_jadwal);
+        $jadwal->update($request->except('_token', 'submit'));
+        return redirect('administrator/jadwal');
+    }
 }

@@ -50,4 +50,21 @@ class LokasiController extends Controller
         Lokasi::create($request->except('_token', 'submit'));
         return redirect('administrator/lokasi');
     }
+    public function update($id_lokasi, Request $request)
+    {
+        $lokasi = Lokasi::find($id_lokasi);
+        $lokasi->update($request->except('_token', 'submit'));
+        return redirect('administrator/lokasi');
+    }
+    public function edit($id_lokasi)
+    {
+        $lokasi = Lokasi::find($id_lokasi);
+        return view(
+            'lokasi.update',
+            compact(['lokasi']),
+            [
+                'page_title' => 'Edit Lokasi'
+            ]
+        );
+    }
 }

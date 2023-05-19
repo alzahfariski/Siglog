@@ -1,7 +1,7 @@
  <!-- Main Sidebar Container -->
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
      <!-- Brand Logo -->
-     <a href="#" class="brand-link">
+     <a href="{{ route('dashboard.index') }}" class="brand-link">
          <img src="/img/logistik.png" alt="Logistik Logo" class="brand-image">
          <span class="brand-text font-weight-light">&ensp;SIGLOG</span>
      </a>

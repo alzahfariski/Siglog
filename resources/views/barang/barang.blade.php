@@ -117,7 +117,7 @@
                     @csrf
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Tambah Barang</h4>
+                            <h4 class="modal-title">Edit Barang</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -132,17 +132,24 @@
                             <div class="form-group">
                                 <label for="nama_barang">Nama Jenis</label>
                                 <select class="form-control select2" style="width: 100%;" name="id_jenis">
-                                    <option value="{{ $b->jenis->id_jenis }}"
-                                        @if ($b->jenis->id_jenis == $b->jenis->id_barang) selected @endif>{{ $b->jenis->nama_jenis }}
-                                    </option>
+                                    @foreach ($jenis as $j)
+                                        <option value="{{ $j->id_jenis }}"
+                                            @if ($j->id_jenis == $b->jenis->id_jenis) selected @endif>
+                                            {{ $j->nama_jenis }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="nama_barang">Gudang</label>
                                 <select class="form-control select2" style="width: 100%;" name="id_gudang">
-                                    <option value="{{ $b->gudang->id_gudang }}"
-                                        @if ($b->gudang->id_gudang == $b->gudang->id_barang) selected @endif>{{ $b->gudang->nama_gudang }}
-                                    </option>
+                                    @foreach ($gudang as $g)
+                                        <option value="{{ $g->id_gudang }}"
+                                            @if ($g->id_gudang == $b->gudang->id_gudang) selected @endif>
+                                            {{ $g->nama_gudang }}
+
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

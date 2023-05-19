@@ -25,4 +25,10 @@ class PemasokController extends Controller
         Pemasok::create($request->except('_token', 'submit'));
         return redirect('administrator/pemasok');
     }
+    public function update($id_pemasok, Request $request)
+    {
+        $pemasok = Pemasok::find($id_pemasok);
+        $pemasok->update($request->except('_token', 'submit'));
+        return redirect('administrator/pemasok');
+    }
 }
