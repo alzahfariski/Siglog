@@ -37,6 +37,7 @@ Route::prefix('administrator')->group(function () {
 
     Route::prefix('data')->group(function () {
         Route::get('/barang', [BarangController::class, 'index'])->name('barang.barang');
+        Route::get('/barang/cetak', [BarangController::class, 'cetak'])->name('barang.cetak');
         Route::get('/barang/{id_barang}/view', [BarangController::class, 'view'])->name('barang.view');
         Route::get('/barang/{id_barang}/view/cetak', [BarangController::class, 'cetakDetail'])->name('barang.cetakDetail');
         Route::post('/barang/store', [BarangController::class, 'store'])->name('barang.store');
@@ -70,7 +71,6 @@ Route::prefix('administrator')->group(function () {
     Route::get('/pemasok', [PemasokController::class, 'index'])->name('pemasok.index');
     Route::put('/pemasok/{id_pemasok}', [PemasokController::class, 'update'])->name('pemasok.update');
     Route::post('/pemasok', [PemasokController::class, 'store'])->name('pemasok.store');
-    Route::get('/permintaan', [PermintaanController::class, 'index'])->name('permintaan.index');
     Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
     Route::get('/jadwal/kalender', [JadwalController::class, 'kalender'])->name('jadwal.kalender');
     Route::get('/jadwal/{id_jadwal}/view', [JadwalController::class, 'view'])->name('jadwal.view');

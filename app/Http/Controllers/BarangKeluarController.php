@@ -73,17 +73,23 @@ class BarangKeluarController extends Controller
         $filtered = $masuk->map(function ($barang) {
             return $barang->jumlah_masuk;
         });
-
         $total_barang = 0;
-
         foreach ($filtered as $barang_masuk) {
             $total_barang += $barang_masuk;
         }
 
-        $total_keluar = $total_barang - $request->jumlah_keluar;
+        $filtered = $keluar->map(function ($barang) {
+            return $barang->jumlah_keluar;
+        });
+        $total_keluar = 0;
+        foreach ($filtered as $barang_keluar) {
+            $total_keluar += $barang_keluar;
+        }
+
+        $total = $total_barang - $total_keluar;
 
         $barang->update([
-            'jumlah' => $total_keluar
+            'jumlah' => $total
         ]);
         return redirect('administrator/data/keluar');
     }

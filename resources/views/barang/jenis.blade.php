@@ -44,7 +44,7 @@
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
+                                        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
@@ -124,4 +124,27 @@
             </div>
         </div>
     @endforeach
+    {{-- modal delete --}}
+    <div class="modal fade" id="modal-delete">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <h4 class="modal-title">Hapus Jenis</h4>
+
+                </div>
+                <div class="modal-body">
+                    <p>Anda yakin ingin menghapus?</p>
+                    <hr>
+                    <h4>Keterangan Hapus :</h4>
+                    <p>Menghapus Jenis akan juga menghapus data Barang</p>
+                    <hr>
+                    <p>Gunakan aksi edit jika hanya ingin merubah data Jenis</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger">Hapus</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

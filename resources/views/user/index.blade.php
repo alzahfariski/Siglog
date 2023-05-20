@@ -40,13 +40,13 @@
                                     <td>{{ $u->username }}</td>
                                     <td>{{ $u->role }}</td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-info btn-sm"data-toggle="modal"
+                                        <a class="btn btn-info btn-sm" data-toggle="modal"
                                             data-target="#modal-edit-{{ $u->id_user }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
+                                        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
@@ -140,4 +140,28 @@
             </div>
         </div>
     @endforeach
+    {{-- modal delete --}}
+    <div class="modal fade" id="modal-delete">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <h4 class="modal-title">Hapus User</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Anda yakin ingin menghapus?</p>
+                    <hr>
+                    <h4>Keterangan Hapus :</h4>
+                    <p>Menghapus data User juga akan menghapus data Barang Keluar</p>
+                    <hr>
+                    <p>Gunakan aksi edit jika hanya ingin merubah data User</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <div>
+                        <a href="#" type="button" class="btn btn-danger">Hapus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

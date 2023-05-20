@@ -4,6 +4,9 @@
         <div class="col-12 mb-2">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
                 <i class="fas fa-plus"></i> Tambah Barang</button>
+            <a href="{{ route('barang.cetak') }}" target="_blank" type="button" class="btn btn-secondary">
+                <i class="fas fa-print"></i> Print data Barang
+            </a>
         </div>
         <div class="col-12">
             <div class="card">
@@ -55,7 +58,7 @@
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
+                                        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
@@ -69,7 +72,7 @@
             </div>
         </div>
     </div>
-
+    {{-- modal add --}}
     <div class="modal fade" id="modal-tambah">
         <div class="modal-dialog">
             <form action="{{ route('barang.store') }}" method="POST">
@@ -87,14 +90,14 @@
                             <input type="text" placeholder="masukan nama barang" class="form-control" name="nama_barang">
                         </div>
                         <div class="form-group">
-                            <label for="nama_barang">Nama Jenis</label>
+                            <label for="id_jenis">Nama Jenis</label>
                             <select class="form-control select2" style="width: 100%;" name="id_jenis">
                                 @foreach ($jenis as $j)
                                     <option value="{{ $j->id_jenis }}">{{ $j->nama_jenis }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <label for="nama_barang">Gudang</label>
+                        <label for="id_gudang">Gudang</label>
                         <select class="form-control select2" style="width: 100%;" name="id_gudang">
                             @foreach ($gudang as $g)
                                 <option value="{{ $g->id_gudang }}">{{ $g->nama_gudang }}</option>
@@ -109,6 +112,7 @@
             </form>
         </div>
     </div>
+    {{-- modal update --}}
     @foreach ($barang as $b)
         <div class="modal fade" id="modal-edit-{{ $b->id_barang }}">
             <div class="modal-dialog">
@@ -162,4 +166,27 @@
             </div>
         </div>
     @endforeach
+    {{-- modal delete --}}
+    <div class="modal fade" id="modal-delete">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <h4 class="modal-title">Hapus Barang</h4>
+
+                </div>
+                <div class="modal-body">
+                    <p>Anda yakin ingin menghapus?</p>
+                    <hr>
+                    <h4>Keterangan Hapus :</h4>
+                    <p>Menghapus Barang akan juga menghapus <br> data Barang Masuk dan Barang Keluar</p>
+                    <hr>
+                    <p>Gunakan aksi edit jika hanya ingin merubah data Barang</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger">Hapus</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

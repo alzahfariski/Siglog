@@ -51,7 +51,7 @@
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
+                                        <a class="btn btn-danger btn-sm"data-toggle="modal" data-target="#modal-delete">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
@@ -62,9 +62,31 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
-
+        </div>
+    </div>
+    {{-- modal delete --}}
+    <div class="modal fade" id="modal-delete">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <h4 class="modal-title">Hapus Lokasi</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Anda yakin ingin menghapus?</p>
+                    <hr>
+                    <h4>Keterangan Hapus :</h4>
+                    <p>Menghapus data Lokasi juga akan menghapus data Gudang</p>
+                    <hr>
+                    <p>Gunakan aksi edit jika hanya ingin merubah data Lokasi</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <div>
+                        <a href="#" type="button" class="btn btn-danger">Hapus</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

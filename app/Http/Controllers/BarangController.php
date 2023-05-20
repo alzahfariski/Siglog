@@ -52,6 +52,17 @@ class BarangController extends Controller
             ]
         );
     }
+    public function cetak()
+    {
+        $barang = Barang::all();
+        return view(
+            'barang.cetakBarang',
+            compact(['barang']),
+            [
+                'page_title' => 'DATA BARANG'
+            ]
+        );
+    }
     public function update($id_barang, Request $request)
     {
         $barang = Barang::find($id_barang);

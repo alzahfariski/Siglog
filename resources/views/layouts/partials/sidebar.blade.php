@@ -1,7 +1,7 @@
  <!-- Main Sidebar Container -->
- <aside class="main-sidebar sidebar-dark-primary elevation-4">
+ <aside class="main-sidebar sidebar-light-orange elevation-4">
      <!-- Brand Logo -->
-     <a href="{{ route('dashboard.index') }}" class="brand-link">
+     <a href="{{ route('dashboard.index') }}" class="brand-link bg-dark">
          <img src="/img/logistik.png" alt="Logistik Logo" class="brand-image">
          <span class="brand-text font-weight-light">&ensp;SIGLOG</span>
      </a>
@@ -10,8 +10,11 @@
      <div class="sidebar">
          <!-- Sidebar user panel (optional) -->
          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+             <div class="image">
+                 <img src="/img/LogoPOLRI.png" class="img-circle elevation-2" alt="User Image">
+             </div>
              <div class="info">
-                 <a href="#" class="d-block">selamat datang,<br> Alzah Fariski</a>
+                 <a href="{{ route('dashboard.index') }}" class="d-block"> Alzah Fariski</a>
              </div>
          </div>
 
@@ -93,15 +96,6 @@
                          <i class="nav-icon fas fa-boxes"></i>
                          <p>
                              pemasok
-                         </p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="{{ route('permintaan.index') }}"
-                         class="nav-link {{ Request::is('administrator/permintaan') ? 'active' : '' }}">
-                         <i class="nav-icon fas fa-edit"></i>
-                         <p>
-                             Permintaan
                          </p>
                      </a>
                  </li>
