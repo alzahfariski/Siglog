@@ -60,7 +60,7 @@
 
     <div class="card card-success">
         <div class="card-header">
-            <h3 class="card-title">Barang Masuk & Barang Keluar</h3>
+            <h3 class="card-title">Diagram Barang Masuk & Barang Keluar</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
@@ -84,7 +84,9 @@
         $(function() {
 
             var areaChartData = {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'JUni', 'Juli', 'Agustus', 'September',
+                    'Oktober', 'November', 'Desember'
+                ],
                 datasets: [{
                         label: 'Barang Keluar',
                         backgroundColor: 'rgba(60,141,188,0.9)',

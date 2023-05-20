@@ -3,7 +3,24 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Peta</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id='map' style='width: 100%; height: 450px;'></div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-6">
                     <div class="invoice p-3 mb-3">
                         <div class="row">
                             <div class="col-12">
@@ -21,18 +38,15 @@
                                         <tr>
                                             <th>Id lokasi</th>
                                             <th>Nama lokasi</th>
-                                            <th>Alamat</th>
-                                            <th>Latitude</th>
-                                            <th>Longitude</th>
+                                            <th>Kategori</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>{{ $lokasi->id_lokasi }}</td>
                                             <td>{{ $lokasi->nama_jalan }}</td>
-                                            <td>{{ $lokasi->alamat }}</td>
-                                            <td>{{ $lokasi->latitude }}</td>
-                                            <td>{{ $lokasi->longitude }} </td>
+                                            <td>{{ $lokasi->kategori }}</td>
+
                                         </tr>
                                     </tbody>
                                 </table>
@@ -40,21 +54,47 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4 invoice-col">
-                                keterangan :
+                                <b>keterangan :</b>
                                 <address>
                                     {{ $lokasi->keterangan }}
                                 </address>
                             </div>
                             <div class="col-sm-4 invoice-col">
-                                kategori :
+                                <b>alamat :</b>
                                 <address>
-                                    <strong>{{ $lokasi->kategori }}</strong>
+                                    {{ $lokasi->alamat }}
+                                </address>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 invoice-col">
+                                <b>Latitude:</b>
+                                <address>
+                                    {{ $lokasi->latitude }}
+                                </address>
+                            </div>
+                            <div class="col-sm-4 invoice-col">
+                                <b>Longitude :</b>
+                                <address>
+                                    {{ $lokasi->longitude }}
                                 </address>
                             </div>
                         </div>
                     </div>
+                    <a href="{{ route('lokasi.daftar') }}" class="btn btn-secondary float-right">Kembali</a>
                 </div>
             </div>
         </div>
     </section>
 @endsection
+@push('script')
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYWx6YWgiLCJhIjoiY2xobjhpaDJpMGw2ODNxcXJxYWFxamF4ayJ9.lwwpWmV4b5BeJ2b8ivZfeQ';
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v12', // style URL
+            center: [102.2521195394366, -3.7894423262683987], // starting position [lng, lat]
+            zoom: 16, // starting zoom
+        });
+    </script>
+@endpush
