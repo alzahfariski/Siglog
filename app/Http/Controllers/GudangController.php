@@ -44,4 +44,12 @@ class GudangController extends Controller
         $gudang->update($request->except('_token', 'submit'));
         return redirect('administrator/gudang');
     }
+    public function destroy($id_gudang)
+    {
+        $gudang = Gudang::find($id_gudang);
+        $gudang->barang()->delete();
+        $gudang->delete();
+
+        return redirect('administrator/gudang');
+    }
 }

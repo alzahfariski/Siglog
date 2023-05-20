@@ -31,4 +31,12 @@ class PemasokController extends Controller
         $pemasok->update($request->except('_token', 'submit'));
         return redirect('administrator/pemasok');
     }
+    public function destroy($id_pemasok)
+    {
+        $pemasok = Pemasok::find($id_pemasok);
+        $pemasok->masuk()->delete();
+        $pemasok->delete();
+
+        return redirect('administrator/pemasok');
+    }
 }

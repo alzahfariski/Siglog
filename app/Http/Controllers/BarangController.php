@@ -69,4 +69,13 @@ class BarangController extends Controller
         $barang->update($request->except('_token', 'submit'));
         return redirect('administrator/data/barang');
     }
+    public function destroy($id_barang)
+    {
+        $barang = Barang::find($id_barang);
+        $barang->masuk()->delete();
+        $barang->keluar()->delete();
+        $barang->delete();
+
+        return redirect('administrator/data/barang');
+    }
 }

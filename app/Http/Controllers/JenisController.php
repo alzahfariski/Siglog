@@ -31,4 +31,12 @@ class JenisController extends Controller
         $jenis->update($request->except('_token', 'submit'));
         return redirect('administrator/data/jenis');
     }
+    public function destroy($id_jenis)
+    {
+        $jenis = Jenis_barang::find($id_jenis);
+        $jenis->barang()->delete();
+        $jenis->delete();
+
+        return redirect('administrator/data/jenis');
+    }
 }

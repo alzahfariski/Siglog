@@ -49,6 +49,17 @@ class BarangMasukController extends Controller
             ]
         );
     }
+    public function cetak()
+    {
+        $masuk = BarangMasuk::all();
+        return view(
+            'barang.cetakBMasuk',
+            compact(['masuk']),
+            [
+                'page_title' => 'BARANG MASUK'
+            ]
+        );
+    }
     public function cetakMasuk($id_masuk)
     {
         $masuk = BarangMasuk::find($id_masuk);
@@ -83,6 +94,12 @@ class BarangMasukController extends Controller
             'jumlah' => $total_barang
         ]);
 
+        return redirect('administrator/data/masuk');
+    }
+    public function destroy($id_masuk)
+    {
+        $masuk = BarangMasuk::find($id_masuk);
+        $masuk->delete();
         return redirect('administrator/data/masuk');
     }
 }

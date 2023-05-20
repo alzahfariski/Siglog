@@ -51,7 +51,8 @@
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
+                                        <a class="btn btn-danger btn-sm" data-toggle="modal"
+                                            data-target="#modal-delete-{{ $g->id_gudang }}">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
@@ -148,28 +149,34 @@
         </div>
     @endforeach
     {{-- modal delete --}}
-    <div class="modal fade" id="modal-delete">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-danger">
-                    <h4 class="modal-title">Hapus Gudang</h4>
+    @foreach ($gudang as $g)
+        <div class="modal fade" id="modal-delete-{{ $g->id_gudang }}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger">
+                        <h4 class="modal-title">Hapus Gudang</h4>
 
-                </div>
-                <div class="modal-body">
-                    <p>Anda yakin ingin menghapus?</p>
-                    <hr>
-                    <h4>Keterangan Hapus :</h4>
-                    <p>Menghapus data Gudang juga akan menghapus data Barang</p>
-                    <hr>
-                    <p>Gunakan aksi edit jika hanya ingin merubah data Gudang</p>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <div>
-                        <a href="#" type="button" class="btn btn-danger">Hapus</a>
+                    </div>
+                    <div class="modal-body">
+                        <p>Anda yakin ingin menghapus?</p>
+                        <hr>
+                        <h4>Keterangan Hapus :</h4>
+                        <p>Menghapus data Gudang juga akan menghapus data Barang</p>
+                        <hr>
+                        <p>Gunakan aksi edit jika hanya ingin merubah data Gudang</p>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <div>
+                            <form action="{{ route('gudang.destroy', $g->id_gudang) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <input type="submit" name="submit" value="Hapus" class="btn btn-danger">
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endforeach
 @endsection

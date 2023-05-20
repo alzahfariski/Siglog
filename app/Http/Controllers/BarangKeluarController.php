@@ -61,6 +61,17 @@ class BarangKeluarController extends Controller
             ]
         );
     }
+    public function cetak()
+    {
+        $keluar = BarangKeluar::all();
+        return view(
+            'barang.cetakBKeluar',
+            compact(['keluar']),
+            [
+                'page_title' => 'BARANG KELUAR'
+            ]
+        );
+    }
     public function update($id_keluar, Request $request)
     {
         $barang_update = BarangKeluar::where('id_keluar', $id_keluar)->first();
@@ -91,6 +102,12 @@ class BarangKeluarController extends Controller
         $barang->update([
             'jumlah' => $total
         ]);
+        return redirect('administrator/data/keluar');
+    }
+    public function destroy($id_keluar)
+    {
+        $keluar = BarangKeluar::find($id_keluar);
+        $keluar->delete();
         return redirect('administrator/data/keluar');
     }
 }

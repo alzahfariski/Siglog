@@ -15,6 +15,6 @@ class Lokasi extends Model
 
     public function gudang()
     {
-        return $this->hasMany(Gudang::class, 'id_gudang');
+        return $this->hasOne(Gudang::class, 'id_gudang');
     }
 }

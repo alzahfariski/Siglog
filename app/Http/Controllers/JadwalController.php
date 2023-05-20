@@ -61,4 +61,10 @@ class JadwalController extends Controller
         $jadwal->update($request->except('_token', 'submit'));
         return redirect('administrator/jadwal');
     }
+    public function destroy($id_jadwal)
+    {
+        $jadwal = Jadwal::find($id_jadwal);
+        $jadwal->delete();
+        return redirect('administrator/jadwal');
+    }
 }

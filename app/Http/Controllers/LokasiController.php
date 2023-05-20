@@ -67,4 +67,12 @@ class LokasiController extends Controller
             ]
         );
     }
+    public function destroy($id_lokasi)
+    {
+        $lokasi = Lokasi::find($id_lokasi);
+        $lokasi->gudang()->delete();
+        $lokasi->delete();
+
+        return redirect('administrator/lokasi/daftar');
+    }
 }

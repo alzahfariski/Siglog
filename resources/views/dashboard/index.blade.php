@@ -8,7 +8,7 @@
                     <p>Stok Barang</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-bag"></i>
+                    <i class="ion ion-clipboard"></i>
                 </div>
                 <a href="{{ route('barang.barang') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
@@ -36,7 +36,7 @@
                     <p>Barang Keluar</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-person-add"></i>
+                    <i class="ion ion-stats-bars"></i>
                 </div>
                 <a href="{{ route('barang.keluar') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
@@ -50,7 +50,7 @@
                     <p>Jadwal</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
+                    <i class="ion ion-calendar"></i>
                 </div>
                 <a href="{{ route('jadwal.index') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
@@ -73,15 +73,23 @@
         <div class="card-body">
             <div class="chart">
                 <canvas id="barChart"
-                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    style="min-height: 250px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
             </div>
         </div>
-
     </div>
 @endsection
 @push('script')
     <script>
         $(function() {
+
+            const masukBar = [];
+            @foreach ($jumlah_masuk_bar as $item)
+                masukBar.push({{ $item }});
+            @endforeach
+            const keluarBar = [];
+            @foreach ($jumlah_keluar_bar as $item)
+                keluarBar.push({{ $item }});
+            @endforeach
 
             var areaChartData = {
                 labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'JUni', 'Juli', 'Agustus', 'September',
@@ -96,7 +104,7 @@
                         pointStrokeColor: 'rgba(60,141,188,1)',
                         pointHighlightFill: '#fff',
                         pointHighlightStroke: 'rgba(60,141,188,1)',
-                        data: [28, 48, 40, 19, 86, 27, 90]
+                        data: keluarBar
                     },
                     {
                         label: 'Barang Masuk',
@@ -107,7 +115,7 @@
                         pointStrokeColor: '#c1c7d1',
                         pointHighlightFill: '#fff',
                         pointHighlightStroke: 'rgba(220,220,220,1)',
-                        data: [65, 59, 80, 81, 56, 55, 40]
+                        data: masukBar
                     },
                 ]
             }

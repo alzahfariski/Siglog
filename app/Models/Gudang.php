@@ -19,6 +19,6 @@ class Gudang extends Model
     }
     public function barang()
     {
-        return $this->hasOne(Barang::class, 'id_barang');
+        return $this->hasMany(Barang::class, 'id_barang');
     }
 }

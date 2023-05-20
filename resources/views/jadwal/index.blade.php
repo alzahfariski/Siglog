@@ -61,7 +61,8 @@
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
+                                        <a class="btn btn-danger btn-sm" data-toggle="modal"
+                                            data-target="#modal-delete-{{ $j->id_jadwal }}">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
@@ -157,25 +158,31 @@
             </div>
         </div>
     @endforeach
-    {{-- modal delete --}}
-    <div class="modal fade" id="modal-delete">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-danger">
-                    <h4 class="modal-title">Hapus Jadwal</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Anda yakin ingin menghapus?</p>
-                    <hr>
-                    <p>Gunakan aksi edit jika hanya ingin merubah data Jadwal</p>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <div>
-                        <a href="#" type="button" class="btn btn-danger">Hapus</a>
+    @foreach ($jadwal as $j)
+        {{-- modal delete --}}
+        <div class="modal fade" id="modal-delete-{{ $j->id_jadwal }}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger">
+                        <h4 class="modal-title">Hapus Jadwal</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Anda yakin ingin menghapus?</p>
+                        <hr>
+                        <p>Gunakan aksi edit jika hanya ingin merubah data Jadwal</p>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <div>
+                            <form action="{{ route('jadwal.destroy', $j->id_jadwal) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <input type="submit" name="submit" value="Hapus" class="btn btn-danger">
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endforeach
 @endsection

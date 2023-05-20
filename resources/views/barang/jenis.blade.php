@@ -44,7 +44,8 @@
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
+                                        <a class="btn btn-danger btn-sm" data-toggle="modal"
+                                            data-target="#modal-delete-{{ $j->id_jenis }}">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
@@ -111,7 +112,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="nama_satuan">Nama Satuan</label>
-                                <input type="text" value="{{ $j->nama_satuan }}" class="form-control" name="nama_satuan">
+                                <input type="text" value="{{ $j->nama_satuan }}" class="form-control"
+                                    name="nama_satuan">
                             </div>
 
                         </div>
@@ -125,26 +127,32 @@
         </div>
     @endforeach
     {{-- modal delete --}}
-    <div class="modal fade" id="modal-delete">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-danger">
-                    <h4 class="modal-title">Hapus Jenis</h4>
+    @foreach ($jenis as $j)
+        <div class="modal fade" id="modal-delete-{{ $j->id_jenis }}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger">
+                        <h4 class="modal-title">Hapus Jenis</h4>
 
-                </div>
-                <div class="modal-body">
-                    <p>Anda yakin ingin menghapus?</p>
-                    <hr>
-                    <h4>Keterangan Hapus :</h4>
-                    <p>Menghapus Jenis akan juga menghapus data Barang</p>
-                    <hr>
-                    <p>Gunakan aksi edit jika hanya ingin merubah data Jenis</p>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger">Hapus</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Anda yakin ingin menghapus?</p>
+                        <hr>
+                        <h4>Keterangan Hapus :</h4>
+                        <p>Menghapus Jenis akan juga menghapus data Barang</p>
+                        <hr>
+                        <p>Gunakan aksi edit jika hanya ingin merubah data Jenis</p>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <form action="{{ route('jenis.destroy', $j->id_jenis) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <input type="submit" name="submit" value="Hapus" class="btn btn-danger">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endforeach
 @endsection

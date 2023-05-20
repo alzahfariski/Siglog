@@ -33,4 +33,10 @@ class UserController extends Controller
         $user->update($request->except('_token', 'submit'));
         return redirect('administrator/user');
     }
+    public function destroy($id_user)
+    {
+        $user = User::find($id_user);
+        $user->delete();
+        return redirect('administrator/user');
+    }
 }
