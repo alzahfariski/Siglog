@@ -1,15 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row">
-        <div class="col-12">
-            <a href="{{ route('lokasi.create') }}">
-                <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Lokasi</button>
-            </a>
-            <a href="{{ route('lokasi.daftar') }}">
-                <button type="button" class="btn btn-primary"><i class="fas fa-list"></i> Daftar Lokasi</button>
-            </a>
-        </div>
-    </div>
     <style>
         #marker {
             background-image: url('/img/mbgreen.png');
@@ -23,6 +13,17 @@
             max-width: 200px;
         }
     </style>
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ route('lokasi.create') }}">
+                <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Lokasi</button>
+            </a>
+            <a href="{{ route('lokasi.daftar') }}">
+                <button type="button" class="btn btn-primary"><i class="fas fa-list"></i> Daftar Lokasi</button>
+            </a>
+        </div>
+    </div>
+
     <div class="border border-dark m-2">
         <div class="row">
             <div class="col-12">
@@ -33,13 +34,14 @@
 @endsection
 @push('script')
     <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiYWx6YWgiLCJhIjoiY2xobjhpaDJpMGw2ODNxcXJxYWFxamF4ayJ9.lwwpWmV4b5BeJ2b8ivZfeQ';
+        mapboxgl.accessToken = '{{ env('MAPBOX_KEY') }}';
         const map = new mapboxgl.Map({
             container: 'map', // container ID
             style: 'mapbox://styles/mapbox/streets-v12', // style URL
             center: [102.2521195394366, -3.7894423262683987], // starting position [lng, lat]
             zoom: 16, // starting zoom
         });
+
         map.addControl(new mapboxgl.NavigationControl())
 
         map.on('load', () => {
@@ -70,11 +72,9 @@
                                         }
                                     },
                                 @endforeach
-
                             ]
                         }
                     });
-
                     // Add a symbol layer
                     map.addLayer({
                         'id': 'points',
