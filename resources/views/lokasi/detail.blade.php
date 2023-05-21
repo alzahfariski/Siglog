@@ -13,6 +13,15 @@
                                 </button>
                             </div>
                         </div>
+                        <style>
+                            #marker {
+                                background-image: url('/img/mbgreen.png');
+                                background-repeat: no-repeat;
+                                width: 28px;
+                                height: 28px;
+                                cursor: pointer;
+                            }
+                        </style>
                         <div class="card-body">
                             <div id='map' style='width: 100%; height: 450px;'></div>
                         </div>
@@ -93,8 +102,15 @@
         const map = new mapboxgl.Map({
             container: 'map', // container ID
             style: 'mapbox://styles/mapbox/streets-v12', // style URL
-            center: [102.2521195394366, -3.7894423262683987], // starting position [lng, lat]
+            center: [{{ $lokasi->longitude }}, {{ $lokasi->latitude }}], // starting position [lng, lat]
             zoom: 16, // starting zoom
         });
+        map.addControl(new mapboxgl.NavigationControl())
+        const el = document.createElement('div');
+        el.id = 'marker';
+        const monument = [{{ $lokasi->longitude }}, {{ $lokasi->latitude }}];
+        new mapboxgl.Marker(el)
+            .setLngLat(monument)
+            .addTo(map);
     </script>
 @endpush

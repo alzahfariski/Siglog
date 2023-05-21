@@ -13,7 +13,11 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div id='map' style='width: 100%; height: 590px;'></div>
+                        <p class="card-text"><i class="fas fa-circle"></i>&nbsp;&nbsp;Klik pada peta untuk mendapatkan
+                            koordinat
+                        </p>
+                        <div id='map' style='width: 100%; height: 520px;'></div>
+                        <pre id="info"></pre>
                     </div>
 
                 </div>
@@ -34,11 +38,11 @@
                             @csrf
                             <div class="form-group">
                                 <label for="longitude">Longitude</label>
-                                <input type="text" name="longitude" id="longitude" class="form-control">
+                                <input type="text" name="longitude" id="lng" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="latitude">Latitude</label>
-                                <input type="text" name="latitude" id="latitude" class="form-control">
+                                <input type="text" name="latitude" id="lat" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="nama_jalan">Nama Jalan</label>
@@ -83,6 +87,24 @@
             style: 'mapbox://styles/mapbox/streets-v12', // style URL
             center: [102.2521195394366, -3.7894423262683987], // starting position [lng, lat]
             zoom: 16, // starting zoom
+        });
+
+        map.addControl(new mapboxgl.NavigationControl())
+
+        let lng;
+        let lat;
+
+        const marker = new mapboxgl.Marker({
+            'color': '#314ccd'
+        });
+
+        map.on('click', (event) => {
+            marker.setLngLat(event.lngLat).addTo(map);
+
+            lng = event.lngLat.lng;
+            lat = event.lngLat.lat;
+            document.getElementById("lng").value = lng;
+            document.getElementById("lat").value = lat;
         });
     </script>
 @endpush

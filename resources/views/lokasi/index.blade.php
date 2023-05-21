@@ -10,6 +10,19 @@
             </a>
         </div>
     </div>
+    <style>
+        #marker {
+            background-image: url('/img/mbgreen.png');
+            background-repeat: no-repeat;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+        }
+
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+    </style>
     <div class="border border-dark m-2">
         <div class="row">
             <div class="col-12">
@@ -26,6 +39,61 @@
             style: 'mapbox://styles/mapbox/streets-v12', // style URL
             center: [102.2521195394366, -3.7894423262683987], // starting position [lng, lat]
             zoom: 16, // starting zoom
+        });
+        map.addControl(new mapboxgl.NavigationControl())
+
+        map.on('load', () => {
+            // Add an image to use as a custom marker
+            map.loadImage(
+                '/img/mbgreen.png',
+                (error, image) => {
+                    if (error) throw error;
+                    map.addImage('custom-marker', image);
+                    // Add a GeoJSON source with 2 points
+                    map.addSource('points', {
+                        'type': 'geojson',
+                        'data': {
+                            'type': 'FeatureCollection',
+                            'features': [
+                                @foreach ($lokasi as $l)
+                                    {
+                                        // feature for Mapbox DC
+                                        'type': 'Feature',
+                                        'geometry': {
+                                            'type': 'Point',
+                                            'coordinates': [
+                                                {{ $l->longitude }}, {{ $l->latitude }}
+                                            ]
+                                        },
+                                        'properties': {
+                                            'title': '{{ $l->nama_jalan }}'
+                                        }
+                                    },
+                                @endforeach
+
+                            ]
+                        }
+                    });
+
+                    // Add a symbol layer
+                    map.addLayer({
+                        'id': 'points',
+                        'type': 'symbol',
+                        'source': 'points',
+                        'layout': {
+                            'icon-image': 'custom-marker',
+                            // get the title name from the source's "title" property
+                            'text-field': ['get', 'title'],
+                            'text-font': [
+                                'Open Sans Semibold',
+                                'Arial Unicode MS Bold'
+                            ],
+                            'text-offset': [0, 1.25],
+                            'text-anchor': 'top'
+                        }
+                    });
+                }
+            );
         });
     </script>
 @endpush

@@ -10,9 +10,14 @@ class LokasiController extends Controller
 {
     public function index()
     {
-        return view('lokasi.index', [
-            'page_title' => 'Data lokasi'
-        ]);
+        $lokasi = Lokasi::all();
+        return view(
+            'lokasi.index',
+            compact(['lokasi']),
+            [
+                'page_title' => 'Data lokasi'
+            ]
+        );
     }
     public function daftar()
     {
@@ -54,7 +59,7 @@ class LokasiController extends Controller
     {
         $lokasi = Lokasi::find($id_lokasi);
         $lokasi->update($request->except('_token', 'submit'));
-        return redirect('administrator/lokasi');
+        return redirect('administrator/lokasi/daftar');
     }
     public function edit($id_lokasi)
     {

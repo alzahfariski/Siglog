@@ -5,7 +5,27 @@
             <div class="col-md-6">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Lokasi</h3>
+                        <h3 class="card-title">Peta</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"><i class="fas fa-circle"></i>&nbsp;&nbsp;Klik pada peta untuk mendapatkan
+                            koordinat
+                        </p>
+                        <div id='map' style='width: 100%; height: 520px;'></div>
+                        <pre id="info"></pre>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Koordinat</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                 <i class="fas fa-minus"></i>
@@ -16,6 +36,16 @@
                         <form action="{{ route('lokasi.update', $lokasi->id_lokasi) }}" method="POST">
                             @csrf
                             @method('put')
+                            <div class="form-group">
+                                <label for="longitude">Longitude</label>
+                                <input type="text" name="longitude" id="lng" class="form-control"
+                                    value="{{ $lokasi->longitude }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="latitude">Latitude</label>
+                                <input type="text" name="latitude" id="lat" class="form-control"
+                                    value="{{ $lokasi->latitude }}">
+                            </div>
                             <div class="form-group">
                                 <label for="nama_jalan">Nama Jalan</label>
                                 <input type="text" id="id_lokasi" name="id_lokasi" hidden
@@ -49,32 +79,6 @@
                     </div>
 
                 </div>
-
-            </div>
-            <div class="col-md-6">
-                <div class="card card-secondary">
-                    <div class="card-header">
-                        <h3 class="card-title">Koordinat</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="longitude">Longitude</label>
-                            <input type="text" name="longitude" id="longitude" class="form-control"
-                                value="{{ $lokasi->longitude }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="latitude">Latitude</label>
-                            <input type="text" name="latitude" id="latitude" class="form-control"
-                                value="{{ $lokasi->latitude }}">
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </div>
         <div class="row">
@@ -86,3 +90,32 @@
         </form>
     </section>
 @endsection
+@push('script')
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYWx6YWgiLCJhIjoiY2xobjhpaDJpMGw2ODNxcXJxYWFxamF4ayJ9.lwwpWmV4b5BeJ2b8ivZfeQ';
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v12', // style URL
+            center: [102.2521195394366, -3.7894423262683987], // starting position [lng, lat]
+            zoom: 16, // starting zoom
+        });
+
+        map.addControl(new mapboxgl.NavigationControl())
+
+        let lng;
+        let lat;
+
+        const marker = new mapboxgl.Marker({
+            'color': '#314ccd'
+        });
+
+        map.on('click', (event) => {
+            marker.setLngLat(event.lngLat).addTo(map);
+
+            lng = event.lngLat.lng;
+            lat = event.lngLat.lat;
+            document.getElementById("lng").value = lng;
+            document.getElementById("lat").value = lat;
+        });
+    </script>
+@endpush
