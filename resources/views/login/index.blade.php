@@ -88,12 +88,6 @@
 
 <body class="hold-transition login-page">
 
-    @if (session()->has('loginError'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('loginError') }}
-        </div>
-    @endif
-
     <div class="login-box">
 
         <div class="card card-outline card-primary">
@@ -139,6 +133,24 @@
 
 
         @vite('resources/js/app.js')
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @if ($massege = Session::get('failed'))
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Gagal !',
+                    text: 'Email / Password Salah !',
+                })
+            </script>
+        @endif
+        @if ($massege = Session::get('success'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Anda telah Logout',
+                })
+            </script>
+        @endif
 </body>
 
 </html>

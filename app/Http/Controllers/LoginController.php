@@ -15,17 +15,27 @@ class LoginController extends Controller
     }
     public function authenticate(Request $request)
     {
-        $credentials = $request->validate([
-            'username' => ['required'],
-            'password' => ['required'],
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+        $data = [
+            'username' => $request->username,
+            'password' => $request->password,
+        ];
 
-            return redirect()->intended('/administrator/dashboard');
+        if (Auth::attempt($data)) {
+            // $request->session()->regenerate();
+
+            return redirect('/administrator/dashboard');
         }
 
-        return back()->with('loginError', 'Login gagal !');
+        return redirect()->route('login')->with('failed', 'Login gagal!');
+    }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login')->with('success', 'Logout berhasil');
     }
 }

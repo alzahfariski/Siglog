@@ -11,14 +11,17 @@
                 <div class="card-header">
                     <h3 class="card-title">Tabel data barang</h3>
                     <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fas fa-search"></i>
-                                </button>
+                        <form method="GET">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="search" class="form-control float-right" placeholder="Search"
+                                    value="{{ $search }}">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
 
@@ -26,17 +29,20 @@
                     <table class="table table-hover text-nowrap">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nama jalan</th>
+                                <th>NO</th>
+                                <th>Nama Jalan</th>
                                 <th>Alamat</th>
                                 <th>kategori</th>
                                 <th style="width: 40px">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $nomor = 1 + ($lokasi->currentPage() - 1) * $lokasi->perPage();
+                            @endphp
                             @foreach ($lokasi as $l)
                                 <tr>
-                                    <td>{{ $l->id_lokasi }}</td>
+                                    <td>{{ $nomor++ }}</td>
                                     <td>{{ $l->nama_jalan }}</td>
                                     <td>{{ $l->alamat }}</td>
                                     <td>{{ $l->kategori }}</td>
@@ -62,6 +68,10 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+                <div class="card-footer clearfix">
+                    {{-- {{ $lokasi->links() }} --}}
+                    {!! $lokasi->appends(Request::except('page'))->render() !!}
                 </div>
             </div>
         </div>

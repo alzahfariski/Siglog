@@ -19,14 +19,20 @@ class LokasiController extends Controller
             ]
         );
     }
-    public function daftar()
+    public function daftar(Request $request)
     {
-        $lokasi = Lokasi::all();
+        $search = $request->query('search');
+        if (!empty($search)) {
+            $lokasi = Lokasi::where('lokasi.nama_jalan', 'like', '%' . $search . '%')
+                ->paginate(5)->fragment('lokasi');
+        } else {
+            $lokasi = Lokasi::paginate(5)->fragment('lokasi');
+        }
         return view(
             'lokasi.daftar',
-            compact(['lokasi']),
+            compact(['lokasi', 'search']),
             [
-                'page_title' => 'Daftar lokasi'
+                'page_title' => 'Daftar lokasi',
             ]
         );
     }
