@@ -15,9 +15,12 @@
     </style>
     <div class="row">
         <div class="col-12">
-            <a href="{{ route('lokasi.create') }}">
-                <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Lokasi</button>
-            </a>
+            @can('admin')
+                <a href="{{ route('lokasi.create') }}">
+                    <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Lokasi</button>
+                </a>
+            @endcan
+
             <a href="{{ route('lokasi.daftar') }}">
                 <button type="button" class="btn btn-primary"><i class="fas fa-list"></i> Daftar Lokasi</button>
             </a>

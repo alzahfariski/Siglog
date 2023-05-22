@@ -2,12 +2,10 @@
 @section('content')
     <div class="row">
         <div class="col-12 mb-2">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
-                <i class="fas fa-plus"></i> Tambah jadwal</button>
-            <a href="{{ route('jadwal.kalender') }}">
-                <button type="button" class="btn btn-primary">
-                    <i class="fas fa-calendar"></i> Kalender jadwal</button>
-            </a>
+            @can('admin')
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
+                    <i class="fas fa-plus"></i> Tambah jadwal</button>
+            @endcan
 
         </div>
         <div class="col-12">
@@ -55,18 +53,20 @@
                                             </i>
                                             View
                                         </a>
-                                        <a class="btn btn-info btn-sm" data-toggle="modal"
-                                            data-target="#modal-edit-{{ $j->id_jadwal }}">
-                                            <i class="fas fa-pencil-alt">
-                                            </i>
-                                            Edit
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" data-toggle="modal"
-                                            data-target="#modal-delete-{{ $j->id_jadwal }}">
-                                            <i class="fas fa-trash">
-                                            </i>
-                                            Delete
-                                        </a>
+                                        @can('admin')
+                                            <a class="btn btn-info btn-sm" data-toggle="modal"
+                                                data-target="#modal-edit-{{ $j->id_jadwal }}">
+                                                <i class="fas fa-pencil-alt">
+                                                </i>
+                                                Edit
+                                            </a>
+                                            <a class="btn btn-danger btn-sm" data-toggle="modal"
+                                                data-target="#modal-delete-{{ $j->id_jadwal }}">
+                                                <i class="fas fa-trash">
+                                                </i>
+                                                Delete
+                                            </a>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach

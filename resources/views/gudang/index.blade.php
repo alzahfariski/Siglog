@@ -2,8 +2,10 @@
 @section('content')
     <div class="row">
         <div class="col-12 mb-2">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
-                <i class="fas fa-plus"></i> Tambah Gudang</button>
+            @can('admin')
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
+                    <i class="fas fa-plus"></i> Tambah Gudang</button>
+            @endcan
         </div>
         <div class="col-12">
             <div class="card">
@@ -45,18 +47,20 @@
                                             </i>
                                             View
                                         </a>
-                                        <a class="btn btn-info btn-sm" data-toggle="modal"
-                                            data-target="#modal-edit-{{ $g->id_gudang }}">
-                                            <i class="fas fa-pencil-alt">
-                                            </i>
-                                            Edit
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" data-toggle="modal"
-                                            data-target="#modal-delete-{{ $g->id_gudang }}">
-                                            <i class="fas fa-trash">
-                                            </i>
-                                            Delete
-                                        </a>
+                                        @can('admin')
+                                            <a class="btn btn-info btn-sm" data-toggle="modal"
+                                                data-target="#modal-edit-{{ $g->id_gudang }}">
+                                                <i class="fas fa-pencil-alt">
+                                                </i>
+                                                Edit
+                                            </a>
+                                            <a class="btn btn-danger btn-sm" data-toggle="modal"
+                                                data-target="#modal-delete-{{ $g->id_gudang }}">
+                                                <i class="fas fa-trash">
+                                                </i>
+                                                Delete
+                                            </a>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach

@@ -2,9 +2,11 @@
 @section('content')
     <div class="row">
         <div class="col-12 mb-2">
-            <a href="{{ route('lokasi.create') }}">
-                <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Lokasi</button>
-            </a>
+            @can('admin')
+                <a href="{{ route('lokasi.create') }}">
+                    <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Lokasi</button>
+                </a>
+            @endcan
         </div>
         <div class="col-12">
             <div class="card">
@@ -52,17 +54,19 @@
                                             </i>
                                             View
                                         </a>
-                                        <a class="btn btn-info btn-sm" href="{{ route('lokasi.edit', $l->id_lokasi) }}">
-                                            <i class="fas fa-pencil-alt">
-                                            </i>
-                                            Edit
-                                        </a>
-                                        <a class="btn btn-danger btn-sm"data-toggle="modal"
-                                            data-target="#modal-delete-{{ $l->id_lokasi }}">
-                                            <i class="fas fa-trash">
-                                            </i>
-                                            Delete
-                                        </a>
+                                        @can('admin')
+                                            <a class="btn btn-info btn-sm" href="{{ route('lokasi.edit', $l->id_lokasi) }}">
+                                                <i class="fas fa-pencil-alt">
+                                                </i>
+                                                Edit
+                                            </a>
+                                            <a class="btn btn-danger btn-sm"data-toggle="modal"
+                                                data-target="#modal-delete-{{ $l->id_lokasi }}">
+                                                <i class="fas fa-trash">
+                                                </i>
+                                                Delete
+                                            </a>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach
