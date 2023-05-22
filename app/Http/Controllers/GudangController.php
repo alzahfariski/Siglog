@@ -9,13 +9,19 @@ use Illuminate\Http\Request;
 
 class GudangController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $gudang = Gudang::all();
+        $search = $request->query('search');
+        if (!empty($search)) {
+            $gudang = Gudang::where('gudang.nama_gudang', 'like', '%' . $search . '%')
+                ->paginate(5)->fragment('gudang');
+        } else {
+            $gudang = Gudang::paginate(5)->fragment('gudang');
+        }
         $lokasi = Lokasi::all();
         return view(
             'gudang.index',
-            compact(['gudang', 'lokasi']),
+            compact(['gudang', 'lokasi', 'search']),
             [
                 'page_title' => 'Data Gudang'
             ]

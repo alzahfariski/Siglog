@@ -8,12 +8,18 @@ use Illuminate\Http\Request;
 
 class JenisController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $jenis = Jenis_barang::all();
+        $search = $request->query('search');
+        if (!empty($search)) {
+            $jenis = Jenis_barang::where('jenis_barang.nama_jenis', 'like', '%' . $search . '%')
+                ->paginate(5)->fragment('jenis');
+        } else {
+            $jenis = Jenis_barang::paginate(5)->fragment('jenis');
+        }
         return view(
             'barang.jenis',
-            compact(['jenis']),
+            compact(['jenis', 'search']),
             [
                 'page_title' => 'Data jenis'
             ]

@@ -11,6 +11,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\PemasokController;
 use App\Http\Controllers\PermintaanController;
+use App\Http\Controllers\TerimaController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,12 @@ Route::middleware('auth')->group(function () {
             Route::get('/barang/{id_barang}/view', [BarangController::class, 'view'])->name('barang.view');
             Route::get('/barang/{id_barang}/view/cetak', [BarangController::class, 'cetakDetail'])->name('barang.cetakDetail');
 
+            Route::middleware('personel')->group(function () {
+                Route::get('/terima', [TerimaController::class, 'index'])->name('barang.terima');
+                Route::get('/terima/{id_keluar}/view', [TerimaController::class, 'view'])->name('terima.view');
+                Route::get('/terima/{id_keluar}/view/cetak', [TerimaController::class, 'cetakTerima'])->name('terima.cetakTerima');
+                Route::get('/terima/cetak', [TerimaController::class, 'cetak'])->name('terima.cetak');
+            });
 
             Route::middleware('admin')->group(function () {
                 Route::post('/barang/store', [BarangController::class, 'store'])->name('barang.store');

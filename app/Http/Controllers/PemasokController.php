@@ -8,12 +8,18 @@ use Illuminate\Http\Request;
 
 class PemasokController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $pemasok = Pemasok::all();
+        $search = $request->query('search');
+        if (!empty($search)) {
+            $pemasok = Pemasok::where('pemasok.nama_pemasok', 'like', '%' . $search . '%')
+                ->paginate(5)->fragment('pemasok');
+        } else {
+            $pemasok = Pemasok::paginate(5)->fragment('pemasok');
+        }
         return view(
             'pemasok.index',
-            compact(['pemasok']),
+            compact(['pemasok', 'search']),
             [
                 'page_title' => 'Data pemasok'
             ]

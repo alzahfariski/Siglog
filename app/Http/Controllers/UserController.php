@@ -8,10 +8,16 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $user = User::all();
-        return view('user.index', compact(['user']), [
+        $search = $request->query('search');
+        if (!empty($search)) {
+            $user = User::where('users.nama', 'like', '%' . $search . '%')
+                ->paginate(5)->fragment('user');
+        } else {
+            $user = User::paginate(5)->fragment('user');
+        }
+        return view('user.index', compact(['user', 'search']), [
             'page_title' => 'Data user'
         ]);
     }

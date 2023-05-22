@@ -8,12 +8,18 @@ use Illuminate\Http\Request;
 
 class JadwalController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $jadwal = Jadwal::all();
+        $search = $request->query('search');
+        if (!empty($search)) {
+            $jadwal = Jadwal::where('jadwal.nama_jadwal', 'like', '%' . $search . '%')
+                ->paginate(5)->fragment('jadwal');
+        } else {
+            $jadwal = Jadwal::paginate(5)->fragment('jadwal');
+        }
         return view(
             'jadwal.index',
-            compact(['jadwal']),
+            compact(['jadwal', 'search']),
             [
                 'page_title' => 'Data jadwal'
             ]

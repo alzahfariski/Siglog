@@ -11,14 +11,20 @@ use Illuminate\Http\Request;
 
 class BarangController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $barang = Barang::all();
+        $search = $request->query('search');
+        if (!empty($search)) {
+            $barang = Barang::where('barang.nama_barang', 'like', '%' . $search . '%')
+                ->paginate(5)->fragment('barang');
+        } else {
+            $barang = Barang::paginate(5)->fragment('barang');
+        }
         $gudang = Gudang::all();
         $jenis = Jenis_barang::all();
         return view(
             'barang.barang',
-            compact(['barang', 'gudang', 'jenis']),
+            compact(['barang', 'gudang', 'jenis', 'search']),
             [
                 'page_title' => 'Data Barang'
             ]

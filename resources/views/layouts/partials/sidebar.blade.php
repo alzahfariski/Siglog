@@ -58,6 +58,15 @@
                                  <p>Barang</p>
                              </a>
                          </li>
+                         @can('personel')
+                             <li class="nav-item">
+                                 <a href="{{ route('barang.terima') }}"
+                                     class="nav-link {{ Request::is('administrator/data/terima*') ? 'active' : '' }}">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>Barang Diterima</p>
+                                 </a>
+                             </li>
+                         @endcan
                          @can('admin')
                              <li class="nav-item">
                                  <a href="{{ route('barang.masuk') }}"
