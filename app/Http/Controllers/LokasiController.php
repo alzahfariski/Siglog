@@ -24,7 +24,7 @@ class LokasiController extends Controller
         $search = $request->query('search');
         if (!empty($search)) {
             $lokasi = Lokasi::where('lokasi.nama_jalan', 'like', '%' . $search . '%')
-                ->paginate(5)->fragment('lokasi');
+                ->paginate()->fragment('lokasi');
         } else {
             $lokasi = Lokasi::paginate(5)->fragment('lokasi');
         }
