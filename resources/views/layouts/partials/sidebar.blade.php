@@ -14,7 +14,7 @@
                  <img src="/img/LogoPOLRI.png" class="img-circle elevation-2" alt="User Image">
              </div>
              <div class="info">
-                 <a href="{{ route('dashboard.index') }}" class="d-block"> Alzah Fariski</a>
+                 <a href="{{ route('dashboard.index') }}" class="d-block"> {{ Auth::user()->username }}</a>
              </div>
          </div>
 
