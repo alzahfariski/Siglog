@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GudangController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\JenisController;
+use App\Http\Controllers\JenisRanmorController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\PemasokController;
@@ -80,10 +81,6 @@ Route::middleware('auth')->group(function () {
             Route::post('/user', [UserController::class, 'store'])->name('user.store');
             Route::put('/user/{id_user}', [UserController::class, 'update'])->name('user.update');
             Route::delete('/user/{id_user}', [UserController::class, 'destroy'])->name('user.destroy');
-            Route::get('/pemasok', [PemasokController::class, 'index'])->name('pemasok.index');
-            Route::put('/pemasok/{id_pemasok}', [PemasokController::class, 'update'])->name('pemasok.update');
-            Route::delete('/pemasok/{id_pemasok}', [PemasokController::class, 'destroy'])->name('pemasok.destroy');
-            Route::post('/pemasok', [PemasokController::class, 'store'])->name('pemasok.store');
             Route::post('/gudang', [GudangController::class, 'store'])->name('gudang.store');
             Route::put('/gudang/{id_gudang}', [GudangController::class, 'update'])->name('gudang.update');
             Route::delete('/gudang/{id_gudang}', [GudangController::class, 'destroy'])->name('gudang.destroy');
@@ -95,6 +92,10 @@ Route::middleware('auth')->group(function () {
             Route::delete('/jadwal/{id_jadwal}', [JadwalController::class, 'destroy'])->name('jadwal.destroy');
             Route::put('/jadwal/{id_jadwal}', [JadwalController::class, 'update'])->name('jadwal.update');
             Route::post('/jadwal/store', [JadwalController::class, 'store'])->name('jadwal.store');
+            Route::get('/ranmor/jenis', [JenisRanmorController::class, 'index'])->name('ranmor.jenis');
+            Route::post('/ranmor/jenis/store', [JenisRanmorController::class, 'store'])->name('jenisranmor.store');
+            Route::put('/ranmor/jenis/{id_jenisranmor}', [JenisRanmorController::class, 'update'])->name('jenisranmor.update');
+            Route::delete('/ranmor/jenis/{id_jenisranmor}', [JenisRanmorController::class, 'destroy'])->name('jenisranmor.destroy');
         });
 
         Route::get('/gudang', [GudangController::class, 'index'])->name('gudang.index');
@@ -102,8 +103,5 @@ Route::middleware('auth')->group(function () {
         Route::get('/lokasi', [LokasiController::class, 'index'])->name('lokasi.index');
         Route::get('/lokasi/{id_lokasi}/view', [LokasiController::class, 'view'])->name('lokasi.view');
         Route::get('/lokasi/daftar', [LokasiController::class, 'daftar'])->name('lokasi.daftar');
-        Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
-        Route::get('/jadwal/{id_jadwal}/view', [JadwalController::class, 'view'])->name('jadwal.view');
-        Route::get('/jadwal/{id_jadwal}/view/cetak', [JadwalController::class, 'cetak'])->name('jadwal.cetak');
     });
 });

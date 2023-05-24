@@ -28,7 +28,7 @@
                                                 <td>{{ $m->jumlah_masuk }} {{ $m->barang->jenis->nama_satuan }}</td>
                                                 <td>{{ $m->barang->gudang->nama_gudang }}</td>
                                                 <td>{{ $m->barang->gudang->lokasi->nama_jalan }}</td>
-                                                <td>{{ $m->pemasok->nama_pemasok }}</td>
+                                                <td>{{ $m->pemasok }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

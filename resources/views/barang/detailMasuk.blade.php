@@ -30,7 +30,7 @@
                                             <td>{{ $masuk->id_masuk }}</td>
                                             <td>{{ $masuk->barang->nama_barang }}</td>
                                             <td>{{ $masuk->jumlah_masuk }}</td>
-                                            <td>{{ $masuk->pemasok->nama_pemasok }}</td>
+                                            <td>{{ $masuk->pemasok }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

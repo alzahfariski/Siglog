@@ -3,12 +3,12 @@
     <div class="row">
         <div class="col-12 mb-2">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
-                <i class="fas fa-plus"></i> Tambah Pemasok</button>
+                <i class="fas fa-plus"></i> Tambah jenis</button>
         </div>
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Tabel data barang</h3>
+                    <h3 class="card-title">Tabel data jenis</h3>
                     <div class="card-tools">
                         <form method="GET">
                             <div class="input-group input-group-sm" style="width: 150px;">
@@ -29,28 +29,28 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nama Pemasok</th>
-                                <th>No Telp</th>
-                                <th>email</th>
+                                <th>Jenis Roda</th>
+                                <th>Kendaraan</th>
+                                <th>Merek</th>
                                 <th style="width: 40px">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($pemasok as $p)
+                            @foreach ($jenis as $j)
                                 <tr>
-                                    <td>{{ $p->id_pemasok }}</td>
-                                    <td>{{ $p->nama_pemasok }}</td>
-                                    <td>{{ $p->no_telp }}</td>
-                                    <td>{{ $p->email }}</td>
+                                    <td>{{ $j->id_jenisranmor }}</td>
+                                    <td>{{ $j->roda }}</td>
+                                    <td>{{ $j->kendaraan }}</td>
+                                    <td>{{ $j->merek }}</td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-info btn-sm" data-toggle="modal"
-                                            data-target="#modal-edit-{{ $p->id_pemasok }}">
+                                            data-target="#modal-edit-{{ $j->id_jenisranmor }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
                                         </a>
                                         <a class="btn btn-danger btn-sm" data-toggle="modal"
-                                            data-target="#modal-delete-{{ $p->id_pemsok }}">
+                                            data-target="#modal-delete-{{ $j->id_jenisranmor }}">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
@@ -63,35 +63,35 @@
                 </div>
                 <div class="card-footer clearfix">
                     {{-- {{ $lokasi->links() }} --}}
-                    {!! $pemasok->appends(Request::except('page'))->render() !!}
+                    {!! $jenis->appends(Request::except('page'))->render() !!}
                 </div>
             </div>
         </div>
     </div>
+
     <div class="modal fade" id="modal-tambah">
         <div class="modal-dialog">
-            <form action="{{ route('pemasok.store') }}" method="POST">
+            <form action="{{ route('jenisranmor.store') }}" method="POST">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Tambah Pemasok</h4>
+                        <h4 class="modal-title">Tambah Jenis Ranmor</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="nama_pemasok">Nama Pemasok</label>
-                            <input type="text" placeholder="masukan nama pemasok" class="form-control"
-                                name="nama_pemasok">
+                            <label for="jenis_roda">Jenis Roda</label>
+                            <input type="text" placeholder="masukan jenis roda" class="form-control" name="roda">
                         </div>
                         <div class="form-group">
-                            <label for="email">Email pemasok</label>
-                            <input type="email" placeholder="masukan email" class="form-control" name="email">
+                            <label for="kendaraan">Jenis Kendaraan</label>
+                            <input type="text" placeholder="masukan nama barang" class="form-control" name="kendaraan">
                         </div>
                         <div class="form-group">
-                            <label for="no_telp">No Telp</label>
-                            <input type="number" placeholder="masukan nomer telp" class="form-control" name="no_telp">
+                            <label for="merek">Merek</label>
+                            <input type="text" placeholder="masukan nama barang" class="form-control" name="merek">
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -102,33 +102,33 @@
             </form>
         </div>
     </div>
-    @foreach ($pemasok as $p)
-        <div class="modal fade" id="modal-edit-{{ $p->id_pemasok }}">
+    @foreach ($jenis as $j)
+        <div class="modal fade" id="modal-edit-{{ $j->id_jenisranmor }}">
             <div class="modal-dialog">
-                <form action="{{ route('pemasok.update', $p->id_pemasok) }}" method="POST">
+                <form action="{{ route('jenisranmor.update', $j->id_jenisranmor) }}" method="POST">
                     @method('put')
                     @csrf
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Edit Pemasok</h4>
+                            <h4 class="modal-title">Edit Jenis Ranmor</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input type="text" hidden value="{{ $p->id_pemasok }}">
+                            <input type="text" hidden value="{{ $j->id_jenisranmor }}">
                             <div class="form-group">
-                                <label for="nama_pemasok">Nama Pemasok</label>
-                                <input type="text" value="{{ $p->nama_pemasok }}" class="form-control"
-                                    name="nama_pemasok">
+                                <label for="roda">Jenis Roda</label>
+                                <input type="text" value="{{ $j->roda }}" class="form-control" name="roda">
                             </div>
                             <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" value="{{ $p->email }}" class="form-control" name="email">
+                                <label for="kendaraan">Jenis Kendaraan</label>
+                                <input type="text" value="{{ $j->kendaraan }}" class="form-control"
+                                    name="kendaraan">
                             </div>
                             <div class="form-group">
-                                <label for="no_telp">Email</label>
-                                <input type="number" value="{{ $p->no_telp }}" class="form-control" name="no_telp">
+                                <label for="merek">Merek</label>
+                                <input type="text" value="{{ $j->merek }}" class="form-control" name="merek">
                             </div>
 
                         </div>
@@ -142,30 +142,29 @@
         </div>
     @endforeach
     {{-- modal delete --}}
-    @foreach ($pemasok as $p)
-        <div class="modal fade" id="modal-delete-{{ $p->id_pemsok }}">
+    @foreach ($jenis as $j)
+        <div class="modal fade" id="modal-delete-{{ $j->id_jenisranmor }}">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header bg-danger">
-                        <h4 class="modal-title">Hapus Pemasok</h4>
+                        <h4 class="modal-title">Hapus Jenis</h4>
+
                     </div>
                     <div class="modal-body">
                         <p>Anda yakin ingin menghapus?</p>
                         <hr>
                         <h4>Keterangan Hapus :</h4>
-                        <p>Menghapus data Pemasok juga akan menghapus data Barang Masuk</p>
+                        <p>Menghapus Jenis akan juga menghapus data Ranmor</p>
                         <hr>
-                        <p>Gunakan aksi edit jika hanya ingin merubah data Pemasok</p>
+                        <p>Gunakan aksi edit jika hanya ingin merubah data Jenis</p>
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <div>
-                            <form action="{{ route('pemasok.destroy', $p->id_pemasok) }}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <input type="submit" name="submit" value="Hapus" class="btn btn-danger">
-                            </form>
-                        </div>
+                        <form action="{{ route('jenisranmor.destroy', $j->id_jenisranmor) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <input type="submit" name="submit" value="Hapus" class="btn btn-danger">
+                        </form>
                     </div>
                 </div>
             </div>

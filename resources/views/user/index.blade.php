@@ -30,7 +30,10 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Nama</th>
-                                <th>username</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>NRP</th>
+                                <th>Jabatan</th>
                                 <th>role</th>
                                 <th style="width: 40px">Aksi</th>
                             </tr>
@@ -41,6 +44,9 @@
                                     <td>{{ $u->id_user }}</td>
                                     <td>{{ $u->nama }}</td>
                                     <td>{{ $u->username }}</td>
+                                    <td>{{ $u->email }}</td>
+                                    <td>{{ $u->nrp }}</td>
+                                    <td>{{ $u->jabatan }}</td>
                                     <td>{{ $u->role }}</td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-info btn-sm" data-toggle="modal"
@@ -89,6 +95,18 @@
                             <input type="text" placeholder="masukan Username" class="form-control" name="username">
                         </div>
                         <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" placeholder="masukan Email" class="form-control" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="nrp">NRP</label>
+                            <input type="text" placeholder="masukan NRP" class="form-control" name="nrp">
+                        </div>
+                        <div class="form-group">
+                            <label for="jabatan">Jabatan</label>
+                            <input type="text" placeholder="masukan jabatan" class="form-control" name="jabatan">
+                        </div>
+                        <div class="form-group">
                             <label for="role">Role</label>
                             <select class="form-control select2" style="width: 100%;" name="role">
                                 <option value="admin">admin</option>
@@ -131,6 +149,18 @@
                                 <label for="username">username</label>
                                 <input type="username" value="{{ $u->username }}" class="form-control"
                                     name="username">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">email</label>
+                                <input type="email" value="{{ $u->email }}" class="form-control" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="nrp">nrp</label>
+                                <input type="nrp" value="{{ $u->nrp }}" class="form-control" name="nrp">
+                            </div>
+                            <div class="form-group">
+                                <label for="jabatan">jabatan</label>
+                                <input type="jabatan" value="{{ $u->jabatan }}" class="form-control" name="jabatan">
                             </div>
                             <div class="form-group">
                                 <label for="password">password</label>

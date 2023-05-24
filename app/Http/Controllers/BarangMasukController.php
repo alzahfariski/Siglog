@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Barang;
 use App\Models\BarangMasuk;
-use App\Models\Pemasok;
 use Illuminate\Http\Request;
 
 class BarangMasukController extends Controller
@@ -20,10 +19,9 @@ class BarangMasukController extends Controller
             $masuk = BarangMasuk::paginate(5)->fragment('masuk');
         }
         $barang = Barang::all();
-        $pemasok = Pemasok::all();
         return view(
             'barang.masuk',
-            compact(['masuk', 'barang', 'pemasok', 'search']),
+            compact(['masuk', 'barang', 'search']),
             [
                 'page_title' => 'Data Barang Masuk'
             ]

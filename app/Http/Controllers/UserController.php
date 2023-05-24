@@ -26,6 +26,9 @@ class UserController extends Controller
         $data = [
             'nama' => $request->nama,
             'username' => $request->username,
+            'email' => $request->email,
+            'nrp' => $request->nrp,
+            'jabatan' => $request->jabatan,
             'role' => $request->role,
             'password' => bcrypt($request->password),
         ];

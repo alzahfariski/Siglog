@@ -56,7 +56,7 @@
                             <div class="col-sm-4 invoice-col">
                                 Pemasok :
                                 <address>
-                                    <strong>{{ $masuk->pemasok->nama_pemasok }}</strong><br>
+                                    <strong>{{ $masuk->pemasok }}</strong><br>
                                 </address>
                             </div>
                         </div>

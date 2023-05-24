@@ -44,7 +44,7 @@
                                     <td>{{ $m->id_masuk }}</td>
                                     <td>{{ $m->barang->nama_barang }}</td>
                                     <td>{{ $m->jumlah_masuk }}</td>
-                                    <td>{{ $m->pemasok->nama_pemasok }}</td>
+                                    <td>{{ $m->pemasok }}</td>
                                     <td>{{ $m->created_at->format('Y-m-d') }}</td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="{{ route('masuk.view', $m->id_masuk) }}">
@@ -100,17 +100,12 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="id_pemasok">Nama pemasok</label>
-                            <select class="form-control select2" style="width: 100%;" name="id_pemasok">
-                                @foreach ($pemasok as $p)
-                                    <option value="{{ $p->id_pemasok }}">
-                                        {{ $p->nama_pemasok }}</option>
-                                @endforeach
-                            </select>
+                            <label for="pemasok">Pemasok</label>
+                            <input type="text" placeholder="masukan pemasok" class="form-control" name="pemasok">
                         </div>
                         <div class="form-group">
-                            <label for="nama_barang">Jumlah Barang</label>
-                            <input type="number" placeholder="masukan nama barang" class="form-control"
+                            <label for="jumlah_masuk">Jumlah Barang</label>
+                            <input type="number" placeholder="masukan jumlah masuk" class="form-control"
                                 name="jumlah_masuk">
                         </div>
                     </div>
@@ -148,18 +143,11 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="id_pemasok">Nama pemasok</label>
-                                <select class="form-control select2" style="width: 100%;" name="id_pemasok">
-                                    @foreach ($pemasok as $p)
-                                        <option value="{{ $p->id_pemasok }}"
-                                            @if ($m->barang->id_pemasok == $p->id_pemasok) selected @endif>
-                                            {{ $p->nama_pemasok }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <label for="pemasok">Pemasok Barang</label>
+                                <input type="text" value="{{ $m->pemasok }}" class="form-control" name="pemasok">
                             </div>
                             <div class="form-group">
-                                <label for="nama_barang">Jumlah Barang</label>
+                                <label for="jumlah_barang">Jumlah Barang</label>
                                 <input type="number" value="{{ $m->jumlah_masuk }}" class="form-control"
                                     name="jumlah_masuk">
                             </div>

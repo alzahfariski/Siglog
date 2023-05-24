@@ -16,7 +16,7 @@
         </div>
 
         <div class="col-lg-3 col-6">
-            <div class="small-box bg-success">
+            <div class="small-box bg-secondary">
                 <div class="inner">
                     <h3>{{ $jumlah_masuk }}</h3>
                     <p>Barang Masuk</p>
@@ -44,15 +44,15 @@
         </div>
 
         <div class="col-lg-3 col-6">
-            <div class="small-box bg-danger">
+            <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>{{ $jumlah_jadwal }}</h3>
-                    <p>Jadwal</p>
+                    <h3>{{ $jumlah_gudang }}</h3>
+                    <p>Gudang</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-calendar"></i>
                 </div>
-                <a href="{{ route('jadwal.index') }}" class="small-box-footer">More info <i
+                <a href="{{ route('gudang.index') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>

@@ -105,7 +105,7 @@
                 <form action="{{ route('authenticate') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Username" name="username" id="username"
+                        <input type="text" class="form-control" placeholder="Email" name="email" id="email"
                             autofocus required>
                         <div class="input-group-append">
                             <div class="input-group-text">

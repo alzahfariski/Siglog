@@ -34,7 +34,7 @@
                      </a>
                  </li>
                  <li class="nav-item {{ Request::is('administrator/data*') ? 'menu-is-opening menu-open' : '' }}">
-                     <a href="#" class="nav-link ">
+                     <a href="#" class="nav-link {{ Request::is('administrator/data*') ? 'active' : '' }}">
                          <i class="nav-icon fas fa-database"></i>
                          <p>
                              Data Barang
@@ -86,6 +86,32 @@
 
                      </ul>
                  </li>
+                 <li class="nav-item {{ Request::is('administrator/ranmor*') ? 'menu-is-opening menu-open' : '' }}">
+                     <a href="#" class="nav-link {{ Request::is('administrator/ranmor*') ? 'active' : '' }}">
+                         <i class="nav-icon fas fa-database"></i>
+                         <p>
+                             Data RANMOR
+                             <i class="right fas fa-angle-left"></i>
+                         </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                         @can('admin')
+                             <li class="nav-item">
+                                 <a href="{{ route('ranmor.jenis') }}"
+                                     class="nav-link  {{ Request::is('administrator/ranmor/jenis*') ? 'active' : '' }}">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>jenis Ranmor</p>
+                                 </a>
+                             </li>
+                         @endcan
+                         <li class="nav-item">
+                             <a href="#" class="nav-link ">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>RANMOR</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
                  <li class="nav-item">
                      <a href="{{ route('gudang.index') }}"
                          class="nav-link {{ Request::is('administrator/gudang*') ? 'active' : '' }}">
@@ -101,27 +127,6 @@
                          <i class="nav-icon fas fa-map"></i>
                          <p>
                              Lokasi
-                         </p>
-                     </a>
-                 </li>
-                 @can('admin')
-                     <li class="nav-item">
-                         <a href="{{ route('pemasok.index') }}"
-                             class="nav-link {{ Request::is('administrator/pemasok') ? 'active' : '' }}">
-                             <i class="nav-icon fas fa-boxes"></i>
-                             <p>
-                                 pemasok
-                             </p>
-                         </a>
-                     </li>
-                 @endcan
-
-                 <li class="nav-item">
-                     <a href="{{ route('jadwal.index') }}"
-                         class="nav-link {{ Request::is('administrator/jadwal*') ? 'active' : '' }}">
-                         <i class="nav-icon far fa-calendar-alt"></i>
-                         <p>
-                             Jadwal
                          </p>
                      </a>
                  </li>
