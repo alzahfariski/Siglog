@@ -40,6 +40,7 @@ class JenisRanmorController extends Controller
     public function destroy($id_jenisranmor)
     {
         $jenis = JenisRanmor::find($id_jenisranmor);
+        $jenis->ranmor()->delete();
         $jenis->delete();
 
         return redirect('administrator/ranmor/jenis');

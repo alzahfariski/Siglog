@@ -105,7 +105,8 @@
                              </li>
                          @endcan
                          <li class="nav-item">
-                             <a href="#" class="nav-link ">
+                             <a href="{{ route('ranmor.index') }}"
+                                 class="nav-link {{ Request::is('administrator/ranmor/data*') ? 'active' : '' }}">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>RANMOR</p>
                              </a>

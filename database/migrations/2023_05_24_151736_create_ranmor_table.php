@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('bagian');
             $table->enum('kondisi', ['BB', 'RR', 'RB']);
             $table->string('pemakai');
+            $table->unsignedBigInteger('id_jenisranmor');
+            $table->foreign('id_jenisranmor')->references('id_jenisranmor')->on('jenis_ranmor')->onDelete('cascade');
             $table->timestamps();
         });
     }

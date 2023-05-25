@@ -11,4 +11,9 @@ class JenisRanmor extends Model
     protected $table = "jenis_ranmor";
     protected $primaryKey = 'id_jenisranmor';
     protected $guarded = [];
+
+    public function ranmor()
+    {
+        return $this->hasMany(Ranmor::class, 'id_ranmor');
+    }
 }

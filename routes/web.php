@@ -10,8 +10,7 @@ use App\Http\Controllers\JenisController;
 use App\Http\Controllers\JenisRanmorController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LokasiController;
-use App\Http\Controllers\PemasokController;
-use App\Http\Controllers\PermintaanController;
+use App\Http\Controllers\RanmorController;
 use App\Http\Controllers\TerimaController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\IsAdmin;
@@ -97,6 +96,12 @@ Route::middleware('auth')->group(function () {
             Route::put('/ranmor/jenis/{id_jenisranmor}', [JenisRanmorController::class, 'update'])->name('jenisranmor.update');
             Route::delete('/ranmor/jenis/{id_jenisranmor}', [JenisRanmorController::class, 'destroy'])->name('jenisranmor.destroy');
         });
+
+        Route::get('/ranmor/data/{id_ranmor}/view', [RanmorController::class, 'view'])->name('ranmor.view');
+        Route::get('/ranmor/data/', [RanmorController::class, 'index'])->name('ranmor.index');
+        Route::post('/ranmor/data/store', [RanmorController::class, 'store'])->name('ranmor.store');
+        Route::put('/ranmor/data/{id_ranmor}', [RanmorController::class, 'update'])->name('ranmor.update');
+        Route::delete('/ranmor/data/{id_ranmor}', [RanmorController::class, 'destroy'])->name('ranmor.destroy');
 
         Route::get('/gudang', [GudangController::class, 'index'])->name('gudang.index');
         Route::get('/gudang/{id_gudang}/view', [GudangController::class, 'view'])->name('gudang.view');
