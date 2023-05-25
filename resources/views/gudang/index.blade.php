@@ -30,7 +30,7 @@
                     <table class="table table-hover text-nowrap">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>No</th>
                                 <th>Nama Gudang</th>
                                 <th>Keterangan</th>
                                 <th>lokasi</th>
@@ -38,9 +38,12 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $nomor = 1 + ($gudang->currentPage() - 1) * $gudang->perPage();
+                            @endphp
                             @foreach ($gudang as $g)
                                 <tr>
-                                    <td>{{ $g->id_gudang }}</td>
+                                    <td>{{ $nomor++ }}</td>
                                     <td>{{ $g->nama_gudang }}</td>
                                     <td>{{ $g->keterangan }}</td>
                                     <td>{{ $g->lokasi->nama_jalan }}</td>

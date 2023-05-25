@@ -28,9 +28,8 @@
                     <table class="table table-hover text-nowrap">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>No</th>
                                 <th>Nama</th>
-                                <th>Username</th>
                                 <th>Email</th>
                                 <th>NRP</th>
                                 <th>Jabatan</th>
@@ -39,11 +38,13 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $nomor = 1 + ($user->currentPage() - 1) * $user->perPage();
+                            @endphp
                             @foreach ($user as $u)
                                 <tr>
-                                    <td>{{ $u->id_user }}</td>
+                                    <td>{{ $nomor++ }}</td>
                                     <td>{{ $u->nama }}</td>
-                                    <td>{{ $u->username }}</td>
                                     <td>{{ $u->email }}</td>
                                     <td>{{ $u->nrp }}</td>
                                     <td>{{ $u->jabatan }}</td>
@@ -89,10 +90,6 @@
                         <div class="form-group">
                             <label for="nama">Nama User</label>
                             <input type="text" placeholder="masukan nama user" class="form-control" name="nama">
-                        </div>
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" placeholder="masukan Username" class="form-control" name="username">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
@@ -146,11 +143,6 @@
                                 <input type="text" value="{{ $u->nama }}" class="form-control" name="nama">
                             </div>
                             <div class="form-group">
-                                <label for="username">username</label>
-                                <input type="username" value="{{ $u->username }}" class="form-control"
-                                    name="username">
-                            </div>
-                            <div class="form-group">
                                 <label for="email">email</label>
                                 <input type="email" value="{{ $u->email }}" class="form-control" name="email">
                             </div>
@@ -161,6 +153,13 @@
                             <div class="form-group">
                                 <label for="jabatan">jabatan</label>
                                 <input type="jabatan" value="{{ $u->jabatan }}" class="form-control" name="jabatan">
+                            </div>
+                            <div class="form-group">
+                                <label for="role">Role</label>
+                                <select class="form-control select2" style="width: 100%;" name="role">
+                                    <option {{ old('role', $u->role) == 'admin' ? 'selected' : '' }}>admin</option>
+                                    <option {{ old('role', $u->role) == 'personel' ? 'selected' : '' }}>personel</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="password">password</label>

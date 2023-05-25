@@ -73,6 +73,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @push('script')
+        @if ($massege = Session::get('success'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Data Berhasil Di Tambah',
+                })
+            </script>
+        @endif
+        @if ($massege = Session::get('update'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Data Berhasil Di Edit',
+                })
+            </script>
+        @endif
+        @if ($massege = Session::get('delete'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Data Berhasil Di Hapus',
+                })
+            </script>
+        @endif
+    @endpush
     @stack('script')
 
 

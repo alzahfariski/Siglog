@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-12 mb-2">
-            <a href="{{ route('terima.cetak') }}" target="_blank" type="button" class="btn btn-secondary">
+            <a href="{{ route('terima.cetak', $user->id_user) }}" target="_blank" type="button" class="btn btn-secondary">
                 <i class="fas fa-print"></i> Print Barang Diterima </a>
         </div>
         <div class="col-12">
@@ -28,7 +28,7 @@
                     <table class="table table-hover text-nowrap">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>No</th>
                                 <th>Nama Barang</th>
                                 <th>Jumlah Keluar</th>
                                 <th>Penerima</th>
@@ -37,9 +37,12 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $nomor = 1 + ($terima->currentPage() - 1) * $terima->perPage();
+                            @endphp
                             @foreach ($terima as $k)
                                 <tr>
-                                    <td>{{ $k->id_keluar }}</td>
+                                    <td>{{ $nomor++ }}</td>
                                     <td>{{ $k->barang->nama_barang }}</td>
                                     <td>{{ $k->jumlah_keluar }}</td>
                                     <td>{{ $k->user->nama }}</td>

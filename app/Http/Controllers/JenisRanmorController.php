@@ -29,13 +29,13 @@ class JenisRanmorController extends Controller
     {
         // dd($request->except('_token','submit'));
         JenisRanmor::create($request->except('_token', 'submit'));
-        return redirect('administrator/ranmor/jenis');
+        return redirect()->route('ranmor.jenis')->with('success', 'Berhasil!');
     }
     public function update($id_jenisranmor, Request $request)
     {
         $jenis = JenisRanmor::find($id_jenisranmor);
         $jenis->update($request->except('_token', 'submit'));
-        return redirect('administrator/ranmor/jenis');
+        return redirect()->route('ranmor.jenis')->with('update', 'Berhasil!');
     }
     public function destroy($id_jenisranmor)
     {
@@ -43,6 +43,6 @@ class JenisRanmorController extends Controller
         $jenis->ranmor()->delete();
         $jenis->delete();
 
-        return redirect('administrator/ranmor/jenis');
+        return redirect()->route('ranmor.jenis')->with('delete', 'Berhasil!');
     }
 }

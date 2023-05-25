@@ -2,8 +2,10 @@
 @section('content')
     <div class="row">
         <div class="col-12 mb-2">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
-                <i class="fas fa-plus"></i> Tambah Ranmor</button>
+            @can('admin')
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
+                    <i class="fas fa-plus"></i> Tambah Ranmor</button>
+            @endcan
         </div>
         <div class="col-12">
             <div class="card">
@@ -28,7 +30,7 @@
                     <table class="table table-hover text-nowrap">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>No</th>
                                 <th>Tahun</th>
                                 <th>Nosin</th>
                                 <th>Noka</th>
@@ -40,9 +42,12 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $nomor = 1 + ($ranmor->currentPage() - 1) * $ranmor->perPage();
+                            @endphp
                             @foreach ($ranmor as $r)
                                 <tr>
-                                    <td>{{ $r->id_ranmor }}</td>
+                                    <td>{{ $nomor++ }}</td>
                                     <td>{{ $r->tahun }}</td>
                                     <td>{{ $r->nosin }}</td>
                                     <td>{{ $r->noka }}</td>
@@ -56,18 +61,20 @@
                                             </i>
                                             View
                                         </a>
-                                        <a class="btn btn-info btn-sm" data-toggle="modal"
-                                            data-target="#modal-edit-{{ $r->id_ranmor }}">
-                                            <i class="fas fa-pencil-alt">
-                                            </i>
-                                            Edit
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" data-toggle="modal"
-                                            data-target="#modal-delete-{{ $r->id_ranmor }}">
-                                            <i class="fas fa-trash">
-                                            </i>
-                                            Delete
-                                        </a>
+                                        @can('admin')
+                                            <a class="btn btn-info btn-sm" data-toggle="modal"
+                                                data-target="#modal-edit-{{ $r->id_ranmor }}">
+                                                <i class="fas fa-pencil-alt">
+                                                </i>
+                                                Edit
+                                            </a>
+                                            <a class="btn btn-danger btn-sm" data-toggle="modal"
+                                                data-target="#modal-delete-{{ $r->id_ranmor }}">
+                                                <i class="fas fa-trash">
+                                                </i>
+                                                Delete
+                                            </a>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach

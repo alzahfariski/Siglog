@@ -28,7 +28,7 @@
                     <table class="table table-hover text-nowrap">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>No</th>
                                 <th>Jenis Roda</th>
                                 <th>Kendaraan</th>
                                 <th>Merek</th>
@@ -36,9 +36,12 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $nomor = 1 + ($jenis->currentPage() - 1) * $jenis->perPage();
+                            @endphp
                             @foreach ($jenis as $j)
                                 <tr>
-                                    <td>{{ $j->id_jenisranmor }}</td>
+                                    <td>{{ $nomor++ }}</td>
                                     <td>{{ $j->roda }}</td>
                                     <td>{{ $j->kendaraan }}</td>
                                     <td>{{ $j->merek }}</td>

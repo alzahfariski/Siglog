@@ -39,9 +39,12 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $nomor = 1 + ($keluar->currentPage() - 1) * $keluar->perPage();
+                            @endphp
                             @foreach ($keluar as $k)
                                 <tr>
-                                    <td>{{ $k->id_keluar }}</td>
+                                    <td>{{ $nomor++ }}</td>
                                     <td>{{ $k->barang->nama_barang }}</td>
                                     <td>{{ $k->jumlah_keluar }}</td>
                                     <td>{{ $k->user->nama }}</td>
@@ -205,3 +208,14 @@
         </div>
     @endforeach
 @endsection
+@push('script')
+    @if ($massege = Session::get('failed'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal !',
+                text: 'Jumlah Melebihi Batas Stok !',
+            })
+        </script>
+    @endif
+@endpush

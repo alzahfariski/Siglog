@@ -29,13 +29,13 @@ class JenisController extends Controller
     {
         // dd($request->except('_token','submit'));
         Jenis_barang::create($request->except('_token', 'submit'));
-        return redirect('administrator/data/jenis');
+        return redirect()->route('barang.jenis')->with('success', 'Berhasil!');
     }
     public function update($id_jenis, Request $request)
     {
         $jenis = Jenis_barang::find($id_jenis);
         $jenis->update($request->except('_token', 'submit'));
-        return redirect('administrator/data/jenis');
+        return redirect()->route('barang.jenis')->with('update', 'Berhasil!');
     }
     public function destroy($id_jenis)
     {
@@ -43,6 +43,6 @@ class JenisController extends Controller
         $jenis->barang()->delete();
         $jenis->delete();
 
-        return redirect('administrator/data/jenis');
+        return redirect()->route('barang.jenis')->with('delete', 'Berhasil!');
     }
 }

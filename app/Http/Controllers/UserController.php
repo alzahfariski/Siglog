@@ -25,7 +25,6 @@ class UserController extends Controller
     {
         $data = [
             'nama' => $request->nama,
-            'username' => $request->username,
             'email' => $request->email,
             'nrp' => $request->nrp,
             'jabatan' => $request->jabatan,
@@ -34,18 +33,18 @@ class UserController extends Controller
         ];
 
         User::create($data);
-        return redirect('administrator/user');
+        return redirect()->route('user.index')->with('success', 'Berhasil!');
     }
     public function update($id_user, Request $request)
     {
         $user = User::find($id_user);
         $user->update($request->except('_token', 'submit'));
-        return redirect('administrator/user');
+        return redirect()->route('user.index')->with('update', 'Berhasil!');
     }
     public function destroy($id_user)
     {
         $user = User::find($id_user);
         $user->delete();
-        return redirect('administrator/user');
+        return redirect()->route('user.index')->with('delete', 'Berhasil!');
     }
 }

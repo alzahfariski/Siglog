@@ -40,7 +40,7 @@ class BarangMasukController extends Controller
         ]);
 
         BarangMasuk::create($request->except('_token', 'submit'));
-        return redirect('administrator/data/masuk');
+        return redirect()->route('barang.masuk')->with('success', 'Berhasil!');
     }
     public function view($id_masuk)
     {
@@ -98,12 +98,12 @@ class BarangMasukController extends Controller
             'jumlah' => $total_barang
         ]);
 
-        return redirect('administrator/data/masuk');
+        return redirect()->route('barang.masuk')->with('update', 'Berhasil!');
     }
     public function destroy($id_masuk)
     {
         $masuk = BarangMasuk::find($id_masuk);
         $masuk->delete();
-        return redirect('administrator/data/masuk');
+        return redirect()->route('barang.masuk')->with('delete', 'Berhasil!');
     }
 }

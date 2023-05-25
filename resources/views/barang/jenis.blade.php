@@ -28,16 +28,19 @@
                     <table class="table table-hover text-nowrap">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>No</th>
                                 <th>Nama jenis</th>
                                 <th>Nama Stauan</th>
                                 <th style="width: 40px">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $nomor = 1 + ($jenis->currentPage() - 1) * $jenis->perPage();
+                            @endphp
                             @foreach ($jenis as $j)
                                 <tr>
-                                    <td>{{ $j->id_jenis }}</td>
+                                    <td>{{ $nomor++ }}</td>
                                     <td>{{ $j->nama_jenis }}</td>
                                     <td>{{ $j->nama_satuan }}</td>
                                     <td class="project-actions text-right">

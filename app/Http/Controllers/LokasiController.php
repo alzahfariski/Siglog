@@ -59,13 +59,13 @@ class LokasiController extends Controller
     public function store(Request $request)
     {
         Lokasi::create($request->except('_token', 'submit'));
-        return redirect('administrator/lokasi');
+        return redirect()->route('lokasi.daftar')->with('success', 'Berhasil!');
     }
     public function update($id_lokasi, Request $request)
     {
         $lokasi = Lokasi::find($id_lokasi);
         $lokasi->update($request->except('_token', 'submit'));
-        return redirect('administrator/lokasi/daftar');
+        return redirect()->route('lokasi.daftar')->with('update', 'Berhasil!');
     }
     public function edit($id_lokasi)
     {
@@ -84,6 +84,6 @@ class LokasiController extends Controller
         $lokasi->gudang()->delete();
         $lokasi->delete();
 
-        return redirect('administrator/lokasi/daftar');
+        return redirect()->route('lokasi.daftar')->with('delete', 'Berhasil!');
     }
 }

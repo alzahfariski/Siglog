@@ -31,20 +31,20 @@ class RanmorController extends Controller
     {
         // dd($request->except('_token','submit'));
         Ranmor::create($request->except('_token', 'submit'));
-        return redirect('administrator/ranmor/data');
+        return redirect()->route('ranmor.index')->with('success', 'Berhasil!');
     }
     public function update($id_ranmor, Request $request)
     {
         $jenis = Ranmor::find($id_ranmor);
         $jenis->update($request->except('_token', 'submit'));
-        return redirect('administrator/ranmor/data');
+        return redirect()->route('ranmor.index')->with('update', 'Berhasil!');
     }
     public function destroy($id_ranmor)
     {
         $ranmor = Ranmor::find($id_ranmor);
         $ranmor->delete();
 
-        return redirect('administrator/ranmor/data');
+        return redirect()->route('ranmor.index')->with('delete', 'Berhasil!');
     }
     public function view($id_ranmor)
     {

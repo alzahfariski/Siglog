@@ -34,7 +34,7 @@ class BarangController extends Controller
     {
         // dd($request->except('_token','submit'));
         Barang::create($request->except('_token', 'submit'));
-        return redirect('administrator/data/barang');
+        return redirect()->route('barang.barang')->with('success', 'Berhasil!');
     }
     public function view($id_barang)
     {
@@ -73,7 +73,8 @@ class BarangController extends Controller
     {
         $barang = Barang::find($id_barang);
         $barang->update($request->except('_token', 'submit'));
-        return redirect('administrator/data/barang');
+
+        return redirect()->route('barang.barang')->with('update', 'Berhasil!');
     }
     public function destroy($id_barang)
     {
@@ -82,6 +83,6 @@ class BarangController extends Controller
         $barang->keluar()->delete();
         $barang->delete();
 
-        return redirect('administrator/data/barang');
+        return redirect()->route('barang.barang')->with('delete', 'Berhasil!');
     }
 }

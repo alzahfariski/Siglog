@@ -31,7 +31,7 @@ class GudangController extends Controller
     {
         // dd($request->except('_token','submit'));
         Gudang::create($request->except('_token', 'submit'));
-        return redirect('administrator/gudang');
+        return redirect()->route('gudang.index')->with('success', 'Berhasil!');
     }
     public function view($id_gudang)
     {
@@ -48,7 +48,7 @@ class GudangController extends Controller
     {
         $gudang = Gudang::find($id_gudang);
         $gudang->update($request->except('_token', 'submit'));
-        return redirect('administrator/gudang');
+        return redirect()->route('gudang.index')->with('update', 'Berhasil!');
     }
     public function destroy($id_gudang)
     {
@@ -56,6 +56,6 @@ class GudangController extends Controller
         $gudang->barang()->delete();
         $gudang->delete();
 
-        return redirect('administrator/gudang');
+        return redirect()->route('gudang.index')->with('delete', 'Berhasil!');
     }
 }

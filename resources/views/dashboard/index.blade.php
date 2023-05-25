@@ -22,7 +22,7 @@
                     <p>Barang Masuk</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
+                    <i class="ion ion-archive"></i>
                 </div>
                 <a href="{{ route('barang.masuk') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
@@ -46,11 +46,11 @@
         <div class="col-lg-3 col-6">
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>{{ $jumlah_gudang }}</h3>
-                    <p>Gudang</p>
+                    <h3>{{ $jumlah_ranmor }}</h3>
+                    <p>Ranmor</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-calendar"></i>
+                    <i class="fas fa-car"></i>
                 </div>
                 <a href="{{ route('gudang.index') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>

@@ -38,12 +38,15 @@ class BarangKeluarController extends Controller
         $stok_lama = $barang->jumlah;
         $stok_keluar = $request->jumlah_keluar;
 
-        $barang->update([
-            'jumlah' => $stok_lama - $stok_keluar
-        ]);
+        if ($stok_lama >= $stok_keluar) {
+            $barang->update([
+                'jumlah' => $stok_lama - $stok_keluar
+            ]);
 
-        BarangKeluar::create($request->except('_token', 'submit'));
-        return redirect('administrator/data/keluar');
+            BarangKeluar::create($request->except('_token', 'submit'));
+            return redirect()->route('barang.keluar')->with('success', 'Berhasil!');
+        }
+        return redirect()->route('barang.keluar')->with('failed', 'Gagal!');
     }
     public function view($id_keluar)
     {
@@ -102,18 +105,21 @@ class BarangKeluarController extends Controller
         foreach ($filtered as $barang_keluar) {
             $total_keluar += $barang_keluar;
         }
+        if ($total_barang >= $total_keluar) {
+            $total = $total_barang - $total_keluar;
 
-        $total = $total_barang - $total_keluar;
+            $barang->update([
+                'jumlah' => $total
+            ]);
+            return redirect()->route('barang.keluar')->with('update', 'Berhasil!');
+        }
 
-        $barang->update([
-            'jumlah' => $total
-        ]);
-        return redirect('administrator/data/keluar');
+        return redirect()->route('barang.keluar')->with('failed', 'Gagal!');
     }
     public function destroy($id_keluar)
     {
         $keluar = BarangKeluar::find($id_keluar);
         $keluar->delete();
-        return redirect('administrator/data/keluar');
+        return redirect()->route('barang.keluar')->with('delete', 'Berhasil!');
     }
 }

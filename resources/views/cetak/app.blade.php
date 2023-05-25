@@ -53,12 +53,15 @@
         <div class="col-6">
             <p class="text-center">Kota Bengkulu , {{ $mytime->format('d M Y') }}</p>
             <hr size="10" width="30%" color="black">
-            <p class="text-center">a.n.KEPALA BAGIAN LOGISTIK</p>
-            <p class="text-center">POLRESTA BENGKULU</p>
-            <br><br><br><br>
-            <p class="text-center">BUDI HARTONO S.H</p>
-            <hr size="10" width="30%" color="black">
-            <p class="text-center">KOMPOL NRP.12345</p>
+            @foreach ($terima as $t)
+                <p class="text-center">a.n.KEPALA BAGIAN LOGISTIK</p>
+                <p class="text-center">POLRESTA BENGKULU</p>
+                <br><br><br><br>
+                <p class="text-center">BUDI HARTONO S.H</p>
+                <hr size="10" width="30%" color="black">
+                <p class="text-center">KOMPOL NRP.tes</p>
+            @endforeach
+
         </div>
 
     </div>
