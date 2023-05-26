@@ -6,6 +6,8 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
                     <i class="fas fa-plus"></i> Tambah Ranmor</button>
             @endcan
+            <a type="button" class="btn btn-secondary" href="{{ route('ranmor.cetak') }}" target="_blank">
+                <i class="fas fa-print"> </i> Print Data Ranmor </a>
         </div>
         <div class="col-12">
             <div class="card">

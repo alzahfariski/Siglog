@@ -57,4 +57,26 @@ class RanmorController extends Controller
             ]
         );
     }
+    public function cetak()
+    {
+        $ranmor = Ranmor::all();
+        return view(
+            'ranmor.cetak',
+            compact(['ranmor']),
+            [
+                'page_title' => 'Cetak'
+            ]
+        );
+    }
+    public function cetakdetail($id_ranmor)
+    {
+        $ranmor = Ranmor::find($id_ranmor);
+        return view(
+            'ranmor.cetakdetail',
+            compact(['ranmor']),
+            [
+                'page_title' => 'cetak'
+            ]
+        );
+    }
 }

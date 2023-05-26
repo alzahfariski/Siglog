@@ -14,6 +14,7 @@ use App\Http\Controllers\RanmorController;
 use App\Http\Controllers\TerimaController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\IsAdmin;
+use App\Models\Ranmor;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -88,9 +89,6 @@ Route::middleware('auth')->group(function () {
             Route::post('/lokasi/tambah/store', [LokasiController::class, 'store'])->name('lokasi.store');
             Route::get('/lokasi/daftar/{id_lokasi}/edit', [LokasiController::class, 'edit'])->name('lokasi.edit');
             Route::put('/lokasi/daftar/{id_lokasi}', [LokasiController::class, 'update'])->name('lokasi.update');
-            Route::delete('/jadwal/{id_jadwal}', [JadwalController::class, 'destroy'])->name('jadwal.destroy');
-            Route::put('/jadwal/{id_jadwal}', [JadwalController::class, 'update'])->name('jadwal.update');
-            Route::post('/jadwal/store', [JadwalController::class, 'store'])->name('jadwal.store');
             Route::get('/ranmor/jenis', [JenisRanmorController::class, 'index'])->name('ranmor.jenis');
             Route::post('/ranmor/jenis/store', [JenisRanmorController::class, 'store'])->name('jenisranmor.store');
             Route::put('/ranmor/jenis/{id_jenisranmor}', [JenisRanmorController::class, 'update'])->name('jenisranmor.update');
@@ -102,6 +100,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/ranmor/data/store', [RanmorController::class, 'store'])->name('ranmor.store');
         Route::put('/ranmor/data/{id_ranmor}', [RanmorController::class, 'update'])->name('ranmor.update');
         Route::delete('/ranmor/data/{id_ranmor}', [RanmorController::class, 'destroy'])->name('ranmor.destroy');
+        Route::get('/ranmor/data/cetak', [RanmorController::class, 'cetak'])->name('ranmor.cetak');
+        Route::get('/ranmor/data/{id_barang}/view/cetak', [RanmorController::class, 'cetakdetail'])->name('ranmor.cetakdetail');
 
         Route::get('/gudang', [GudangController::class, 'index'])->name('gudang.index');
         Route::get('/gudang/{id_gudang}/view', [GudangController::class, 'view'])->name('gudang.view');
