@@ -5,11 +5,11 @@
             @can('admin')
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
                     <i class="fas fa-plus"></i> Tambah Barang</button>
-            @endcan
 
-            <a href="{{ route('barang.cetak') }}" target="_blank" type="button" class="btn btn-secondary">
-                <i class="fas fa-print"></i> Print data Barang
-            </a>
+                <a href="{{ route('barang.cetak') }}" target="_blank" type="button" class="btn btn-secondary">
+                    <i class="fas fa-print"></i> Print data Barang
+                </a>
+            @endcan
         </div>
         <div class="col-12">
             <div class="card">
@@ -103,7 +103,8 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="nama_barang">Nama Barang</label>
-                            <input type="text" placeholder="masukan nama barang" class="form-control" name="nama_barang">
+                            <input type="text" placeholder="masukan nama barang" class="form-control" name="nama_barang"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="id_jenis">Nama Jenis</label>

@@ -95,12 +95,18 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="id_barang">Nama Barang</label>
-                            <select class="form-control select2" style="width: 100%;" name="id_barang">
+                            <select class="form-control select2" style="width: 100%;" name="id_barang" id="id_barang"
+                                required>
+                                <option selected disabled value="">Pilih Barang</option>
                                 @foreach ($barang as $b)
-                                    <option value="{{ $b->id_barang }}">
-                                        {{ $b->nama_barang }}</option>
+                                    <option value="{{ $b->id_barang }}" data-jumlah="{{ $b->jumlah }}">
+                                        {{ $b->nama_barang }}
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="form-control">Jumlah Stok</span>
+                            <span type="text" name="jumlah" class="form-control" readonly></span>
                         </div>
                         <div class="form-group">
                             <label for="id_user">kirim ke</label>
@@ -114,7 +120,7 @@
                         <div class="form-group">
                             <label for="nama_barang">Jumlah Barang</label>
                             <input type="number" placeholder="masukan jumlah barang" class="form-control"
-                                name="jumlah_keluar">
+                                name="jumlah_keluar" required>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -218,4 +224,11 @@
             })
         </script>
     @endif
+    <script>
+        $('#id_barang').on('change', function() {
+            // ambil data dari elemen option yang dipilih
+            const jumlah = $('#id_barang option:selected').data('jumlah');
+            $('[name=jumlah]').text(jumlah);
+        });
+    </script>
 @endpush

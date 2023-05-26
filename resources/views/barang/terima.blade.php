@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-12 mb-2">
-            <a href="{{ route('terima.cetak', $user->id_user) }}" target="_blank" type="button" class="btn btn-secondary">
+            <a href="{{ route('terima.cetak') }}" target="_blank" type="button" class="btn btn-secondary">
                 <i class="fas fa-print"></i> Print Barang Diterima </a>
         </div>
         <div class="col-12">

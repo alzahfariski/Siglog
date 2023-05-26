@@ -104,12 +104,13 @@
                         </div>
                         <div class="form-group">
                             <label for="pemasok">Pemasok</label>
-                            <input type="text" placeholder="masukan pemasok" class="form-control" name="pemasok">
+                            <input type="text" placeholder="masukan pemasok" class="form-control" name="pemasok"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="jumlah_masuk">Jumlah Barang</label>
                             <input type="number" placeholder="masukan jumlah masuk" class="form-control"
-                                name="jumlah_masuk">
+                                name="jumlah_masuk" required>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">

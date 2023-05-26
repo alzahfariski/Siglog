@@ -94,12 +94,13 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="nama_gudang">Nama Gudang</label>
-                            <input type="text" placeholder="masukan nama gudang" class="form-control" name="nama_gudang">
+                            <input type="text" placeholder="masukan nama gudang" class="form-control" name="nama_gudang"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="keterangan">Keterangan</label>
                             <input type="text" placeholder="masukan keterangan gudang" class="form-control"
-                                name="keterangan">
+                                name="keterangan" required>
                         </div>
                         <label for="id_lokasi">Lokasi Gudang</label>
                         <select class="form-control select2" style="width: 100%;" name="id_lokasi">

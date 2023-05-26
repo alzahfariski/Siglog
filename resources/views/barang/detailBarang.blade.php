@@ -54,15 +54,17 @@
                                 </address>
                             </div>
                         </div>
-                        <div class="row no-print">
-                            <div class="col-12">
-                                <a href="{{ route('barang.cetakDetail', $barang->id_barang) }}" target="_blank">
-                                    <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                                        <i class="fas fa-download"></i> Cetak PDF
-                                    </button>
-                                </a>
+                        @can('admin')
+                            <div class="row no-print">
+                                <div class="col-12">
+                                    <a href="{{ route('barang.cetakDetail', $barang->id_barang) }}" target="_blank">
+                                        <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                                            <i class="fas fa-download"></i> Cetak PDF
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        @endcan
                     </div>
                 </div>
             </div>

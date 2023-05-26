@@ -38,19 +38,19 @@
                             @csrf
                             <div class="form-group">
                                 <label for="longitude">Longitude</label>
-                                <input type="text" name="longitude" id="lng" class="form-control">
+                                <input type="text" name="longitude" id="lng" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="latitude">Latitude</label>
-                                <input type="text" name="latitude" id="lat" class="form-control">
+                                <input type="text" name="latitude" id="lat" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="nama_jalan">Nama Jalan</label>
-                                <input type="text" id="nama_jalan" name="nama_jalan" class="form-control">
+                                <input type="text" id="nama_jalan" name="nama_jalan" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="alamat">Alamat</label>
-                                <textarea id="alamat" name="alamat" class="form-control" rows="4"></textarea>
+                                <textarea id="alamat" name="alamat" class="form-control" rows="4" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="kategori">Kategori</label>
@@ -63,7 +63,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="keterangan">Keterangan</label>
-                                <input type="text" name="keterangan" id="keterangan" class="form-control">
+                                <input type="text" name="keterangan" id="keterangan" class="form-control" required>
                             </div>
                     </div>
 

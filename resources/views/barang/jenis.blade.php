@@ -84,11 +84,13 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="nama_barang">Nama Jenis</label>
-                            <input type="text" placeholder="masukan nama barang" class="form-control" name="nama_jenis">
+                            <input type="text" placeholder="masukan nama barang" class="form-control" name="nama_jenis"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="nama_barang">Nama Satuan</label>
-                            <input type="text" placeholder="masukan nama barang" class="form-control" name="nama_satuan">
+                            <input type="text" placeholder="masukan nama barang" class="form-control" name="nama_satuan"
+                                required>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">

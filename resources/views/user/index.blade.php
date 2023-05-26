@@ -89,19 +89,21 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="nama">Nama User</label>
-                            <input type="text" placeholder="masukan nama user" class="form-control" name="nama">
+                            <input type="text" placeholder="masukan nama user" class="form-control" name="nama"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" placeholder="masukan Email" class="form-control" name="email">
+                            <input type="text" placeholder="masukan Email" class="form-control" name="email" required>
                         </div>
                         <div class="form-group">
                             <label for="nrp">NRP</label>
-                            <input type="text" placeholder="masukan NRP" class="form-control" name="nrp">
+                            <input type="text" placeholder="masukan NRP" class="form-control" name="nrp" required>
                         </div>
                         <div class="form-group">
                             <label for="jabatan">Jabatan</label>
-                            <input type="text" placeholder="masukan jabatan" class="form-control" name="jabatan">
+                            <input type="text" placeholder="masukan jabatan" class="form-control" name="jabatan"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="role">Role</label>
@@ -112,7 +114,8 @@
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" placeholder="masukan Password" class="form-control" name="password">
+                            <input type="password" placeholder="masukan Password" class="form-control" name="password"
+                                required>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">

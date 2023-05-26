@@ -86,15 +86,18 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="jenis_roda">Jenis Roda</label>
-                            <input type="text" placeholder="masukan jenis roda" class="form-control" name="roda">
+                            <input type="text" placeholder="masukan jenis roda" class="form-control" name="roda"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="kendaraan">Jenis Kendaraan</label>
-                            <input type="text" placeholder="masukan nama barang" class="form-control" name="kendaraan">
+                            <input type="text" placeholder="masukan nama barang" class="form-control" name="kendaraan"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="merek">Merek</label>
-                            <input type="text" placeholder="masukan nama barang" class="form-control" name="merek">
+                            <input type="text" placeholder="masukan nama barang" class="form-control" name="merek"
+                                required>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
