@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('ranmor', function (Blueprint $table) {
             $table->id('id_ranmor');
             $table->bigInteger('tahun');
-            $table->string('nosin');
-            $table->string('noka');
-            $table->string('nopol');
+            $table->string('nosin')->nullable();
+            $table->string('noka')->nullable();
+            $table->string('nopol')->nullable();
             $table->string('bagian');
             $table->enum('kondisi', ['BB', 'RR', 'RB']);
-            $table->string('pemakai');
+            $table->string('pemakai')->nullable();
             $table->unsignedBigInteger('id_jenisranmor');
             $table->foreign('id_jenisranmor')->references('id_jenisranmor')->on('jenis_ranmor')->onDelete('cascade');
             $table->timestamps();

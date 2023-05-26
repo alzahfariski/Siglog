@@ -31,6 +31,7 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Email</th>
+                                <th>Pangkat</th>
                                 <th>NRP</th>
                                 <th>Jabatan</th>
                                 <th>role</th>
@@ -46,6 +47,7 @@
                                     <td>{{ $nomor++ }}</td>
                                     <td>{{ $u->nama }}</td>
                                     <td>{{ $u->email }}</td>
+                                    <td>{{ $u->pangkat }}</td>
                                     <td>{{ $u->nrp }}</td>
                                     <td>{{ $u->jabatan }}</td>
                                     <td>{{ $u->role }}</td>
@@ -95,6 +97,11 @@
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="text" placeholder="masukan Email" class="form-control" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pangkat">Pangkat</label>
+                            <input type="text" placeholder="masukan pangkat" class="form-control" name="pangkat"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="nrp">NRP</label>

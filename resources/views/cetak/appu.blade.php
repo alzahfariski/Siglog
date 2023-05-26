@@ -58,7 +58,7 @@
             <br><br><br><br>
             <p class="text-center">{{ $terima->user->nama }}</p>
             <hr size="10" width="30%" color="black">
-            <p class="text-center">KOMPOL NRP.{{ $terima->user->nrp }}</p>
+            <p class="text-center">{{ $terima->user->pangkat }} NRP.{{ $terima->user->nrp }}</p>
         </div>
 
     </div>

@@ -117,15 +117,15 @@
                         </div>
                         <div class="form-group">
                             <label for="nosin">Nosin</label>
-                            <input type="text" placeholder="masukan nosin" class="form-control" name="nosin" required>
+                            <input type="text" placeholder="masukan nosin" class="form-control" name="nosin">
                         </div>
                         <div class="form-group">
                             <label for="noka">Noka</label>
-                            <input type="text" placeholder="masukan Noka" class="form-control" name="noka" required>
+                            <input type="text" placeholder="masukan Noka" class="form-control" name="noka">
                         </div>
                         <div class="form-group">
                             <label for="nopol">Nopol</label>
-                            <input type="text" placeholder="masukan Nopol" class="form-control" name="nopol" required>
+                            <input type="text" placeholder="masukan Nopol" class="form-control" name="nopol">
                         </div>
                         <div class="form-group">
                             <label for="bagian">Bagian</label>
@@ -141,8 +141,7 @@
                         </div>
                         <div class="form-group">
                             <label for="pemakai">Pemakai</label>
-                            <input type="text" placeholder="masukan pemakai" class="form-control" name="pemakai"
-                                required>
+                            <input type="text" placeholder="masukan pemakai" class="form-control" name="pemakai">
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">

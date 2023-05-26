@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('id_user');
             $table->string('nama');
             $table->string('email')->unique();
+            $table->string('pangkat');
             $table->bigInteger('nrp')->nullable();
             $table->string('jabatan');
             $table->string('password');

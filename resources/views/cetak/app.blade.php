@@ -58,7 +58,7 @@
             <br><br><br><br>
             <p class="text-center">{{ Auth::user()->nama }}</p>
             <hr size="10" width="30%" color="black">
-            <p class="text-center">KOMPOL NRP.{{ Auth::user()->nrp }}</p>
+            <p class="text-center">{{ Auth::user()->pangkat }} NRP.{{ Auth::user()->nrp }}</p>
 
 
         </div>

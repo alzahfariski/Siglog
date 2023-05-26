@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Alzah Fariski',
             'email' => 'alzahfariski@gmail.com',
             'jabatan' => 'programmer',
+            'pangkat' => 'MHS',
             'password' => bcrypt('demo'),
             'role' => 'admin'
         ]);
