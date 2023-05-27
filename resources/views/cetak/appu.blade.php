@@ -44,14 +44,14 @@
     </div>
     <br><br><br>
     @php
-        $mytime = Carbon\Carbon::now();
+        $mytime = Carbon\Carbon::now()->locale('id');
         $mytime->toDateTimeString();
     @endphp
 
     <div class="row">
         <div class="col-6"></div>
         <div class="col-6">
-            <p class="text-center">Kota Bengkulu , {{ $mytime->format('d M Y') }}</p>
+            <p class="text-center">Kota Bengkulu , {{ $mytime->translatedFormat('d M Y') }}</p>
             <hr size="10" width="30%" color="black">
             <p class="text-center">a.n.{{ $terima->user->jabatan }}</p>
             <p class="text-center">POLRESTA BENGKULU</p>

@@ -6,8 +6,9 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
                     <i class="fas fa-plus"></i> Tambah Ranmor</button>
             @endcan
-            <a type="button" class="btn btn-secondary" href="{{ route('ranmor.cetak') }}" target="_blank">
-                <i class="fas fa-print"> </i> Print Data Ranmor </a>
+            {{-- href="{{ route('ranmor.cetak') }}" --}}
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-pj">
+                <i class="fas fa-print"> </i> Print Data Ranmor </button>
         </div>
         <div class="col-12">
             <div class="card">
@@ -243,4 +244,40 @@
             </div>
         </div>
     @endforeach
+    <div class="modal fade" id="modal-pj">
+        <div class="modal-dialog">
+            <form action="{{ route('ranmor.cetak') }}" method="GET" target="_blank">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Masukan Penaggung Jawab</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nama">Nama Penanggung Jawab 1</label>
+                            <select class="form-control select2" style="width: 100%;" name="pj_1">
+                                @foreach ($user as $u)
+                                    <option value="{{ $u->id_user }}">{{ $u->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nama">Nama Penanggung Jawab 2</label>
+                            <select class="form-control select2" style="width: 100%;" name="pj_2">
+                                @foreach ($user as $u)
+                                    <option value="{{ $u->id_user }}">{{ $u->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection

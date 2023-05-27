@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\JenisRanmor;
 use App\Models\Ranmor;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RanmorController extends Controller
@@ -19,9 +20,10 @@ class RanmorController extends Controller
             $ranmor = Ranmor::paginate(5)->fragment('ranmor');
         }
         $jenis = JenisRanmor::all();
+        $user = User::all();
         return view(
             'ranmor.index',
-            compact(['ranmor', 'jenis', 'search']),
+            compact(['ranmor', 'jenis', 'search', 'user']),
             [
                 'page_title' => 'Data Ranmor'
             ]
@@ -60,9 +62,20 @@ class RanmorController extends Controller
     public function cetak()
     {
         $ranmor = Ranmor::all();
+
+        $pj1 = null;
+        $pj2 = null;
+
+        if (request('pj_1')) {
+            $pj1 = User::where('id_user', request('pj_1'))->first();
+        }
+        if (request('pj_2')) {
+            $pj2 = User::where('id_user', request('pj_2'))->first();
+        }
+
         return view(
             'ranmor.cetak',
-            compact(['ranmor']),
+            compact(['ranmor', 'pj1', 'pj2']),
             [
                 'page_title' => 'Cetak'
             ]

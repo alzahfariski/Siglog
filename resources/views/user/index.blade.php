@@ -92,37 +92,44 @@
                         <div class="form-group">
                             <label for="nama">Nama User</label>
                             <input type="text" placeholder="masukan nama user" class="form-control" name="nama"
-                                required>
+                                required value='{{ old('nama') }}'>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" placeholder="masukan Email" class="form-control" name="email" required>
+                            <input type="text" placeholder="masukan Email"
+                                class="form-control @error('email') is-invalid @enderror" name="email" required
+                                value='{{ old('email') }}'>
+                            @error('email')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="pangkat">Pangkat</label>
-                            <input type="text" placeholder="masukan pangkat" class="form-control" name="pangkat"
-                                required>
+                            <input type="text" placeholder="masukan pangkat" class="form-control" name="pangkat" required
+                                value='{{ old('pangkat') }}'>
                         </div>
                         <div class="form-group">
                             <label for="nrp">NRP</label>
-                            <input type="text" placeholder="masukan NRP" class="form-control" name="nrp" required>
+                            <input type="text" placeholder="masukan NRP" class="form-control" name="nrp" required
+                                value='{{ old('nrp') }}'>
                         </div>
                         <div class="form-group">
                             <label for="jabatan">Jabatan</label>
-                            <input type="text" placeholder="masukan jabatan" class="form-control" name="jabatan"
-                                required>
+                            <input type="text" placeholder="masukan jabatan" class="form-control" name="jabatan" required
+                                value='{{ old('jabatan') }}'>
                         </div>
                         <div class="form-group">
                             <label for="role">Role</label>
                             <select class="form-control select2" style="width: 100%;" name="role">
-                                <option value="admin">admin</option>
-                                <option value="personel">personel</option>
+                                <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>admin</option>
+                                <option value="personel" {{ old('role') == 'personel' ? 'selected' : '' }}>personel
+                                </option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" placeholder="masukan Password" class="form-control" name="password"
-                                required>
+                                required value='{{ old('password') }}'>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -218,3 +225,10 @@
         </div>
     @endforeach
 @endsection
+@push('script')
+    @if ($errors->any())
+        <script>
+            $('#modal-tambah').modal('show');
+        </script>
+    @endif
+@endpush
