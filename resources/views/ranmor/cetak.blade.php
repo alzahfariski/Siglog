@@ -51,7 +51,7 @@
                                             <td>{{ $r->noka }}</td>
                                             <td>{{ $r->nopol }}</td>
                                             <td>{{ $r->bagian }}</td>
-                                            @if ($r->kondisi == 'BB')
+                                            @if ($r->kondisi == 'B')
                                                 <td>B</td>
                                             @else
                                                 <td>-</td>

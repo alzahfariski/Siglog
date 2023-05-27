@@ -135,7 +135,7 @@
                         <div class="form-group">
                             <label for="kondisi">kondisi</label>
                             <select class="form-control select2" style="width: 100%;" name="kondisi">
-                                <option value="BB">BB</option>
+                                <option value="B">B</option>
                                 <option value="RR">RR</option>
                                 <option value="RB">RB</option>
                             </select>
@@ -198,7 +198,7 @@
                             <div class="form-group">
                                 <label for="kondisi">kondisi</label>
                                 <select class="form-control select2" style="width: 100%;" name="kondisi">
-                                    <option {{ old('kondisi', $r->kondisi) == 'BB' ? 'selected' : '' }}>BB</option>
+                                    <option {{ old('kondisi', $r->kondisi) == 'B' ? 'selected' : '' }}>BB</option>
                                     <option {{ old('kondisi', $r->kondisi) == 'RR' ? 'selected' : '' }}>RR</option>
                                     <option {{ old('kondisi', $r->kondisi) == 'RB' ? 'selected' : '' }}>RB</option>
                                 </select>

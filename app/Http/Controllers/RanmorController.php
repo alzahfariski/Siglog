@@ -14,7 +14,9 @@ class RanmorController extends Controller
     {
         $search = $request->query('search');
         if (!empty($search)) {
-            $ranmor = Ranmor::where('ranmor.tahun', 'like', '%' . $search . '%')
+            $ranmor = Ranmor::where('tahun', 'like', '%' . $search . '%')
+                ->orWhere('nosin', 'LIKE', '%' . $search . '%')
+                ->orWhere('bagian', 'LIKE', '%' . $search . '%')
                 ->paginate(5)->fragment('ranmor');
         } else {
             $ranmor = Ranmor::paginate(5)->fragment('ranmor');

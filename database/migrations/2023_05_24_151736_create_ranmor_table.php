@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('noka')->nullable();
             $table->string('nopol')->nullable();
             $table->string('bagian');
-            $table->enum('kondisi', ['BB', 'RR', 'RB']);
+            $table->enum('kondisi', ['B', 'RR', 'RB']);
             $table->string('pemakai')->nullable();
             $table->unsignedBigInteger('id_jenisranmor');
             $table->foreign('id_jenisranmor')->references('id_jenisranmor')->on('jenis_ranmor')->onDelete('cascade');

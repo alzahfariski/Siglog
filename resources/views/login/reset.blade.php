@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SigLog | Log in </title>
+    <title>SigLog | Reset </title>
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -26,9 +26,7 @@
     <div class="login-box">
 
         <div class="card card-outline card-primary">
-            <div class="mx-auto mt-2">
-                <img src="/img/logistik.png" alt="" style="max-height: 80px; max-width: 80px">
-            </div>
+
 
             <div class="card-header text-center">
 
@@ -36,12 +34,13 @@
 
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Sistem informasi geografis Logistik</p>
-                <form action="{{ route('authenticate') }}" method="post">
+                <p class="login-box-msg">Ubah Password</p>
+                <form action="{{ route('reset.password') }}" method="post">
                     @csrf
+                    <input type="hidden" name="token" value="{{ $token }}">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Email" name="email" id="email"
-                            autofocus required>
+                            required value="{{ $email ?? old('email') }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -64,14 +63,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12">
-                            <a href="{{ route('forgotpw') }}" class="text-primary float-right">Lupa Password
-                                ?</a><br><br>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-6 mx-auto">
-                            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+                            <button type="submit" class="btn btn-primary btn-block">Simpan</button>
                         </div>
                     </div>
                 </form>
