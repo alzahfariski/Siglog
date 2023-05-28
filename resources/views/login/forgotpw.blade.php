@@ -66,6 +66,16 @@
 
 
         @vite('resources/js/app.js')
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @if ($massege = Session::get('success'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil !',
+                    text: 'Silahkan Cek Email Anda',
+                })
+            </script>
+        @endif
 </body>
 
 </html>

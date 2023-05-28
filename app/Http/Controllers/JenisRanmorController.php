@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Imports\JenisRanmorImport;
 use App\Models\JenisRanmor;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class JenisRanmorController extends Controller
 {
@@ -44,5 +46,11 @@ class JenisRanmorController extends Controller
         $jenis->delete();
 
         return redirect()->route('ranmor.jenis')->with('delete', 'Berhasil!');
+    }
+    public function import()
+    {
+        Excel::import(new JenisRanmorImport, request()->file('file'));
+
+        return back();
     }
 }

@@ -68,7 +68,7 @@ class LoginController extends Controller
                 ->subject('Reset Password');
         });
 
-        return back()->with('succes', 'reset link');
+        return redirect()->route('forgotpw')->with('success', 'silahkan cek email');
     }
     public function showResetForm(Request $request, $token = null)
     {

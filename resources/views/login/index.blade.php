@@ -81,6 +81,16 @@
 
         @vite('resources/js/app.js')
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        @if ($massege = Session::get('info'))
+            <script>
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Password berhasil di ubah',
+                    text: 'Silakan Login Kembali',
+                })
+            </script>
+        @endif
         @if ($massege = Session::get('failed'))
             <script>
                 Swal.fire({

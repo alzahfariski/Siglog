@@ -5,10 +5,15 @@
             @can('admin')
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
                     <i class="fas fa-plus"></i> Tambah Ranmor</button>
+
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-pj">
+                    <i class="fas fa-print"> </i> Print Data Ranmor </button>
+
+                <a href="" type="button" class="btn btn-info">
+                    <i class="fas fa-file-excel"></i> download excel </a>
+                <a href="" type="button" class="btn btn-warning">
+                    <i class="fas fa-file-excel"></i> upload data excel </a>
             @endcan
-            {{-- href="{{ route('ranmor.cetak') }}" --}}
-            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-pj">
-                <i class="fas fa-print"> </i> Print Data Ranmor </button>
         </div>
         <div class="col-12">
             <div class="card">
@@ -130,7 +135,8 @@
                         </div>
                         <div class="form-group">
                             <label for="bagian">Bagian</label>
-                            <input type="text" placeholder="masukan bagian" class="form-control" name="bagian" required>
+                            <input type="text" placeholder="masukan bagian" class="form-control" name="bagian"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="kondisi">kondisi</label>

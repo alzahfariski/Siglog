@@ -107,6 +107,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/ranmor/data/cetak', [RanmorController::class, 'cetak'])->name('ranmor.cetak');
         Route::get('/ranmor/data/{id_barang}/view/cetak', [RanmorController::class, 'cetakdetail'])->name('ranmor.cetakdetail');
 
+        Route::post('jenisranmor-import', [JenisRanmorController::class, 'import'])->name('jenisranmor.import');
+
         Route::get('/gudang', [GudangController::class, 'index'])->name('gudang.index');
         Route::get('/gudang/{id_gudang}/view', [GudangController::class, 'view'])->name('gudang.view');
         Route::get('/lokasi', [LokasiController::class, 'index'])->name('lokasi.index');
