@@ -12,8 +12,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Lokasi::factory(5)->create();
-
         \App\Models\User::create([
             'nama' => 'Alzah Fariski',
             'email' => 'alzahfariski@gmail.com',

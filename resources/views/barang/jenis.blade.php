@@ -4,6 +4,10 @@
         <div class="col-12 mb-2">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
                 <i class="fas fa-plus"></i> Tambah jenis</button>
+
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-excell">
+                <i class="fas fa-file-excel"></i> upload data excel </button>
+
         </div>
         <div class="col-12">
             <div class="card">
@@ -165,4 +169,30 @@
             </div>
         </div>
     @endforeach
+    {{-- modal import excell --}}
+    <div class="modal fade" id="modal-excell">
+        <div class="modal-dialog">
+            <form action="{{ route('jenis.import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Tambah Data melalui file excell</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="merek">File Excell</label>
+                            <input type="file" class="form-control" name="file">
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection

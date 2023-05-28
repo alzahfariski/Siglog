@@ -76,6 +76,15 @@
                 })
             </script>
         @endif
+        @if ($massege = Session::get('fail'))
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'gagal !',
+                    text: 'Silahkan Masukan Email Yang Terdaftar',
+                })
+            </script>
+        @endif
 </body>
 
 </html>

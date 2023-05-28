@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Imports\RanmorImport;
 use App\Models\JenisRanmor;
 use App\Models\Ranmor;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RanmorController extends Controller
 {
@@ -93,5 +95,11 @@ class RanmorController extends Controller
                 'page_title' => 'cetak'
             ]
         );
+    }
+    public function import()
+    {
+        Excel::import(new RanmorImport, request()->file('file'));
+
+        return back();
     }
 }

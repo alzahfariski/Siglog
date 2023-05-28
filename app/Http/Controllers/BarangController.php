@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Imports\BarangImport;
 use App\Models\Barang;
 use App\Models\Gudang;
 use App\Models\Jenis_barang;
 use App\Models\Lokasi;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BarangController extends Controller
 {
@@ -84,5 +86,11 @@ class BarangController extends Controller
         $barang->delete();
 
         return redirect()->route('barang.barang')->with('delete', 'Berhasil!');
+    }
+    public function import()
+    {
+        Excel::import(new BarangImport, request()->file('file'));
+
+        return back();
     }
 }

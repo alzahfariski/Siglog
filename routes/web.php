@@ -97,6 +97,11 @@ Route::middleware('auth')->group(function () {
             Route::post('/ranmor/jenis/store', [JenisRanmorController::class, 'store'])->name('jenisranmor.store');
             Route::put('/ranmor/jenis/{id_jenisranmor}', [JenisRanmorController::class, 'update'])->name('jenisranmor.update');
             Route::delete('/ranmor/jenis/{id_jenisranmor}', [JenisRanmorController::class, 'destroy'])->name('jenisranmor.destroy');
+
+            Route::post('jenisranmor-import', [JenisRanmorController::class, 'import'])->name('jenisranmor.import');
+            Route::post('ranmor-import', [RanmorController::class, 'import'])->name('ranmor.import');
+            Route::post('jenis-import', [JenisController::class, 'import'])->name('jenis.import');
+            Route::post('barang-import', [BarangController::class, 'import'])->name('barang.import');
         });
 
         Route::get('/ranmor/data/{id_ranmor}/view', [RanmorController::class, 'view'])->name('ranmor.view');
@@ -106,8 +111,6 @@ Route::middleware('auth')->group(function () {
         Route::delete('/ranmor/data/{id_ranmor}', [RanmorController::class, 'destroy'])->name('ranmor.destroy');
         Route::get('/ranmor/data/cetak', [RanmorController::class, 'cetak'])->name('ranmor.cetak');
         Route::get('/ranmor/data/{id_barang}/view/cetak', [RanmorController::class, 'cetakdetail'])->name('ranmor.cetakdetail');
-
-        Route::post('jenisranmor-import', [JenisRanmorController::class, 'import'])->name('jenisranmor.import');
 
         Route::get('/gudang', [GudangController::class, 'index'])->name('gudang.index');
         Route::get('/gudang/{id_gudang}/view', [GudangController::class, 'view'])->name('gudang.view');

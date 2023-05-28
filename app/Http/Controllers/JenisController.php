@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Imports\JenisImport;
 use App\Models\Jenis_barang;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class JenisController extends Controller
 {
@@ -44,5 +46,11 @@ class JenisController extends Controller
         $jenis->delete();
 
         return redirect()->route('barang.jenis')->with('delete', 'Berhasil!');
+    }
+    public function import()
+    {
+        Excel::import(new JenisImport, request()->file('file'));
+
+        return back();
     }
 }

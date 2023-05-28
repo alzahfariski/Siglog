@@ -8,11 +8,8 @@
 
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-pj">
                     <i class="fas fa-print"> </i> Print Data Ranmor </button>
-
-                <a href="" type="button" class="btn btn-info">
-                    <i class="fas fa-file-excel"></i> download excel </a>
-                <a href="" type="button" class="btn btn-warning">
-                    <i class="fas fa-file-excel"></i> upload data excel </a>
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-excell">
+                    <i class="fas fa-file-excel"></i> upload data excel </button>
             @endcan
         </div>
         <div class="col-12">
@@ -45,7 +42,6 @@
                                 <th>Nopol</th>
                                 <th>Bagian</th>
                                 <th>Kondisi</th>
-                                <th>Pemakai</th>
                                 <th style="width: 40px">Aksi</th>
                             </tr>
                         </thead>
@@ -62,7 +58,6 @@
                                     <td>{{ $r->nopol }}</td>
                                     <td>{{ $r->bagian }}</td>
                                     <td>{{ $r->kondisi }}</td>
-                                    <td>{{ $r->pemakai }}</td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="{{ route('ranmor.view', $r->id_ranmor) }}">
                                             <i class="fas fa-folder">
@@ -135,8 +130,7 @@
                         </div>
                         <div class="form-group">
                             <label for="bagian">Bagian</label>
-                            <input type="text" placeholder="masukan bagian" class="form-control" name="bagian"
-                                required>
+                            <input type="text" placeholder="masukan bagian" class="form-control" name="bagian" required>
                         </div>
                         <div class="form-group">
                             <label for="kondisi">kondisi</label>
@@ -281,6 +275,32 @@
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {{-- modal import excell --}}
+    <div class="modal fade" id="modal-excell">
+        <div class="modal-dialog">
+            <form action="{{ route('ranmor.import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Tambah Data melalui file excell</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="merek">File Excell</label>
+                            <input type="file" class="form-control" name="file">
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Upload</button>
                     </div>
                 </div>
             </form>

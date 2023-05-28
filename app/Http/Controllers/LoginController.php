@@ -50,25 +50,32 @@ class LoginController extends Controller
     }
     public function sendResetLink(Request $request)
     {
-        $request->validate([
-            'email' => 'required|email|exists:users,email'
-        ]);
-
-        $token = Str::random(64);
-        DB::table('password_resets')->insert([
+        $check = DB::table('Users')->where([
             'email' => $request->email,
-            'token' => $token,
-            'created_at' => Carbon::now(),
-        ]);
-        $action_link = route('reset.password.form', ['token' => $token, 'email' => $request->email]);
-        $body = "Hay, " . $request->email . " lupa password ?";
-        Mail::send('email-forgot', ["action_link" => $action_link, 'body' => $body], function ($message) use ($request) {
-            $message->from('alzahfariski@gmail.com', 'sistem informasi geografis logistik polresta bengkulu');
-            $message->to($request->email, 'Alzah Fariski')
-                ->subject('Reset Password');
-        });
+        ])->first();
+        if (!$check) {
+            return redirect()->route('forgotpw')->with('fail', 'silahkan cek email');
+        } else {
+            $request->validate([
+                'email' => 'required|email|exists:users,email'
+            ]);
 
-        return redirect()->route('forgotpw')->with('success', 'silahkan cek email');
+            $token = Str::random(64);
+            DB::table('password_resets')->insert([
+                'email' => $request->email,
+                'token' => $token,
+                'created_at' => Carbon::now(),
+            ]);
+            $action_link = route('reset.password.form', ['token' => $token, 'email' => $request->email]);
+            $body = "Hay, " . $request->email . " lupa password ?";
+            Mail::send('email-forgot', ["action_link" => $action_link, 'body' => $body], function ($message) use ($request) {
+                $message->from('alzahfariski@gmail.com', 'sistem informasi geografis logistik polresta bengkulu');
+                $message->to($request->email, 'Alzah Fariski')
+                    ->subject('Reset Password');
+            });
+
+            return redirect()->route('forgotpw')->with('success', 'silahkan cek email');
+        }
     }
     public function showResetForm(Request $request, $token = null)
     {

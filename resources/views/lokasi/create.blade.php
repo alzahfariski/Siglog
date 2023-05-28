@@ -55,10 +55,25 @@
                             <div class="form-group">
                                 <label for="kategori">Kategori</label>
                                 <select id="kategori" name="kategori" class="form-control custom-select">
-                                    <option>Bagian Logistik</option>
-                                    <option>Bagian SDM</option>
-                                    <option>Satuan Lalu Lintas</option>
-                                    <option>Satuan Samapta</option>
+                                    <option>BAG LOG</option>
+                                    <option>BAG SDM</option>
+                                    <option>BAG REN</option>
+                                    <option>BAG OPS</option>
+                                    <option>BAG BINA MITRA</option>
+                                    <option>SAT LANTAS</option>
+                                    <option>SAT SAMAPTA</option>
+                                    <option>SAT INTELKAM</option>
+                                    <option>SAT BINMAS</option>
+                                    <option>SAT SABHARA</option>
+                                    <option>SAT RESKRIM</option>
+                                    <option>SAT NARKOBA</option>
+                                    <option>SAT TAHTI</option>
+                                    <option>SI PROPRAM</option>
+                                    <option>SI TIPOL</option>
+                                    <option>SI UM</option>
+                                    <option>SI KEU</option>
+                                    <option>SI WAS</option>
+                                    <option>SIE DOKES</option>
                                 </select>
                             </div>
                             <div class="form-group">

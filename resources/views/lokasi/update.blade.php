@@ -60,15 +60,44 @@
                             <div class="form-group">
                                 <label for="kategori">Kategori</label>
                                 <select id="kategori" name="kategori" class="form-control custom-select">
-                                    <option {{ old('kategori', $lokasi->kategori) == 'Bagian Logistik' ? 'selected' : '' }}>
-                                        Bagian Logistik</option>
-                                    <option {{ old('kategori', $lokasi->kategori) == 'Bagian SDM' ? 'selected' : '' }}>
-                                        Bagian SDM</option>
-                                    <option
-                                        {{ old('kategori', $lokasi->kategori) == 'Satuan Lalu Lintas' ? 'selected' : '' }}>
-                                        Satuan Lalu Lintas</option>
-                                    <option {{ old('kategori', $lokasi->kategori) == 'Satuan Samapta' ? 'selected' : '' }}>
-                                        Satuan Samapta</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'BAG LOG' ? 'selected' : '' }}>
+                                        BAG LOG</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'BAG SDM' ? 'selected' : '' }}>
+                                        BAG SDM </option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'BAG REN' ? 'selected' : '' }}>
+                                        BAG REN</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'BAG OPS' ? 'selected' : '' }}>
+                                        BAG OPS</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'BAG BINA MITRA' ? 'selected' : '' }}>
+                                        BAG BINA MITRA</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'SAT LANTAS' ? 'selected' : '' }}>
+                                        SAT LANTAS</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'SAT SAMAPTA' ? 'selected' : '' }}>
+                                        SAT SAMAPTA</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'SAT INTELKAM' ? 'selected' : '' }}>
+                                        SAT INTELKAM</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'SAT BINMAS' ? 'selected' : '' }}>
+                                        SAT BINMAS</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'SAT SABHARA' ? 'selected' : '' }}>
+                                        SAT SABHARA</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'SAT RESKRIM' ? 'selected' : '' }}>
+                                        SAT RESKRIM</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'SAT NARKOBA' ? 'selected' : '' }}>
+                                        SAT NARKOBA</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'SAT TAHTI' ? 'selected' : '' }}>
+                                        SAT TAHTI</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'SI PROPRAM' ? 'selected' : '' }}>
+                                        SI PROPRAM</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'SI TIPOL' ? 'selected' : '' }}>
+                                        SI TIPOL</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'SI UM' ? 'selected' : '' }}>
+                                        SI UM</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'SI KEU' ? 'selected' : '' }}>
+                                        SI KEU</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'SI WAS' ? 'selected' : '' }}>
+                                        SI WAS</option>
+                                    <option {{ old('kategori', $lokasi->kategori) == 'SIE DOKKES' ? 'selected' : '' }}>
+                                        SIE DOKES</option>
                                 </select>
                             </div>
                             <div class="form-group">
