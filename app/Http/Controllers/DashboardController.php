@@ -20,7 +20,10 @@ class DashboardController extends Controller
         for ($i = 1; $i < 13; $i++) {
             $jumlah_keluar_bar[] = BarangKeluar::whereMonth('created_at', $i)->sum('jumlah_keluar');
         }
-
+        $jumlah_baik = Ranmor::where('kondisi', 'B')->count();
+        $jumlah_rusak = Ranmor::where('kondisi', 'RR')->count();
+        $jumlah_berat = Ranmor::where('kondisi', 'RB')->count();
+        $kondisi = [$jumlah_baik, $jumlah_rusak, $jumlah_berat];
 
         return view('dashboard.index', [
             'page_title' => 'Dashboard',
@@ -29,7 +32,8 @@ class DashboardController extends Controller
             'jumlah_keluar' => BarangKeluar::all()->sum('jumlah_keluar'),
             'jumlah_ranmor' => Ranmor::all()->count(),
             'jumlah_masuk_bar' => $jumlah_masuk_bar,
-            'jumlah_keluar_bar' => $jumlah_keluar_bar
+            'jumlah_keluar_bar' => $jumlah_keluar_bar,
+            'kondisi' => $kondisi,
         ]);
     }
 }

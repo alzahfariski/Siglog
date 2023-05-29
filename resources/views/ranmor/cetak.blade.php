@@ -8,38 +8,36 @@
                         <div class="row">
                             <div class="col-12 table-responsive">
                                 <table class="table table-bordered border-dark">
-                                    <thead>
-                                        <tr>
-                                            <th rowspan="2" class="text-center" style="vertical-align: middle;">NO</th>
-                                            <th rowspan="2" class="text-center" style="vertical-align: middle;">JENIS
-                                                <br> RODA
-                                            </th>
-                                            <th rowspan="2" class="text-center" style="vertical-align: middle;">JENIS
-                                                <br> KENDARAAN
-                                            </th>
-                                            <th rowspan="2" class="text-center" style="vertical-align: middle;">MEREK
-                                            </th>
-                                            <th rowspan="2" class="text-center" style="vertical-align: middle;">TH <br>
-                                                PEMB</th>
-                                            <th rowspan="2" class="text-center" style="vertical-align: middle;">NO <br>
-                                                SIN</th>
-                                            <th rowspan="2" class="text-center" style="vertical-align: middle;">NO <br>
-                                                KA</th>
-                                            <th rowspan="2" class="text-center" style="vertical-align: middle;">NO. POL
-                                            </th>
-                                            <th rowspan="2" class="text-center" style="vertical-align: middle;">BAGIAN
-                                            </th>
-                                            <th colspan="3" class="text-center" style="vertical-align: middle;">KONDISI
-                                            </th>
-                                            <th rowspan="2" class="text-center" style="vertical-align: middle;">PEMAKAI
-                                            </th>
-                                        </tr>
-                                        <tr>
-                                            <th>BB</th>
-                                            <th>RR</th>
-                                            <th>RB</th>
-                                        </tr>
-                                    </thead>
+                                    <tr>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle;">NO</th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle;">JENIS
+                                            <br> RODA
+                                        </th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle;">JENIS
+                                            <br> KENDARAAN
+                                        </th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle;">MEREK
+                                        </th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle;">TH <br>
+                                            PEMB</th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle;">NO <br>
+                                            SIN</th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle;">NO <br>
+                                            KA</th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle;">NO. POL
+                                        </th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle;">BAGIAN
+                                        </th>
+                                        <th colspan="3" class="text-center" style="vertical-align: middle;">KONDISI
+                                        </th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle;">PEMAKAI
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>BB</th>
+                                        <th>RR</th>
+                                        <th>RB</th>
+                                    </tr>
                                     @foreach ($ranmor as $r)
                                         <tbody>
                                             <th>{{ $r->id_ranmor }}</th>
