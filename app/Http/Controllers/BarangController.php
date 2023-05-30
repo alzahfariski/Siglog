@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Imports\BarangImport;
 use App\Models\Barang;
-use App\Models\Gudang;
 use App\Models\Jenis_barang;
 use App\Models\Lokasi;
 use Illuminate\Http\Request;
@@ -22,11 +21,11 @@ class BarangController extends Controller
         } else {
             $barang = Barang::paginate(5)->fragment('barang');
         }
-        $gudang = Gudang::all();
+        $lokasi = Lokasi::all();
         $jenis = Jenis_barang::all();
         return view(
             'barang.barang',
-            compact(['barang', 'gudang', 'jenis', 'search']),
+            compact(['barang', 'lokasi', 'jenis', 'search']),
             [
                 'page_title' => 'Data Barang'
             ]

@@ -62,11 +62,10 @@
                         </div>
                         <div class="row no-print">
                             <div class="col-12">
-                                <a href="{{ route('ranmor.cetakdetail', $ranmor->id_ranmor) }}" target="_blank">
-                                    <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                                        <i class="fas fa-download"></i> Cetak PDF
-                                    </button>
-                                </a>
+                                <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;"
+                                    data-toggle="modal" data-target="#modal-pj">
+                                    <i class="fas fa-download"></i> Cetak PDF
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -74,4 +73,40 @@
             </div>
         </div>
     </section>
+    <div class="modal fade" id="modal-pj">
+        <div class="modal-dialog">
+            <form action="{{ route('ranmor.cetakdetail', $ranmor->id_ranmor) }}" method="GET" target="_blank">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Masukan Penaggung Jawab</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nama">Nama Penanggung Jawab 1</label>
+                            <select class="form-control select2" style="width: 100%;" name="pj_1">
+                                @foreach ($user as $u)
+                                    <option value="{{ $u->id_user }}">{{ $u->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nama">Nama Penanggung Jawab 2</label>
+                            <select class="form-control select2" style="width: 100%;" name="pj_2">
+                                @foreach ($user as $u)
+                                    <option value="{{ $u->id_user }}">{{ $u->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection

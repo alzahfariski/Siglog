@@ -18,9 +18,9 @@ class Barang extends Model
     {
         return $this->belongsTo(Jenis_barang::class, 'id_jenis');
     }
-    public function gudang()
+    public function lokasi()
     {
-        return $this->belongsTo(Gudang::class, 'id_gudang');
+        return $this->belongsTo(Lokasi::class, 'id_lokasi');
     }
     public function masuk()
     {

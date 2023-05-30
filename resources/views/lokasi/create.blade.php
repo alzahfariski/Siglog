@@ -45,7 +45,11 @@
                                 <input type="text" name="latitude" id="lat" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="nama_jalan">Nama Jalan</label>
+                                <label for="nama_gudang">Nama Gudang</label>
+                                <input type="text" id="nama_gudang" name="nama_gudang" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_jalan">Nama Lokasi</label>
                                 <input type="text" id="nama_jalan" name="nama_jalan" class="form-control" required>
                             </div>
                             <div class="form-group">

@@ -38,9 +38,12 @@
                                         <th>RR</th>
                                         <th>RB</th>
                                     </tr>
+                                    @php
+                                        $nomor = 1;
+                                    @endphp
                                     @foreach ($ranmor as $r)
                                         <tbody>
-                                            <th>{{ $r->id_ranmor }}</th>
+                                            <th>{{ $nomor++ }}</th>
                                             <td>{{ $r->jenis->roda }}</td>
                                             <td>{{ $r->jenis->kendaraan }}</td>
                                             <td>{{ $r->jenis->merek }}</td>

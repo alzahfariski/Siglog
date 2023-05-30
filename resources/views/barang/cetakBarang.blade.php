@@ -10,25 +10,28 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
+                                            <th>No</th>
                                             <th>Nama Barang</th>
                                             <th>Jenis</th>
                                             <th>penyimpanan</th>
                                             <th>Jumlah</th>
                                             <th>Satuan</th>
-                                            <th>Penyimpanan</th>
                                             <th>Lokasi</th>
                                         </tr>
                                     </thead>
+                                    @php
+                                        $nomor = 1;
+                                    @endphp
                                     @foreach ($barang as $b)
                                         <tbody>
                                             <tr>
+                                                <td>{{ $nomor++ }}</td>
                                                 <td>{{ $b->nama_barang }}</td>
                                                 <td>{{ $b->jenis->nama_jenis }}</td>
-                                                <td>{{ $b->gudang->nama_gudang }}</td>
+                                                <td>{{ $b->lokasi->nama_gudang }}</td>
                                                 <td>{{ $b->jumlah }}</td>
                                                 <td>{{ $b->jenis->nama_satuan }}</td>
-                                                <td>{{ $b->gudang->nama_gudang }}</td>
-                                                <td>{{ $b->gudang->lokasi->nama_jalan }}</td>
+                                                <td>{{ $b->lokasi->nama_jalan }}</td>
                                             </tr>
                                         </tbody>
                                     @endforeach

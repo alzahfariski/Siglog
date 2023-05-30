@@ -83,28 +83,18 @@ class BarangKeluarController extends Controller
     }
     public function update($id_keluar, Request $request)
     {
+        $stok_sebelum = Barang::where('id_barang',  $request->id_barang)->first();
         $barang_update = BarangKeluar::where('id_keluar', $id_keluar)->first();
-        $barang_update->update($request->all());
+        $stok_fresh = $stok_sebelum->jumlah + $barang_update->jumlah_keluar;
 
-        $masuk = BarangMasuk::where('id_barang', $request->id_barang)->get();
-        $keluar = BarangKeluar::where('id_barang', $request->id_barang)->get();
+        $keluar = BarangKeluar::where('id_keluar', $id_keluar)->first();
+        $keluar->update($request->all());
+
         $barang = Barang::where('id_barang', $request->id_barang)->first();
 
-        $filtered = $masuk->map(function ($barang) {
-            return $barang->jumlah_masuk;
-        });
-        $total_barang = 0;
-        foreach ($filtered as $barang_masuk) {
-            $total_barang += $barang_masuk;
-        }
+        $total_barang = $stok_fresh;
 
-        $filtered = $keluar->map(function ($barang) {
-            return $barang->jumlah_keluar;
-        });
-        $total_keluar = 0;
-        foreach ($filtered as $barang_keluar) {
-            $total_keluar += $barang_keluar;
-        }
+        $total_keluar = $keluar->jumlah_keluar;
         if ($total_barang >= $total_keluar) {
             $total = $total_barang - $total_keluar;
 

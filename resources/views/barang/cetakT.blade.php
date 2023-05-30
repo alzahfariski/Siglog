@@ -25,8 +25,8 @@
                                                 <td>{{ $k->barang->jenis->nama_jenis }}</td>
                                                 <td>{{ $k->user->nama }}</td>
                                                 <td>{{ $k->jumlah_keluar }} {{ $k->barang->jenis->nama_satuan }}</td>
-                                                <td>{{ $k->barang->gudang->nama_gudang }}</td>
-                                                <td>{{ $k->barang->gudang->lokasi->nama_jalan }}</td>
+                                                <td>{{ $k->barang->lokasi->nama_gudang }}</td>
+                                                <td>{{ $k->barang->lokasi->nama_jalan }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

@@ -40,8 +40,8 @@
                             <div class="col-sm-4 invoice-col">
                                 Dari Penyimpanan:
                                 <address>
-                                    <strong>{{ $keluar->barang->gudang->nama_gudang }}</strong><br>
-                                    {{ $keluar->barang->gudang->keterangan }}<br>
+                                    <strong>{{ $keluar->barang->lokasi->nama_gudang }}</strong><br>
+                                    {{ $keluar->barang->lokasi->keterangan }}<br>
                                 </address>
                             </div>
                             <div class="col-sm-4 invoice-col">

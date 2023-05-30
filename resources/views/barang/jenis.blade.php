@@ -52,7 +52,7 @@
                                             data-target="#modal-edit-{{ $j->id_jenis }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
-                                            Edit
+                                            Update
                                         </a>
                                         <a class="btn btn-danger btn-sm" data-toggle="modal"
                                             data-target="#modal-delete-{{ $j->id_jenis }}">
@@ -155,7 +155,7 @@
                         <h4>Keterangan Hapus :</h4>
                         <p>Menghapus Jenis akan juga menghapus data Barang</p>
                         <hr>
-                        <p>Gunakan aksi edit jika hanya ingin merubah data Jenis</p>
+                        <p>Gunakan aksi Update jika hanya ingin merubah data Jenis</p>
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

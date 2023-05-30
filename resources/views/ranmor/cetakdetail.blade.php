@@ -40,8 +40,11 @@
                                             <th>RB</th>
                                         </tr>
                                     </thead>
+                                    @php
+                                        $nomor = 1;
+                                    @endphp
                                     <tbody>
-                                        <th>{{ $ranmor->id_ranmor }}</th>
+                                        <th>{{ $nomor++ }}</th>
                                         <td>{{ $ranmor->jenis->roda }}</td>
                                         <td>{{ $ranmor->jenis->kendaraan }}</td>
                                         <td>{{ $ranmor->jenis->merek }}</td>

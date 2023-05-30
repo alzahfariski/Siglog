@@ -10,24 +10,27 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
+                                            <th>No</th>
                                             <th>Nama Barang</th>
                                             <th>Jenis</th>
                                             <th>penyimpanan</th>
                                             <th>Jumlah masuk</th>
-                                            <th>Penyimpanan</th>
                                             <th>Lokasi</th>
                                             <th>Pemasok</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                            $nomor = 1;
+                                        @endphp
                                         @foreach ($masuk as $m)
                                             <tr>
+                                                <td>{{ $nomor++ }}</td>
                                                 <td>{{ $m->barang->nama_barang }}</td>
                                                 <td>{{ $m->barang->jenis->nama_jenis }}</td>
-                                                <td>{{ $m->barang->gudang->nama_gudang }}</td>
+                                                <td>{{ $m->barang->lokasi->nama_gudang }}</td>
                                                 <td>{{ $m->jumlah_masuk }} {{ $m->barang->jenis->nama_satuan }}</td>
-                                                <td>{{ $m->barang->gudang->nama_gudang }}</td>
-                                                <td>{{ $m->barang->gudang->lokasi->nama_jalan }}</td>
+                                                <td>{{ $m->barang->lokasi->nama_jalan }}</td>
                                                 <td>{{ $m->pemasok }}</td>
                                             </tr>
                                         @endforeach

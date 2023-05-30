@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Tabel data barang</h3>
+                    <h3 class="card-title">Tabel data Gudang</h3>
                     <div class="card-tools">
                         <form method="GET">
                             <div class="input-group input-group-sm" style="width: 150px;">
@@ -32,7 +32,8 @@
                         <thead>
                             <tr>
                                 <th>NO</th>
-                                <th>Nama Jalan</th>
+                                <th>Nama Gudang</th>
+                                <th>Nama Lokasi</th>
                                 <th>Alamat</th>
                                 <th>kategori</th>
                                 <th style="width: 40px">Aksi</th>
@@ -45,6 +46,7 @@
                             @foreach ($lokasi as $l)
                                 <tr>
                                     <td>{{ $nomor++ }}</td>
+                                    <td>{{ $l->nama_gudang }}</td>
                                     <td>{{ $l->nama_jalan }}</td>
                                     <td>{{ $l->alamat }}</td>
                                     <td>{{ $l->kategori }}</td>
@@ -58,7 +60,7 @@
                                             <a class="btn btn-info btn-sm" href="{{ route('lokasi.edit', $l->id_lokasi) }}">
                                                 <i class="fas fa-pencil-alt">
                                                 </i>
-                                                Edit
+                                                Update
                                             </a>
                                             <a class="btn btn-danger btn-sm"data-toggle="modal"
                                                 data-target="#modal-delete-{{ $l->id_lokasi }}">
@@ -92,9 +94,9 @@
                         <p>Anda yakin ingin menghapus?</p>
                         <hr>
                         <h4>Keterangan Hapus :</h4>
-                        <p>Menghapus data Lokasi juga akan menghapus data Gudang</p>
+                        <p>Menghapus data juga akan menghapus Barang yang tersimpan di Gudang</p>
                         <hr>
-                        <p>Gunakan aksi edit jika hanya ingin merubah data Lokasi</p>
+                        <p>Gunakan aksi Update jika hanya ingin merubah data Gudang</p>
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -57,7 +57,7 @@
                                     <td>{{ $b->jenis->nama_jenis }}</td>
                                     <td>{{ $b->jumlah }}</td>
                                     <td>{{ $b->jenis->nama_satuan }}</td>
-                                    <td><span class="tag">{{ $b->gudang->nama_gudang }}</span></td>
+                                    <td><span class="tag">{{ $b->lokasi->nama_gudang }}</span></td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="{{ route('barang.view', $b->id_barang) }}">
                                             <i class="fas fa-folder">
@@ -117,12 +117,18 @@
                                 @endforeach
                             </select>
                         </div>
-                        <label for="id_gudang">Gudang</label>
-                        <select class="form-control select2" style="width: 100%;" name="id_gudang">
-                            @foreach ($gudang as $g)
-                                <option value="{{ $g->id_gudang }}">{{ $g->nama_gudang }}</option>
-                            @endforeach
-                        </select>
+                        <div class="form-group">
+                            <label for="id_lokasi">Penyimpanan</label>
+                            <select class="form-control select2" style="width: 100%;" name="id_lokasi">
+                                @foreach ($lokasi as $g)
+                                    <option value="{{ $g->id_lokasi }}">{{ $g->nama_gudang }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="jumlah">Jumlah Barang</label>
+                            <input type="number" placeholder="masukan nama barang" class="form-control" name="jumlah">
+                        </div>
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -166,15 +172,18 @@
                             </div>
                             <div class="form-group">
                                 <label for="nama_barang">Gudang</label>
-                                <select class="form-control select2" style="width: 100%;" name="id_gudang">
-                                    @foreach ($gudang as $g)
-                                        <option value="{{ $g->id_gudang }}"
-                                            @if ($g->id_gudang == $b->gudang->id_gudang) selected @endif>
+                                <select class="form-control select2" style="width: 100%;" name="id_lokasi">
+                                    @foreach ($lokasi as $g)
+                                        <option value="{{ $g->id_lokasi }}"
+                                            @if ($g->id_lokasi == $b->lokasi->id_lokasi) selected @endif>
                                             {{ $g->nama_gudang }}
-
                                         </option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="jumlah">Jumlah Barang</label>
+                                <input type="number" value="{{ $b->jumlah }}" class="form-control" name="jumlah">
                             </div>
                         </div>
                         <div class="modal-footer justify-content-between">
@@ -199,7 +208,7 @@
                         <p>Anda yakin ingin menghapus?</p>
                         <hr>
                         <h4>Keterangan Hapus :</h4>
-                        <p>Menghapus Barang akan juga menghapus <br> data Barang Masuk dan Barang Keluar</p>
+                        <p>Menghapus Barang akan juga menghapus <br> Pengelolaan data Barang dan Penyerahan Barang </p>
                         <hr>
                         <p>Gunakan aksi edit jika hanya ingin merubah data Barang</p>
                     </div>

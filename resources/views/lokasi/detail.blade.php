@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <h4>
-                                    <b>{{ $lokasi->nama_jalan }}</b>
+                                    <b>{{ $lokasi->nama_gudang }}</b><br><br>
                                     <small class="float-right">Tanggal lokasi ditambahkan :
                                         {{ $lokasi->created_at->format('Y-m-d') }}</small>
                                 </h4>
@@ -45,7 +45,7 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Id lokasi</th>
+                                            <th>Id Gudang</th>
                                             <th>Nama lokasi</th>
                                             <th>Kategori</th>
                                         </tr>

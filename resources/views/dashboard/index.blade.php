@@ -52,7 +52,7 @@
                 <div class="icon">
                     <i class="fas fa-car"></i>
                 </div>
-                <a href="{{ route('gudang.index') }}" class="small-box-footer">More info <i
+                <a href="{{ route('ranmor.index') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -95,7 +95,7 @@
                     </div>
                     <div class="card-body">
                         <canvas id="pieChart"
-                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            style="min-height: 250px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
                     </div>
                 </div>
             </div>

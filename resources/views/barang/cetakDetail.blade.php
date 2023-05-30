@@ -21,17 +21,22 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
+                                            <th>No</th>
                                             <th>Nama Barang</th>
                                             <th>Jenis</th>
                                             <th>penyimpanan</th>
                                             <th>Jumlah barang</th>
                                         </tr>
                                     </thead>
+                                    @php
+                                        $nomor = 1;
+                                    @endphp
                                     <tbody>
                                         <tr>
+                                            <td>{{ $nomor++ }}</td>
                                             <td>{{ $barang->nama_barang }}</td>
                                             <td>{{ $barang->jenis->nama_jenis }}</td>
-                                            <td>{{ $barang->gudang->nama_gudang }}</td>
+                                            <td>{{ $barang->lokasi->nama_gudang }}</td>
                                             <td>{{ $barang->jumlah }} {{ $barang->jenis->nama_satuan }}</td>
                                         </tr>
                                     </tbody>
@@ -42,15 +47,15 @@
                             <div class="col-sm-4 invoice-col">
                                 Penyimpanan :
                                 <address>
-                                    <strong>{{ $barang->gudang->nama_gudang }}</strong><br>
-                                    {{ $barang->gudang->keterangan }}<br>
+                                    <strong>{{ $barang->lokasi->nama_gudang }}</strong><br>
+                                    {{ $barang->lokasi->keterangan }}<br>
                                 </address>
                             </div>
                             <div class="col-sm-4 invoice-col">
                                 Lokasi :
                                 <address>
-                                    <strong>{{ $barang->gudang->lokasi->nama_jalan }}</strong><br>
-                                    {{ $barang->gudang->lokasi->alamat }}<br>
+                                    <strong>{{ $barang->lokasi->nama_jalan }}</strong><br>
+                                    {{ $barang->lokasi->alamat }}<br>
                                 </address>
                             </div>
                         </div>

@@ -12,6 +12,15 @@
                             </button>
                         </div>
                     </div>
+                    <style>
+                        #marker {
+                            background-image: url('/img/mbgreen.png');
+                            background-repeat: no-repeat;
+                            width: 28px;
+                            height: 28px;
+                            cursor: pointer;
+                        }
+                    </style>
                     <div class="card-body">
                         <p class="card-text"><i class="fas fa-circle"></i>&nbsp;&nbsp;Klik pada peta untuk mendapatkan
                             koordinat
@@ -47,7 +56,12 @@
                                     value="{{ $lokasi->latitude }}">
                             </div>
                             <div class="form-group">
-                                <label for="nama_jalan">Nama Jalan</label>
+                                <label for="nama_gudang">Nama Gudang</label>
+                                <input id="nama_gudang" name="nama_gudang" class="form-control"
+                                    value=" {{ $lokasi->nama_gudang }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_jalan">Nama Lokasi</label>
                                 <input type="text" id="id_lokasi" name="id_lokasi" hidden
                                     value="{{ $lokasi->id_lokasi }}">
                                 <input type="text" id="nama_jalan" name="nama_jalan" class="form-control"
@@ -146,5 +160,11 @@
             document.getElementById("lng").value = lng;
             document.getElementById("lat").value = lat;
         });
+        const el = document.createElement('div');
+        el.id = 'marker';
+        const monument = [{{ $lokasi->longitude }}, {{ $lokasi->latitude }}];
+        new mapboxgl.Marker(el)
+            .setLngLat(monument)
+            .addTo(map);
     </script>
 @endpush

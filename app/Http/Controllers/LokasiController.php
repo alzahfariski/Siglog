@@ -81,7 +81,7 @@ class LokasiController extends Controller
     public function destroy($id_lokasi)
     {
         $lokasi = Lokasi::find($id_lokasi);
-        $lokasi->gudang()->delete();
+        $lokasi->barang()->delete();
         $lokasi->delete();
 
         return redirect()->route('lokasi.daftar')->with('delete', 'Berhasil!');

@@ -55,9 +55,10 @@ class RanmorController extends Controller
     public function view($id_ranmor)
     {
         $ranmor = Ranmor::find($id_ranmor);
+        $user = User::all();
         return view(
             'ranmor.detail',
-            compact(['ranmor']),
+            compact(['ranmor', 'user']),
             [
                 'page_title' => 'Detail Ramor'
             ]
@@ -88,9 +89,18 @@ class RanmorController extends Controller
     public function cetakdetail($id_ranmor)
     {
         $ranmor = Ranmor::find($id_ranmor);
+        $pj1 = null;
+        $pj2 = null;
+
+        if (request('pj_1')) {
+            $pj1 = User::where('id_user', request('pj_1'))->first();
+        }
+        if (request('pj_2')) {
+            $pj2 = User::where('id_user', request('pj_2'))->first();
+        }
         return view(
             'ranmor.cetakdetail',
-            compact(['ranmor']),
+            compact(['ranmor', 'pj1', 'pj2']),
             [
                 'page_title' => 'cetak'
             ]

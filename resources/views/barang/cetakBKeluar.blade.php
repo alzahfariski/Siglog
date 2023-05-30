@@ -10,6 +10,7 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
+                                            <th>No</th>
                                             <th>Nama Barang</th>
                                             <th>Jenis</th>
                                             <th>Penerima</th>
@@ -19,14 +20,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                            $nomor = 1;
+                                        @endphp
                                         @foreach ($keluar as $k)
                                             <tr>
+                                                <td>{{ $nomor++ }}</td>
                                                 <td>{{ $k->barang->nama_barang }}</td>
                                                 <td>{{ $k->barang->jenis->nama_jenis }}</td>
                                                 <td>{{ $k->user->nama }}</td>
                                                 <td>{{ $k->jumlah_keluar }} {{ $k->barang->jenis->nama_satuan }}</td>
-                                                <td>{{ $k->barang->gudang->nama_gudang }}</td>
-                                                <td>{{ $k->barang->gudang->lokasi->nama_jalan }}</td>
+                                                <td>{{ $k->barang->lokasi->nama_gudang }}</td>
+                                                <td>{{ $k->barang->lokasi->nama_jalan }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

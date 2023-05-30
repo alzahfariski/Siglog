@@ -13,8 +13,8 @@ class Lokasi extends Model
     protected $primaryKey = 'id_lokasi';
     protected $guarded = [];
 
-    public function gudang()
+    public function barang()
     {
-        return $this->hasOne(Gudang::class, 'id_gudang');
+        return $this->hasMany(Barang::class, 'id_barang');
     }
 }
