@@ -13,7 +13,9 @@ class BarangMasukController extends Controller
     {
         $search = $request->query('search');
         if (!empty($search)) {
-            $masuk = BarangMasuk::where('barang_masuk.id_masuk', 'like', '%' . $search . '%')
+            $masuk = BarangMasuk::join('barang', 'barang.id_barang', '=', 'barang_masuk.id_barang')
+                ->select('barang_masuk.*', 'barang.nama_barang')
+                ->where('barang.nama_barang', 'like', '%' . $search . '%')
                 ->paginate(5)->fragment('masuk');
         } else {
             $masuk = BarangMasuk::paginate(5)->fragment('masuk');
