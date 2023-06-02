@@ -7,11 +7,14 @@ use App\Models\Barang;
 use App\Models\BarangKeluar;
 use App\Models\BarangMasuk;
 use App\Models\Ranmor;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        // admin
         $jumlah_masuk_bar = [];
         for ($i = 1; $i < 13; $i++) {
             $jumlah_masuk_bar[] = BarangMasuk::whereMonth('created_at', $i)->sum('jumlah_masuk');
@@ -25,6 +28,10 @@ class DashboardController extends Controller
         $jumlah_berat = Ranmor::where('kondisi', 'RB')->count();
         $kondisi = [$jumlah_baik, $jumlah_rusak, $jumlah_berat];
 
+        // user
+        $userId = Auth::id();
+        $user = User::find($userId);
+
         return view('dashboard.index', [
             'page_title' => 'Dashboard',
             'jumlah_barang' => Barang::all()->sum('jumlah'),
@@ -34,6 +41,7 @@ class DashboardController extends Controller
             'jumlah_masuk_bar' => $jumlah_masuk_bar,
             'jumlah_keluar_bar' => $jumlah_keluar_bar,
             'kondisi' => $kondisi,
+            'user' => $user,
         ]);
     }
 }
