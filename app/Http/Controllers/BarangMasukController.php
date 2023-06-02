@@ -16,6 +16,7 @@ class BarangMasukController extends Controller
             $masuk = BarangMasuk::join('barang', 'barang.id_barang', '=', 'barang_masuk.id_barang')
                 ->select('barang_masuk.*', 'barang.nama_barang')
                 ->where('barang.nama_barang', 'like', '%' . $search . '%')
+                ->orWhere('barang_masuk.pemasok', 'like', '%' . $search . '%')
                 ->paginate(5)->fragment('masuk');
         } else {
             $masuk = BarangMasuk::paginate(5)->fragment('masuk');

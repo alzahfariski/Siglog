@@ -15,7 +15,11 @@ class BarangKeluarController extends Controller
     {
         $search = $request->query('search');
         if (!empty($search)) {
-            $keluar = BarangKeluar::where('barang_keluar.id_keluar', 'like', '%' . $search . '%')
+            $keluar = BarangKeluar::join('barang', 'barang.id_barang', '=', 'barang_keluar.id_barang')
+                ->join('users', 'users.id_user', '=', 'barang_keluar.id_user')
+                ->select('barang_keluar.*', 'barang.nama_barang', 'users.nama')
+                ->where('barang.nama_barang', 'like', '%' . $search . '%')
+                ->orWhere('users.nama', 'like', '%' . $search . '%')
                 ->paginate(5)->fragment('keluar');
         } else {
             $keluar = BarangKeluar::paginate(5)->fragment('keluar');

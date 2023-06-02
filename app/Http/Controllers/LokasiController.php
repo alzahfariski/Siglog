@@ -23,7 +23,10 @@ class LokasiController extends Controller
     {
         $search = $request->query('search');
         if (!empty($search)) {
-            $lokasi = Lokasi::where('lokasi.nama_jalan', 'like', '%' . $search . '%')
+            $lokasi = Lokasi::where('nama_jalan', 'like', '%' . $search . '%')
+                ->orWhere('nama_gudang', 'like', '%' . $search . '%')
+                ->orwhere('kategori', 'like', '%' . $search . '%')
+                ->orWhere('alamat', 'like', '%' . $search . '%')
                 ->paginate()->fragment('lokasi');
         } else {
             $lokasi = Lokasi::paginate(5)->fragment('lokasi');

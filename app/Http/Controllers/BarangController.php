@@ -16,7 +16,12 @@ class BarangController extends Controller
     {
         $search = $request->query('search');
         if (!empty($search)) {
-            $barang = Barang::where('barang.nama_barang', 'like', '%' . $search . '%')
+            $barang = Barang::join('jenis_barang', 'jenis_barang.id_jenis', '=', 'barang.id_jenis')
+                ->join('lokasi', 'lokasi.id_lokasi', '=', 'barang.id_lokasi')
+                ->select('barang.*', 'jenis_barang.nama_jenis', 'lokasi.nama_gudang')
+                ->where('jenis_barang.nama_jenis', 'like', '%' . $search . '%')
+                ->orWhere('barang.nama_barang', 'like', '%' . $search . '%')
+                ->orWhere('lokasi.nama_gudang', 'like', '%' . $search . '%')
                 ->paginate(5)->fragment('barang');
         } else {
             $barang = Barang::paginate(5)->fragment('barang');

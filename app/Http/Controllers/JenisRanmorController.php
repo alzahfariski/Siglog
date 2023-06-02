@@ -14,7 +14,9 @@ class JenisRanmorController extends Controller
     {
         $search = $request->query('search');
         if (!empty($search)) {
-            $jenis = JenisRanmor::where('jenis_ranmor.roda', 'like', '%' . $search . '%')
+            $jenis = JenisRanmor::where('roda', 'like', '%' . $search . '%')
+                ->orWhere('kendaraan', 'like', '%' . $search . '%')
+                ->orWhere('merek', 'like', '%' . $search . '%')
                 ->paginate(5)->fragment('jenisranmor');
         } else {
             $jenis = JenisRanmor::paginate(5)->fragment('jenisranor');
