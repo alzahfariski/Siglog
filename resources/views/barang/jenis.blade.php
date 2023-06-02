@@ -34,7 +34,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama jenis</th>
-                                <th>Nama Stauan</th>
+                                <th>Nama Satuan</th>
                                 <th style="width: 40px">Aksi</th>
                             </tr>
                         </thead>

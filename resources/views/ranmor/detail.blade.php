@@ -60,14 +60,16 @@
                                 </address>
                             </div>
                         </div>
-                        <div class="row no-print">
-                            <div class="col-12">
-                                <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;"
-                                    data-toggle="modal" data-target="#modal-pj">
-                                    <i class="fas fa-download"></i> Cetak PDF
-                                </button>
+                        @can('admin')
+                            <div class="row no-print">
+                                <div class="col-12">
+                                    <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;"
+                                        data-toggle="modal" data-target="#modal-pj">
+                                        <i class="fas fa-download"></i> Cetak PDF
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        @endcan
                     </div>
                 </div>
             </div>

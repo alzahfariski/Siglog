@@ -15,7 +15,14 @@ class TerimaController extends Controller
         $user = Auth::user()->id_user;
         $search = $request->query('search');
         if (!empty($search)) {
-            $terima = BarangKeluar::where('id_user', $user)->where('barang_keluar.id_keluar', 'like', '%' . $search . '%')
+            $terima = BarangKeluar::join('barang', 'barang.id_barang', '=', 'barang_keluar.id_barang')
+                ->join('users', 'users.id_user', '=', 'barang_keluar.id_user')
+                ->select('barang_keluar.*', 'barang.nama_barang', 'users.nama')
+                ->where('users.id_user', $user)
+                ->where(function ($query) use ($search) {
+                    $query->where('barang.nama_barang', 'like', '%' . $search . '%')
+                        ->orWhere('users.nama', 'like', '%' . $search . '%');
+                })
                 ->paginate(5)->fragment('keluar');
         } else {
             $terima = BarangKeluar::where('id_user', $user)->paginate(5)->fragment('keluar');
