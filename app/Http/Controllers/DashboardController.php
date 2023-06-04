@@ -31,6 +31,7 @@ class DashboardController extends Controller
         // user
         $userId = Auth::id();
         $user = User::find($userId);
+        $keluar = BarangKeluar::where('id_user', $userId)->latest()->paginate(5);
 
         return view('dashboard.index', [
             'page_title' => 'Dashboard',
@@ -42,6 +43,8 @@ class DashboardController extends Controller
             'jumlah_keluar_bar' => $jumlah_keluar_bar,
             'kondisi' => $kondisi,
             'user' => $user,
+            'jumlah_terima' => BarangKeluar::where('id_user', $userId)->get()->sum('jumlah_keluar'),
+            'keluar' => $keluar,
         ]);
     }
 }

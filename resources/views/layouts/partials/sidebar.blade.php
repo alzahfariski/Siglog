@@ -127,13 +127,22 @@
                      <li class="nav-item">
                          <a href="{{ route('user.index') }}"
                              class="nav-link {{ Request::is('administrator/user*') ? 'active' : '' }}">
-                             <i class="nav-icon far fa-user"></i>
+                             <i class="nav-icon fas fa-user"></i>
                              <p>
                                  Data User
                              </p>
                          </a>
                      </li>
                  @endcan
+                 <li class="nav-item">
+                     <a href="{{ route('user.profil') }}"
+                         class="nav-link {{ Request::is('administrator/profil*') ? 'active' : '' }}">
+                         <i class="nav-icon fas fa-user"></i>
+                         <p>
+                             Profil
+                         </p>
+                     </a>
+                 </li>
 
              </ul>
          </nav>

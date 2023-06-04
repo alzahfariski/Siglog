@@ -13,6 +13,7 @@ use App\Http\Controllers\TerimaController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\IsAdmin;
 use App\Models\Ranmor;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -114,5 +115,7 @@ Route::middleware('auth')->group(function () {
             Route::put('/user/{id_user}', [UserController::class, 'update'])->name('user.update');
             Route::delete('/user/{id_user}', [UserController::class, 'destroy'])->name('user.destroy');
         });
+        Route::put('/profil/{id_user}', [UserController::class, 'updateprofil'])->name('user.updateprofil');
+        Route::get('/profil', [UserController::class, 'profil'])->name('user.profil');
     });
 });

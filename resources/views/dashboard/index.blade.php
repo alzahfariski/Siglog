@@ -105,59 +105,100 @@
     @endcan
     @can('personel')
         <div class="row">
-            <div class="col-lg-3 col-6">
-                <div class="small-box bg-primary">
-                    <div class="inner">
-                        <h3>{{ $jumlah_barang }}</h3>
-                        <p>Barang Diterima</p>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="small-box bg-primary">
+                            <div class="inner">
+                                <h3>{{ $jumlah_terima }}</h3>
+                                <p>Barang Diterima</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-archive"></i>
+                            </div>
+                            <a href="{{ route('barang.terima') }}" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
                     </div>
-                    <div class="icon">
-                        <i class="ion ion-archive"></i>
+                    <div class="col-md-4">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{ $jumlah_ranmor }}</h3>
+                                <p>Data Ranmor</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <a href="{{ route('ranmor.index') }}" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
                     </div>
-                    <a href="{{ route('barang.terima') }}" class="small-box-footer">More info <i
-                            class="fas fa-arrow-circle-right"></i></a>
+                    <div class="col-md-4">
+                        <div class="small-box bg-secondary">
+                            <div class="inner">
+                                <h3>{{ $jumlah_barang }}</h3>
+                                <p>Data Barang</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-clipboard"></i>
+                            </div>
+                            <a href="{{ route('barang.barang') }}" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Barang Di terima terbaru</h3>
+                        </div>
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>Nomer</th>
+                                        <th>Nama Barang</th>
+                                        <th>Jumlah Keluar</th>
+                                        <th>Tgl</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $nomor = 1;
+                                    @endphp
+                                    @foreach ($keluar as $k)
+                                        <tr>
+                                            <td>{{ $nomor++ }}</td>
+                                            <td>{{ $k->barang->nama_barang }}</td>
+                                            <td>{{ $k->jumlah_keluar }}</td>
+                                            <td>{{ $k->created_at }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer clearfix">
+                            {{-- {{ $lokasi->links() }} --}}
+                            <a href="{{ route('barang.terima') }}" class="float-right">Lihat Semua <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-6">
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3>{{ $jumlah_ranmor }}</h3>
-                        <p>Data Ranmor</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-car"></i>
-                    </div>
-                    <a href="{{ route('ranmor.index') }}" class="small-box-footer">More info <i
-                            class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6">
-                <div class="small-box bg-secondary">
-                    <div class="inner">
-                        <h3>{{ $jumlah_barang }}</h3>
-                        <p>Data Barang</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-clipboard"></i>
-                    </div>
-                    <a href="{{ route('barang.barang') }}" class="small-box-footer">More info <i
-                            class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
                         <h3 class="profile-username text-center">{{ $user->nama }}</h3>
                         <p class="text-muted text-center">{{ $user->jabatan }}</p>
                         <ul class="list-group list-group-unbordered mb-3">
-                            <li class="list-group-item">
-                                <b>{{ $user->pangkat }}</b><b class="float-right">NRP. {{ $user->nrp }}</b>
+                            <li class="list-group-item text-center">
+                                <b>{{ $user->pangkat }} NRP. {{ $user->nrp }}</b>
+                            </li><br><br><br><br>
+                            <li class="list-group-item d-md-flex justify-content-md-auto">
+                                <a href="{{ route('user.profil') }}" class="btn btn-primary col-12 mx-auto">Edit Profil</a>
                             </li>
                             <li class="list-group-item d-md-flex justify-content-md-auto">
-                                <a href="" class="btn btn-primary col-12 mx-auto">Edit Profil</a>
-                            </li>
-                            <li class="list-group-item d-md-flex justify-content-md-auto">
-                                <a href="" class="btn btn-danger col-12 mx-auto">Keluar</a>
+                                <a href="{{ route('logout') }}" class="btn btn-danger col-12 mx-auto">Keluar</a>
                             </li>
                     </div>
                 </div>
@@ -262,6 +303,7 @@
                 data: pieData,
                 options: pieOptions
             })
+
         })
     </script>
 @endpush

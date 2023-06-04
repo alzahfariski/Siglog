@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Unique;
 
 class UserController extends Controller
@@ -52,5 +53,23 @@ class UserController extends Controller
         $user = User::find($id_user);
         $user->delete();
         return redirect()->route('user.index')->with('delete', 'Berhasil!');
+    }
+    public function profil()
+    {
+        $userId = Auth::id();
+        $user = User::find($userId);
+        return view(
+            'user.profil',
+            compact(['user']),
+            [
+                'page_title' => 'Profil Personel'
+            ]
+        );
+    }
+    public function updateprofil($id_user, Request $request)
+    {
+        $user = User::find($id_user);
+        $user->update($request->except('_token', 'submit'));
+        return back()->with('update', 'Berhasil!');
     }
 }
