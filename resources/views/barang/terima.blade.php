@@ -32,7 +32,7 @@
                                 <th>Nama Barang</th>
                                 <th>Jumlah Keluar</th>
                                 <th>Penerima</th>
-                                <th>Tgl</th>
+                                <th>Tanggal</th>
                                 <th style="width: 40px">Aksi</th>
                             </tr>
                         </thead>
@@ -46,7 +46,7 @@
                                     <td>{{ $k->barang->nama_barang }}</td>
                                     <td>{{ $k->jumlah_keluar }}</td>
                                     <td>{{ $k->user->nama }}</td>
-                                    <td>{{ $k->created_at }}</td>
+                                    <td>{{ $k->created_at->format('Y-m-d') }}</td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="{{ route('terima.view', $k->id_keluar) }}">
                                             <i class="fas fa-folder">

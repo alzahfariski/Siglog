@@ -20,7 +20,7 @@
                 <div class="small-box bg-secondary">
                     <div class="inner">
                         <h3>{{ $jumlah_masuk }}</h3>
-                        <p>Barang Masuk</p>
+                        <p>Barang Diterima</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-archive"></i>
@@ -34,7 +34,7 @@
                 <div class="small-box bg-warning">
                     <div class="inner">
                         <h3>{{ $jumlah_keluar }}</h3>
-                        <p>Barang Keluar</p>
+                        <p>Penyerahan Barang</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
@@ -48,7 +48,7 @@
                 <div class="small-box bg-success">
                     <div class="inner">
                         <h3>{{ $jumlah_ranmor }}</h3>
-                        <p>Ranmor</p>
+                        <p>Jumlah Ranmor</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-car"></i>
@@ -63,7 +63,7 @@
                 <div class="col-md-8">
                     <div class="card card-success">
                         <div class="card-header">
-                            <h3 class="card-title">Diagram Barang Masuk & Barang Keluar</h3>
+                            <h3 class="card-title">Diagram Barang Diterima & Penyerahan Barang</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -224,7 +224,7 @@
                     'Oktober', 'November', 'Desember'
                 ],
                 datasets: [{
-                        label: 'Barang Keluar',
+                        label: 'Penyerahan Barang',
                         backgroundColor: 'rgba(60,141,188,0.9)',
                         borderColor: 'rgba(60,141,188,0.8)',
                         pointRadius: false,
@@ -235,7 +235,7 @@
                         data: keluarBar
                     },
                     {
-                        label: 'Barang Masuk',
+                        label: 'Barang Diterima',
                         backgroundColor: 'rgba(210, 214, 222, 1)',
                         borderColor: 'rgba(210, 214, 222, 1)',
                         pointRadius: false,

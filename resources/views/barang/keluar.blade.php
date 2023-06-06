@@ -3,14 +3,14 @@
     <div class="row">
         <div class="col-12 mb-2">
             <button type="button" class="btn btn-primary" id="tambah-btn" data-toggle="modal" data-target="#modal-tambah">
-                <i class="fas fa-plus"></i> kirim barang</button>
+                <i class="fas fa-plus"></i> Serahkan barang</button>
             <a href="{{ route('keluar.cetak') }}" target="_blank" type="button" class="btn btn-secondary">
-                <i class="fas fa-print"></i> Print Barang Keluar </a>
+                <i class="fas fa-print"></i> Print Penyerahan Barang </a>
         </div>
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Tabel data barang</h3>
+                    <h3 class="card-title">Tabel data penyerahan barang</h3>
                     <div class="card-tools">
                         <form method="GET">
                             <div class="input-group input-group-sm" style="width: 150px;">
@@ -87,7 +87,7 @@
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title"> kirim barang</h4>
+                        <h4 class="modal-title"> Serahkan barang</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -139,7 +139,7 @@
                     @method('put')
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title"> Edit barang Keluar</h4>
+                            <h4 class="modal-title"> Edit penyerahan barang</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -188,16 +188,16 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header bg-danger">
-                        <h4 class="modal-title">Hapus Barang Keluar</h4>
+                        <h4 class="modal-title">Hapus Penyerahan Barang</h4>
 
                     </div>
                     <div class="modal-body">
                         <p>Anda yakin ingin menghapus?</p>
                         <hr>
                         <h4>Keterangan Hapus :</h4>
-                        <p>Menghapus data Barang Keluar tidak merubah data stok Barang</p>
+                        <p>Menghapus data Penyerahan Barang merubah data stok Barang</p>
                         <hr>
-                        <p>Gunakan aksi edit jika hanya ingin merubah data Barang Keluar</p>
+                        <p>Gunakan aksi edit jika hanya ingin merubah data Penyerahan Barang</p>
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -205,6 +205,7 @@
                             <form action="{{ route('keluar.destroy', $k->id_keluar) }}" method="POST">
                                 @csrf
                                 @method('delete')
+                                <input type="text" hidden name="id_barang" value="{{ $k->id_barang }}">
                                 <input type="submit" name="submit" value="Hapus" class="btn btn-danger">
                             </form>
                         </div>

@@ -30,6 +30,8 @@
                                     </thead>
                                     @php
                                         $nomor = 1;
+                                        $nomorm = 1;
+                                        $nomork = 1;
                                     @endphp
                                     <tbody>
                                         <tr>
@@ -43,20 +45,74 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-4 invoice-col">
-                                Penyimpanan :
-                                <address>
-                                    <strong>{{ $barang->lokasi->nama_gudang }}</strong><br>
-                                    {{ $barang->lokasi->keterangan }}<br>
-                                </address>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <h6>
+                                    Riwayat barang diterima
+                                </h6>
                             </div>
-                            <div class="col-sm-4 invoice-col">
-                                Lokasi :
-                                <address>
-                                    <strong>{{ $barang->lokasi->nama_jalan }}</strong><br>
-                                    {{ $barang->lokasi->alamat }}<br>
-                                </address>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Barang</th>
+                                            <th>Jenis</th>
+                                            <th>penyimpanan</th>
+                                            <th>Jumlah barang</th>
+                                            <th>tanggal diterima</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($masuk as $m)
+                                            <tr>
+                                                <td>{{ $nomorm++ }}</td>
+                                                <td>{{ $m->barang->nama_barang }}</td>
+                                                <td>{{ $m->barang->jenis->nama_jenis }}</td>
+                                                <td>{{ $m->barang->lokasi->nama_gudang }}</td>
+                                                <td>{{ $m->jumlah_masuk }} {{ $barang->jenis->nama_satuan }}</td>
+                                                <td>{{ $m->created_at->format('Y-m-d') }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <h6>
+                                    Riwayat penyerahan barang
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Barang</th>
+                                            <th>Jenis</th>
+                                            <th>penyimpanan</th>
+                                            <th>Jumlah barang</th>
+                                            <th>tanggal serahkan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($keluar as $k)
+                                            <tr>
+                                                <td>{{ $nomork++ }}</td>
+                                                <td>{{ $k->barang->nama_barang }}</td>
+                                                <td>{{ $k->barang->jenis->nama_jenis }}</td>
+                                                <td>{{ $k->barang->lokasi->nama_gudang }}</td>
+                                                <td>{{ $k->barang->jumlah }} {{ $barang->jenis->nama_satuan }}</td>
+                                                <td>{{ $k->created_at->format('Y-m-d') }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

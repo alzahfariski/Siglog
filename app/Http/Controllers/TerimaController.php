@@ -25,7 +25,7 @@ class TerimaController extends Controller
                 })
                 ->paginate(5)->fragment('keluar');
         } else {
-            $terima = BarangKeluar::where('id_user', $user)->paginate(5)->fragment('keluar');
+            $terima = BarangKeluar::where('id_user', $user)->paginate(2)->fragment('keluar');
         }
         return view(
             'barang.terima',

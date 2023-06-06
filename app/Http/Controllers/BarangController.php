@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Imports\BarangImport;
 use App\Models\Barang;
+use App\Models\BarangKeluar;
+use App\Models\BarangMasuk;
 use App\Models\Jenis_barang;
 use App\Models\Lokasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class BarangController extends Controller
@@ -45,9 +48,13 @@ class BarangController extends Controller
     public function view($id_barang)
     {
         $barang = Barang::find($id_barang);
+        $masuk = BarangMasuk::where('id_barang', $id_barang)->get();
+        $keluar = BarangKeluar::where('id_barang', $id_barang)->get();
+        $user = Auth::user()->id_user;
+        $terima = BarangKeluar::where('id_user', $user)->where('id_barang', $id_barang)->get();
         return view(
             'barang.detailBarang',
-            compact(['barang']),
+            compact(['barang', 'masuk', 'keluar', 'terima']),
             [
                 'page_title' => 'Detail Barang'
             ]
@@ -56,9 +63,11 @@ class BarangController extends Controller
     public function cetakDetail($id_barang)
     {
         $barang = Barang::find($id_barang);
+        $masuk = BarangMasuk::where('id_barang', $id_barang)->get();
+        $keluar = BarangKeluar::where('id_barang', $id_barang)->get();
         return view(
             'barang.cetakDetail',
-            compact(['barang']),
+            compact(['barang', 'masuk', 'keluar']),
             [
                 'page_title' => 'STOK BARANG'
             ]

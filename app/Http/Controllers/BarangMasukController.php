@@ -26,7 +26,7 @@ class BarangMasukController extends Controller
             'barang.masuk',
             compact(['masuk', 'barang', 'search']),
             [
-                'page_title' => 'Data Barang Masuk'
+                'page_title' => 'Data Barang Diterima'
             ]
         );
     }
@@ -52,7 +52,7 @@ class BarangMasukController extends Controller
             'barang.detailMasuk',
             compact(['masuk']),
             [
-                'page_title' => 'Detail Barang Masuk'
+                'page_title' => 'Detail Barang Diterima'
             ]
         );
     }
@@ -80,7 +80,6 @@ class BarangMasukController extends Controller
     }
     public function update($id_masuk, Request $request)
     {
-
         $stok_sebelum = Barang::where('id_barang',  $request->id_barang)->first();
         $barang_update = BarangMasuk::where('id_masuk', $id_masuk)->first();
         $stok_fresh = $stok_sebelum->jumlah - $barang_update->jumlah_masuk;
@@ -97,10 +96,23 @@ class BarangMasukController extends Controller
 
         return redirect()->route('barang.masuk')->with('update', 'Berhasil!');
     }
-    public function destroy($id_masuk)
+    public function destroy($id_masuk, Request $request)
     {
-        $masuk = BarangMasuk::find($id_masuk);
-        $masuk->delete();
-        return redirect()->route('barang.masuk')->with('delete', 'Berhasil!');
+        $stok_sebelum = Barang::where('id_barang',  $request->id_barang)->first();
+        $barang_update = BarangMasuk::where('id_masuk', $id_masuk)->first();
+        $stok_fresh = $stok_sebelum->jumlah - $barang_update->jumlah_masuk;
+
+        $barang = Barang::where('id_barang', $request->id_barang)->first();
+        $total_barang = $stok_fresh;
+        if ($total_barang < 0) {
+            return redirect()->route('barang.masuk')->with('failed', 'Gagal!');
+        } else {
+            $barang->update([
+                'jumlah' => $total_barang
+            ]);
+            $masuk = BarangMasuk::find($id_masuk);
+            $masuk->delete();
+            return redirect()->route('barang.masuk')->with('delete', 'Berhasil!');
+        }
     }
 }

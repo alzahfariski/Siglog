@@ -30,7 +30,7 @@ class BarangKeluarController extends Controller
             'barang.keluar',
             compact(['keluar', 'barang', 'user', 'search']),
             [
-                'page_title' => 'Data Barang Keluar'
+                'page_title' => 'Data Penyerahann Barang'
             ]
         );
     }
@@ -59,7 +59,7 @@ class BarangKeluarController extends Controller
             'barang.detailKeluar',
             compact(['keluar']),
             [
-                'page_title' => 'Detail Barang keluar'
+                'page_title' => 'Detail Penyerahan Barang'
             ]
         );
     }
@@ -91,15 +91,15 @@ class BarangKeluarController extends Controller
         $barang_update = BarangKeluar::where('id_keluar', $id_keluar)->first();
         $stok_fresh = $stok_sebelum->jumlah + $barang_update->jumlah_keluar;
 
-        $keluar = BarangKeluar::where('id_keluar', $id_keluar)->first();
-        $keluar->update($request->all());
-
+        $stok_keluar = $request->jumlah_keluar;
         $barang = Barang::where('id_barang', $request->id_barang)->first();
 
         $total_barang = $stok_fresh;
 
-        $total_keluar = $keluar->jumlah_keluar;
-        if ($total_barang >= $total_keluar) {
+        if ($total_barang >= $stok_keluar) {
+            $keluar = BarangKeluar::where('id_keluar', $id_keluar)->first();
+            $keluar->update($request->all());
+            $total_keluar = $keluar->jumlah_keluar;
             $total = $total_barang - $total_keluar;
 
             $barang->update([
@@ -110,8 +110,18 @@ class BarangKeluarController extends Controller
 
         return redirect()->route('barang.keluar')->with('failed', 'Gagal!');
     }
-    public function destroy($id_keluar)
+    public function destroy($id_keluar, Request $request)
     {
+        $stok_sebelum = Barang::where('id_barang',  $request->id_barang)->first();
+        $barang_update = BarangKeluar::where('id_keluar', $id_keluar)->first();
+        $stok_fresh = $stok_sebelum->jumlah + $barang_update->jumlah_keluar;
+        $barang = Barang::where('id_barang', $request->id_barang)->first();
+
+        $total_barang = $stok_fresh;
+        $barang->update([
+            'jumlah' => $total_barang
+        ]);
+
         $keluar = BarangKeluar::find($id_keluar);
         $keluar->delete();
         return redirect()->route('barang.keluar')->with('delete', 'Berhasil!');

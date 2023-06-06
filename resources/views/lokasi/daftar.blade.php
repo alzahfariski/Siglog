@@ -4,7 +4,7 @@
         <div class="col-12 mb-2">
             @can('admin')
                 <a href="{{ route('lokasi.create') }}">
-                    <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Lokasi</button>
+                    <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Gudang</button>
                 </a>
             @endcan
         </div>

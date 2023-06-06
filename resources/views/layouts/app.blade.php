@@ -17,6 +17,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
     <link rel="shortcut icon" href="/img/logistik.png">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -74,6 +75,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.css"
+        type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @push('script')
         @if ($massege = Session::get('success'))

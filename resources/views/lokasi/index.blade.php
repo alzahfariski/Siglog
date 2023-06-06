@@ -9,16 +9,17 @@
             cursor: pointer;
         }
     </style>
+
     <div class="row">
         <div class="col-12">
             @can('admin')
                 <a href="{{ route('lokasi.create') }}">
-                    <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Lokasi</button>
+                    <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Gudang</button>
                 </a>
             @endcan
 
             <a href="{{ route('lokasi.daftar') }}">
-                <button type="button" class="btn btn-info"><i class="fas fa-list"></i> Daftar Lokasi</button>
+                <button type="button" class="btn btn-info"><i class="fas fa-list"></i> Daftar Gudang</button>
             </a>
         </div>
     </div>
@@ -47,7 +48,24 @@
             zoom: 16, // starting zoom
         });
 
+        map.addControl(
+            new mapboxgl.GeolocateControl({
+                positionOptions: {
+                    enableHighAccuracy: true
+                },
+                // When active the map will receive updates to the device's location as it changes.
+                trackUserLocation: true,
+                // Draw an arrow next to the location dot to indicate which direction the device is heading.
+                showUserHeading: true
+            })
+        );
         map.addControl(new mapboxgl.NavigationControl())
+        map.addControl(
+            new MapboxDirections({
+                accessToken: mapboxgl.accessToken
+            }),
+            'top-left'
+        );
 
         map.on('load', () => {
             // Add an image to use as a custom marker
@@ -73,8 +91,8 @@
                                             ]
                                         },
                                         'properties': {
-                                            'title': '{{ $l->nama_jalan }}',
-                                            'des': '<b>{{ $l->nama_jalan }}</b><br>{{ $l->kategori }}<br>{{ $l->keterangan }}'
+                                            'title': '{{ $l->nama_gudang }}',
+                                            'des': '<b>{{ $l->nama_gudang }}</b><br>{{ $l->nama_jalan }}<br>{{ $l->kategori }}<br>{{ $l->keterangan }}<br><br><a class="btn btn-primary btn-sm center-block" href="{{ route('lokasi.view', $l->id_lokasi) }}">detail</a>'
                                         }
                                     },
                                 @endforeach

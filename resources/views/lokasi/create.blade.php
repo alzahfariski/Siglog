@@ -26,7 +26,7 @@
             <div class="col-md-6">
                 <div class="card card-secondary">
                     <div class="card-header">
-                        <h3 class="card-title">Lokasi</h3>
+                        <h3 class="card-title">Data Gudang</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                 <i class="fas fa-minus"></i>
@@ -37,16 +37,16 @@
                         <form action="{{ route('lokasi.store') }}" method="POST">
                             @csrf
                             <div class="form-group">
+                                <label for="nama_gudang">Nama Gudang</label>
+                                <input type="text" id="nama_gudang" name="nama_gudang" class="form-control" required>
+                            </div>
+                            <div class="form-group">
                                 <label for="longitude">Longitude</label>
                                 <input type="text" name="longitude" id="lng" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="latitude">Latitude</label>
                                 <input type="text" name="latitude" id="lat" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="nama_gudang">Nama Gudang</label>
-                                <input type="text" id="nama_gudang" name="nama_gudang" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="nama_jalan">Nama Lokasi</label>

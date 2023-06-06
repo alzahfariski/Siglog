@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12 mb-2">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
-                <i class="fas fa-plus"></i> Tambah jenis</button>
+                <i class="fas fa-plus"></i> Tambah jenis ranmor</button>
 
             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-excell">
                 <i class="fas fa-file-excel"></i> upload data excel </button>
@@ -12,7 +12,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Tabel data jenis</h3>
+                    <h3 class="card-title">Tabel data jenis ranmor</h3>
                     <div class="card-tools">
                         <form method="GET">
                             <div class="input-group input-group-sm" style="width: 150px;">

@@ -15,7 +15,7 @@ class LokasiController extends Controller
             'lokasi.index',
             compact(['lokasi']),
             [
-                'page_title' => 'Data lokasi'
+                'page_title' => 'Data Gudang'
             ]
         );
     }
@@ -35,7 +35,7 @@ class LokasiController extends Controller
             'lokasi.daftar',
             compact(['lokasi', 'search']),
             [
-                'page_title' => 'Daftar lokasi',
+                'page_title' => 'Daftar Gudang',
             ]
         );
     }
@@ -46,7 +46,7 @@ class LokasiController extends Controller
             'lokasi.detail',
             compact(['lokasi']),
             [
-                'page_title' => 'Detail Lokasi'
+                'page_title' => 'Detail Gudang'
             ]
         );
     }
@@ -55,7 +55,7 @@ class LokasiController extends Controller
         return view(
             'lokasi.create',
             [
-                'page_title' => 'Tambah Lokasi'
+                'page_title' => 'Tambah Gudang'
             ]
         );
     }
@@ -77,7 +77,7 @@ class LokasiController extends Controller
             'lokasi.update',
             compact(['lokasi']),
             [
-                'page_title' => 'Edit Lokasi'
+                'page_title' => 'Edit Gudang'
             ]
         );
     }

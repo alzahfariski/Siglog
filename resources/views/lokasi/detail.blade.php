@@ -3,7 +3,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Peta</h3>
@@ -29,7 +29,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="invoice p-3 mb-3">
                         <div class="row">
                             <div class="col-12">
@@ -105,6 +105,23 @@
             center: [{{ $lokasi->longitude }}, {{ $lokasi->latitude }}], // starting position [lng, lat]
             zoom: 16, // starting zoom
         });
+        map.addControl(
+            new mapboxgl.GeolocateControl({
+                positionOptions: {
+                    enableHighAccuracy: true
+                },
+                // When active the map will receive updates to the device's location as it changes.
+                trackUserLocation: true,
+                // Draw an arrow next to the location dot to indicate which direction the device is heading.
+                showUserHeading: true
+            })
+        );
+        map.addControl(
+            new MapboxDirections({
+                accessToken: mapboxgl.accessToken
+            }),
+            'top-left'
+        );
         map.addControl(new mapboxgl.NavigationControl())
         const el = document.createElement('div');
         el.id = 'marker';

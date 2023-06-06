@@ -23,7 +23,7 @@ class JenisController extends Controller
             'barang.jenis',
             compact(['jenis', 'search']),
             [
-                'page_title' => 'Data jenis'
+                'page_title' => 'Data jenis Barang'
             ]
         );
     }
