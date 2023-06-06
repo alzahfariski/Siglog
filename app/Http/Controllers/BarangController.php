@@ -29,11 +29,13 @@ class BarangController extends Controller
         } else {
             $barang = Barang::paginate(5)->fragment('barang');
         }
+        $bulan = ['semua', 'januari', 'februari', 'maret', 'april', 'mei', 'juni', 'juli', 'agustus', 'september', 'november', 'oktober', 'desember'];
         $lokasi = Lokasi::all();
         $jenis = Jenis_barang::all();
+        $nama_gudang = Lokasi::pluck('nama_gudang', 'id_lokasi');
         return view(
             'barang.barang',
-            compact(['barang', 'lokasi', 'jenis', 'search']),
+            compact(['barang', 'lokasi', 'jenis', 'search', 'nama_gudang', 'bulan']),
             [
                 'page_title' => 'Data Barang'
             ]
@@ -75,7 +77,12 @@ class BarangController extends Controller
     }
     public function cetak()
     {
-        $barang = Barang::all();
+        $barang = Barang::filter()->get();
+
+        if ($barang->count() === 0) {
+            return redirect()->back()->with('nope', 'Data Kosong !');
+        }
+
         return view(
             'barang.cetakBarang',
             compact(['barang']),

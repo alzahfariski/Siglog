@@ -13,6 +13,18 @@ class Barang extends Model
     protected $primaryKey = 'id_barang';
     protected $guarded = [];
 
+    public function scopeFilter($query)
+    {
+        if (request('id_lokasi') ?? false) {
+            $query->where('id_lokasi', request('id_lokasi'));
+        }
+
+        if (request('bulan') ?? false) {
+            $query->whereMonth('created_at', request('bulan'));
+        }
+
+        return $query;
+    }
 
     public function jenis()
     {

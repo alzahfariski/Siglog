@@ -139,7 +139,6 @@
                             .setLngLat(coordinates)
                             .setHTML(description)
                             .addTo(map);
-
                     });
                 }
             );

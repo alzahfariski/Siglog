@@ -6,9 +6,12 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
                     <i class="fas fa-plus"></i> Tambah Barang</button>
 
-                <a href="{{ route('barang.cetak') }}" target="_blank" type="button" class="btn btn-secondary">
+                {{-- <a href="{{ route('barang.cetak') }}" target="_blank" type="button" class="btn btn-secondary">
                     <i class="fas fa-print"></i> Print data Barang
-                </a>
+                </a> --}}
+
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-print">
+                    <i class="fas fa-print"></i> Print data Barang </button>
 
                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-excell">
                     <i class="fas fa-file-excel"></i> upload data excel </button>
@@ -250,4 +253,56 @@
             </form>
         </div>
     </div>
+
+    {{-- Print Modal --}}
+    <div class="modal fade" id="modal-print">
+        <div class="modal-dialog">
+            <form action="{{ route('barang.cetak') }}" method="GET">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Print Data Barang</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="id_lokasi">Nama Gudang</label>
+                            <select name="id_lokasi" id="id_lokasi" class="form-control">
+                                <option value="">Semua Gudang</option>
+                                @foreach ($nama_gudang as $index => $gudang)
+                                    <option value="{{ $index }}">{{ $gudang }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bulan">bulan</label>
+                            <select name="bulan" id="bulan" class="form-control">
+                                @foreach ($bulan as $index => $bln)
+                                    <option value="{{ $index }}">{{ $bln }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Print</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection
+@push('script')
+    @if ($massege = Session::get('nope'))
+        <script>
+            const message = @json(session('nope'));
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal !',
+                text: message,
+            })
+        </script>
+    @endif
+@endpush
