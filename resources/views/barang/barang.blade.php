@@ -269,17 +269,26 @@
                         <div class="form-group">
                             <label for="id_lokasi">Nama Gudang</label>
                             <select name="id_lokasi" id="id_lokasi" class="form-control">
-                                <option value="">Semua Gudang</option>
+                                <option value="">Semua Data</option>
                                 @foreach ($nama_gudang as $index => $gudang)
                                     <option value="{{ $index }}">{{ $gudang }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="bulan">bulan</label>
+                            <label for="bulan">Bulan</label>
                             <select name="bulan" id="bulan" class="form-control">
                                 @foreach ($bulan as $index => $bln)
                                     <option value="{{ $index }}">{{ $bln }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_jenis">Nama Jenis</label>
+                            <select name="id_jenis" id="id_jenis" class="form-control">
+                                <option value="">Semua Data</option>
+                                @foreach ($nama_jenis as $index => $jns)
+                                    <option value="{{ $index }}">{{ $jns }}</option>
                                 @endforeach
                             </select>
                         </div>

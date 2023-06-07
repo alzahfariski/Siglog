@@ -29,11 +29,14 @@ class RanmorController extends Controller
         } else {
             $ranmor = Ranmor::paginate(5)->fragment('ranmor');
         }
+
+        $nama_roda = JenisRanmor::all()->groupBy('roda');
+
         $jenis = JenisRanmor::all();
         $user = User::all();
         return view(
             'ranmor.index',
-            compact(['ranmor', 'jenis', 'search', 'user']),
+            compact(['ranmor', 'jenis', 'search', 'user', 'nama_roda']),
             [
                 'page_title' => 'Data Ranmor'
             ]
@@ -72,7 +75,11 @@ class RanmorController extends Controller
     }
     public function cetak()
     {
-        $ranmor = Ranmor::all();
+        $ranmor = Ranmor::filter()->get();
+
+        if ($ranmor->count() === 0) {
+            return redirect()->back()->with('nope', 'Data Kosong !');
+        }
 
         $pj1 = null;
         $pj2 = null;

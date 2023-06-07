@@ -29,13 +29,14 @@ class BarangController extends Controller
         } else {
             $barang = Barang::paginate(5)->fragment('barang');
         }
-        $bulan = ['semua', 'januari', 'februari', 'maret', 'april', 'mei', 'juni', 'juli', 'agustus', 'september', 'november', 'oktober', 'desember'];
+        $bulan = ['Semua Data', 'januari', 'februari', 'maret', 'april', 'mei', 'juni', 'juli', 'agustus', 'september', 'november', 'oktober', 'desember'];
         $lokasi = Lokasi::all();
         $jenis = Jenis_barang::all();
+        $nama_jenis = Jenis_barang::pluck('nama_jenis', 'id_jenis');
         $nama_gudang = Lokasi::pluck('nama_gudang', 'id_lokasi');
         return view(
             'barang.barang',
-            compact(['barang', 'lokasi', 'jenis', 'search', 'nama_gudang', 'bulan']),
+            compact(['barang', 'lokasi', 'jenis', 'search', 'nama_gudang', 'bulan', 'nama_jenis']),
             [
                 'page_title' => 'Data Barang'
             ]

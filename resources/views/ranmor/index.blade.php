@@ -37,9 +37,9 @@
                             <tr>
                                 <th>No</th>
                                 <th>Tahun</th>
-                                <th>Nosin</th>
-                                <th>Noka</th>
-                                <th>Nopol</th>
+                                <th>Nomer Mesin</th>
+                                <th>Nomer Rangka</th>
+                                <th>Nomor Polisi</th>
                                 <th>Bagian</th>
                                 <th>Kondisi</th>
                                 <th style="width: 40px">Aksi</th>
@@ -268,6 +268,15 @@
                             <select class="form-control select2" style="width: 100%;" name="pj_2">
                                 @foreach ($user as $u)
                                     <option value="{{ $u->id_user }}">{{ $u->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_jenisranmor">Jenis Roda</label>
+                            <select class="form-control select2" style="width: 100%;" name="id_jenisranmor">
+                                <option value="">Semua Data</option>
+                                @foreach ($nama_roda as $index => $roda)
+                                    <option value="{{ $index }}">{{ $index }}</option>
                                 @endforeach
                             </select>
                         </div>

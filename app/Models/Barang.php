@@ -22,6 +22,9 @@ class Barang extends Model
         if (request('bulan') ?? false) {
             $query->whereMonth('created_at', request('bulan'));
         }
+        if (request('id_jenis') ?? false) {
+            $query->where('id_jenis', request('id_jenis'));
+        }
 
         return $query;
     }
