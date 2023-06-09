@@ -65,7 +65,7 @@
                                         <a class="btn btn-primary btn-sm" href="{{ route('barang.view', $b->id_barang) }}">
                                             <i class="fas fa-folder">
                                             </i>
-                                            View
+                                            Detail
                                         </a>
                                         @can('admin')
                                             <a class="btn btn-info btn-sm" data-toggle="modal"
@@ -78,7 +78,7 @@
                                                 data-target="#modal-delete-{{ $b->id_barang }}">
                                                 <i class="fas fa-trash">
                                                 </i>
-                                                Delete
+                                                Hapus
                                             </a>
                                         @endcan
                                     </td>
@@ -211,7 +211,8 @@
                         <p>Anda yakin ingin menghapus?</p>
                         <hr>
                         <h4>Keterangan Hapus :</h4>
-                        <p>Menghapus Barang akan juga menghapus <br> Pengelolaan data Barang dan Penyerahan Barang </p>
+                        <p>Menghapus Barang akan juga menghapus <br> Pengelolaan data Barang diterima dan Penyerahan Barang
+                        </p>
                         <hr>
                         <p>Gunakan aksi edit jika hanya ingin merubah data Barang</p>
                     </div>

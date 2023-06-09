@@ -32,7 +32,6 @@
             </h2>
             <p class="text-center fs-6"><b>LAPORAN {{ $page_title }}</b></p>
             <hr size="10" width="20%" color="black">
-            <p class="text-center fs-6">Nomor: BR / .. / L / VII / 2023 /Polresta Bengkulu</p>
         </div>
     </div><br><br><br>
     <div class="wrapper">

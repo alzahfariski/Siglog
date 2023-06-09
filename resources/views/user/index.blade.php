@@ -62,7 +62,7 @@
                                             data-target="#modal-delete-{{ $u->id_user }}">
                                             <i class="fas fa-trash">
                                             </i>
-                                            Delete
+                                            Hapus
                                         </a>
                                     </td>
                                 </tr>

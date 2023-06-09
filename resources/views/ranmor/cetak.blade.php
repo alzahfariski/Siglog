@@ -21,10 +21,10 @@
                                         <th rowspan="2" class="text-center" style="vertical-align: middle;">TH <br>
                                             PEMB</th>
                                         <th rowspan="2" class="text-center" style="vertical-align: middle;">NO <br>
-                                            SIN</th>
+                                            MESIN</th>
                                         <th rowspan="2" class="text-center" style="vertical-align: middle;">NO <br>
-                                            KA</th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle;">NO. POL
+                                            RANGKA</th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle;">NO. POLISI
                                         </th>
                                         <th rowspan="2" class="text-center" style="vertical-align: middle;">BAGIAN
                                         </th>

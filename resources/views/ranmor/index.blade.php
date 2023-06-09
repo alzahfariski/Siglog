@@ -62,7 +62,7 @@
                                         <a class="btn btn-primary btn-sm" href="{{ route('ranmor.view', $r->id_ranmor) }}">
                                             <i class="fas fa-folder">
                                             </i>
-                                            View
+                                            Detail
                                         </a>
                                         @can('admin')
                                             <a class="btn btn-info btn-sm" data-toggle="modal"
@@ -75,7 +75,7 @@
                                                 data-target="#modal-delete-{{ $r->id_ranmor }}">
                                                 <i class="fas fa-trash">
                                                 </i>
-                                                Delete
+                                                Hapus
                                             </a>
                                         @endcan
                                     </td>
@@ -180,15 +180,15 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="nosin">Nosin</label>
+                                <label for="nosin">Nomer mesin</label>
                                 <input type="text" value="{{ $r->nosin }}" class="form-control" name="nosin">
                             </div>
                             <div class="form-group">
-                                <label for="noka">Noka</label>
+                                <label for="noka">Nomer rangka</label>
                                 <input type="text" value="{{ $r->noka }}" class="form-control" name="noka">
                             </div>
                             <div class="form-group">
-                                <label for="nopol">Nopol</label>
+                                <label for="nopol">Nomer polisi</label>
                                 <input type="text" value="{{ $r->nopol }}" class="form-control" name="nopol">
                             </div>
                             <div class="form-group">

@@ -52,13 +52,13 @@
                                             data-target="#modal-edit-{{ $j->id_jenis }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
-                                            Update
+                                            Edit
                                         </a>
                                         <a class="btn btn-danger btn-sm" data-toggle="modal"
                                             data-target="#modal-delete-{{ $j->id_jenis }}">
                                             <i class="fas fa-trash">
                                             </i>
-                                            Delete
+                                            Hapus
                                         </a>
                                     </td>
                                 </tr>

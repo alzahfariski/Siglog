@@ -53,7 +53,7 @@
                                         <a class="btn btn-primary btn-sm" href="{{ route('keluar.view', $k->id_keluar) }}">
                                             <i class="fas fa-folder">
                                             </i>
-                                            View
+                                            Detail
                                         </a>
                                         <a class="btn btn-info btn-sm" data-toggle="modal"
                                             data-target="#modal-edit-{{ $k->id_keluar }}">
@@ -65,7 +65,7 @@
                                             data-target="#modal-delete-{{ $k->id_keluar }}">
                                             <i class="fas fa-trash">
                                             </i>
-                                            Delete
+                                            Hapus
                                         </a>
                                     </td>
                                 </tr>

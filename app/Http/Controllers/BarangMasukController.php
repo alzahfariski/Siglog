@@ -63,7 +63,7 @@ class BarangMasukController extends Controller
             'barang.cetakBMasuk',
             compact(['masuk']),
             [
-                'page_title' => 'BARANG MASUK'
+                'page_title' => 'BARANG DITERIMA'
             ]
         );
     }
@@ -74,7 +74,7 @@ class BarangMasukController extends Controller
             'barang.cetakMasuk',
             compact(['masuk']),
             [
-                'page_title' => 'BARANG MASUK'
+                'page_title' => 'BARANG DITERIMA'
             ]
         );
     }

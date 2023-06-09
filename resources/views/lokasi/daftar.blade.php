@@ -54,19 +54,19 @@
                                         <a class="btn btn-primary btn-sm" href="{{ route('lokasi.view', $l->id_lokasi) }}">
                                             <i class="fas fa-folder">
                                             </i>
-                                            View
+                                            Detail
                                         </a>
                                         @can('admin')
                                             <a class="btn btn-info btn-sm" href="{{ route('lokasi.edit', $l->id_lokasi) }}">
                                                 <i class="fas fa-pencil-alt">
                                                 </i>
-                                                Update
+                                                Edit
                                             </a>
                                             <a class="btn btn-danger btn-sm"data-toggle="modal"
                                                 data-target="#modal-delete-{{ $l->id_lokasi }}">
                                                 <i class="fas fa-trash">
                                                 </i>
-                                                Delete
+                                                Hapus
                                             </a>
                                         @endcan
                                     </td>

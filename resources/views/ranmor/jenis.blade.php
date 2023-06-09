@@ -60,7 +60,7 @@
                                             data-target="#modal-delete-{{ $j->id_jenisranmor }}">
                                             <i class="fas fa-trash">
                                             </i>
-                                            Delete
+                                            Hapus
                                         </a>
                                     </td>
                                 </tr>

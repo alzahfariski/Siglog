@@ -70,7 +70,7 @@ class BarangKeluarController extends Controller
             'barang.cetakKeluar',
             compact(['keluar']),
             [
-                'page_title' => 'BARANG KELUAR'
+                'page_title' => 'PENYERAHAN BARANG'
             ]
         );
     }
@@ -81,7 +81,7 @@ class BarangKeluarController extends Controller
             'barang.cetakBKeluar',
             compact(['keluar']),
             [
-                'page_title' => 'BARANG KELUAR'
+                'page_title' => 'PENYERAHAN BARANG'
             ]
         );
     }
