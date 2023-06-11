@@ -4,8 +4,12 @@
         <div class="col-12 mb-2">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
                 <i class="fas fa-plus"></i> Tambah barang diterima</button>
-            <a href="{{ route('masuk.cetak') }}" target="_blank" type="button" class="btn btn-secondary">
-                <i class="fas fa-print"></i> Print Barang diterima</a>
+
+            {{-- <a href="{{ route('masuk.cetak') }}" target="_blank" type="button" class="btn btn-secondary">
+                <i class="fas fa-print"></i> Print Barang diterima</a> --}}
+
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-print">
+                <i class="fas fa-print"></i> Print Barang Diterima </button>
         </div>
         <div class="col-12">
             <div class="card">
@@ -34,7 +38,7 @@
                                 <th>Nama Barang</th>
                                 <th>Jumlah Masuk</th>
                                 <th>Pemasok</th>
-                                <th>Tgl</th>
+                                <th>Tanggal</th>
                                 <th style="width: 40px">Aksi</th>
                             </tr>
                         </thead>
@@ -197,6 +201,45 @@
             </div>
         </div>
     @endforeach
+    {{-- Print Modal --}}
+    <div class="modal fade" id="modal-print">
+        <div class="modal-dialog">
+            <form action="{{ route('masuk.cetak') }}" method="GET" target="_blank">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Print Data Barang Diterima</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="pemasok">Pemasok</label>
+                            <select name="pemasok" id="pemasok" class="form-control">
+                                <option value="">Semua Data</option>
+                                @foreach ($nama_pemasok as $index => $pemasok)
+                                    <option value="{{ $index }}">{{ $index }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_barang">Nama Barang</label>
+                            <select name="id_barang" id="id_barang" class="form-control">
+                                <option value="">Semua Data</option>
+                                @foreach ($nama_barang as $index => $barang)
+                                    <option value="{{ $index }}">{{ $index }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Print</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection
 @push('script')
     @if ($massege = Session::get('failed'))
@@ -205,6 +248,17 @@
                 icon: 'error',
                 title: 'Gagal !',
                 text: 'Jumlah Akan menjadi minus silahkan periksa penyerahan barang !',
+            })
+        </script>
+    @endif
+    @if ($massege = Session::get('nope'))
+        <script>
+            const message = @json(session('nope'));
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal !',
+                text: message,
             })
         </script>
     @endif

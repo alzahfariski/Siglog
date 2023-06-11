@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SigLog | Reset </title>
+    <title>SiLog | Reset </title>
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -30,7 +30,7 @@
 
             <div class="card-header text-center">
 
-                <a href="#" class="h1"><b>SIG</b>LOG</a>
+                <a href="#" class="h1"><b>SI</b>LOG</a>
 
             </div>
             <div class="card-body">

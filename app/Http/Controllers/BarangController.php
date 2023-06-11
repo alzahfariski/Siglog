@@ -25,9 +25,9 @@ class BarangController extends Controller
                 ->where('jenis_barang.nama_jenis', 'like', '%' . $search . '%')
                 ->orWhere('barang.nama_barang', 'like', '%' . $search . '%')
                 ->orWhere('lokasi.nama_gudang', 'like', '%' . $search . '%')
-                ->paginate(5)->fragment('barang');
+                ->latest()->paginate(5)->fragment('barang');
         } else {
-            $barang = Barang::paginate(5)->fragment('barang');
+            $barang = Barang::latest()->paginate(5)->fragment('barang');
         }
         $bulan = ['Semua Data', 'januari', 'februari', 'maret', 'april', 'mei', 'juni', 'juli', 'agustus', 'september', 'november', 'oktober', 'desember'];
         $lokasi = Lokasi::all();

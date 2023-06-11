@@ -17,9 +17,9 @@ class JenisRanmorController extends Controller
             $jenis = JenisRanmor::where('roda', 'like', '%' . $search . '%')
                 ->orWhere('kendaraan', 'like', '%' . $search . '%')
                 ->orWhere('merek', 'like', '%' . $search . '%')
-                ->paginate(5)->fragment('jenisranmor');
+                ->latest()->paginate(5)->fragment('jenisranmor');
         } else {
-            $jenis = JenisRanmor::paginate(5)->fragment('jenisranor');
+            $jenis = JenisRanmor::latest()->paginate(5)->fragment('jenisranor');
         }
         return view(
             'ranmor.jenis',

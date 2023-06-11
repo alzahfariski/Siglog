@@ -3,7 +3,7 @@
      <!-- Brand Logo -->
      <a href="{{ route('dashboard.index') }}" class="brand-link bg-dark">
          <img src="/img/logistik.png" alt="Logistik Logo" class="brand-image">
-         <span class="brand-text font-weight-light">&ensp;SIGLOG</span>
+         <span class="brand-text font-weight-light">&ensp;SILOG</span>
      </a>
 
      <!-- Sidebar -->

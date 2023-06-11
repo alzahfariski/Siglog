@@ -15,9 +15,9 @@ class UserController extends Controller
         $search = $request->query('search');
         if (!empty($search)) {
             $user = User::where('users.nama', 'like', '%' . $search . '%')
-                ->paginate(5)->fragment('user');
+                ->latest()->paginate(5)->fragment('user');
         } else {
-            $user = User::paginate(5)->fragment('user');
+            $user = User::latest()->paginate(5)->fragment('user');
         }
         return view('user.index', compact(['user', 'search']), [
             'page_title' => 'Data user'
@@ -45,7 +45,16 @@ class UserController extends Controller
     public function update($id_user, Request $request)
     {
         $user = User::find($id_user);
-        $user->update($request->except('_token', 'submit'));
+        $data = [
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'nrp' => $request->nrp,
+            'pangkat' => $request->pangkat,
+            'jabatan' => $request->jabatan,
+            'role' => $request->role,
+            'password' => bcrypt($request->password),
+        ];
+        $user->update($data);
         return redirect()->route('user.index')->with('update', 'Berhasil!');
     }
     public function destroy($id_user)
@@ -69,7 +78,16 @@ class UserController extends Controller
     public function updateprofil($id_user, Request $request)
     {
         $user = User::find($id_user);
-        $user->update($request->except('_token', 'submit'));
+        $data = [
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'nrp' => $request->nrp,
+            'pangkat' => $request->pangkat,
+            'jabatan' => $request->jabatan,
+            'role' => $request->role,
+            'password' => bcrypt($request->password),
+        ];
+        $user->update($data);
         return back()->with('update', 'Berhasil!');
     }
 }

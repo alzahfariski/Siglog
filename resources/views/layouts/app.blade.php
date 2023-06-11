@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SIGLOG | POLRESTA BENGKULU</title>
+    <title>SILOG | POLRESTA BENGKULU</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"

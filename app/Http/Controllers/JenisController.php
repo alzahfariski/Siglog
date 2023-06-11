@@ -15,9 +15,9 @@ class JenisController extends Controller
         $search = $request->query('search');
         if (!empty($search)) {
             $jenis = Jenis_barang::where('jenis_barang.nama_jenis', 'like', '%' . $search . '%')
-                ->paginate(5)->fragment('jenis');
+                ->latest()->paginate(5)->fragment('jenis');
         } else {
-            $jenis = Jenis_barang::paginate(5)->fragment('jenis');
+            $jenis = Jenis_barang::latest()->paginate(5)->fragment('jenis');
         }
         return view(
             'barang.jenis',

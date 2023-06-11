@@ -25,18 +25,21 @@ class RanmorController extends Controller
                 ->orWhere('jenis_ranmor.kendaraan', 'LIKE', '%' . $search . '%')
                 ->orWhere('jenis_ranmor.roda', 'LIKE', '%' . $search . '%')
                 ->orWhere('jenis_ranmor.merek', 'LIKE', '%' . $search . '%')
-                ->paginate(5)->fragment('ranmor');
+                ->latest()->paginate(5)->fragment('ranmor');
         } else {
-            $ranmor = Ranmor::paginate(5)->fragment('ranmor');
+            $ranmor = Ranmor::latest()->paginate(5)->fragment('ranmor');
         }
 
         $nama_roda = JenisRanmor::all()->groupBy('roda');
+        $tahun_kendaraan = Ranmor::all()->groupBy('tahun');
+        $bagian_kendaraan = Ranmor::all()->groupBy('bagian');
+        $kondisi_kendaraan = Ranmor::all()->groupBy('kondisi');
 
         $jenis = JenisRanmor::all();
         $user = User::all();
         return view(
             'ranmor.index',
-            compact(['ranmor', 'jenis', 'search', 'user', 'nama_roda']),
+            compact(['ranmor', 'jenis', 'search', 'user', 'nama_roda', 'tahun_kendaraan', 'bagian_kendaraan', 'kondisi_kendaraan']),
             [
                 'page_title' => 'Data Ranmor'
             ]
@@ -78,7 +81,7 @@ class RanmorController extends Controller
         $ranmor = Ranmor::filter()->get();
 
         if ($ranmor->count() === 0) {
-            return redirect()->back()->with('nope', 'Data Kosong !');
+            return back()->with('nope', 'Data Kosong !');
         }
 
         $pj1 = null;

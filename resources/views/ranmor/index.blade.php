@@ -117,15 +117,15 @@
                             <input type="text" placeholder="masukan tahun" class="form-control" name="tahun" required>
                         </div>
                         <div class="form-group">
-                            <label for="nosin">Nosin</label>
+                            <label for="nosin">Nomor mesin</label>
                             <input type="text" placeholder="masukan nosin" class="form-control" name="nosin">
                         </div>
                         <div class="form-group">
-                            <label for="noka">Noka</label>
+                            <label for="noka">Nomor rangka</label>
                             <input type="text" placeholder="masukan Noka" class="form-control" name="noka">
                         </div>
                         <div class="form-group">
-                            <label for="nopol">Nopol</label>
+                            <label for="nopol">Nomor polisi</label>
                             <input type="text" placeholder="masukan Nopol" class="form-control" name="nopol">
                         </div>
                         <div class="form-group">
@@ -280,6 +280,33 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="id_ranmor">Tahun Kendaraan</label>
+                            <select class="form-control select2" style="width: 100%;" name="id_ranmor">
+                                <option value="">Semua Data</option>
+                                @foreach ($tahun_kendaraan as $index => $tahun)
+                                    <option value="{{ $index }}">{{ $index }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bagian">Bagian</label>
+                            <select class="form-control select2" style="width: 100%;" name="bagian">
+                                <option value="">Semua Data</option>
+                                @foreach ($bagian_kendaraan as $index => $bagian)
+                                    <option value="{{ $index }}">{{ $index }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="kondisi">kondisi</label>
+                            <select class="form-control select2" style="width: 100%;" name="kondisi">
+                                <option value="">Semua Data</option>
+                                @foreach ($kondisi_kendaraan as $index => $kondisi)
+                                    <option value="{{ $index }}">{{ $index }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -316,3 +343,16 @@
         </div>
     </div>
 @endsection
+@push('script')
+    @if ($massege = Session::get('nope'))
+        <script>
+            const message = @json(session('nope'));
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal !',
+                text: message,
+            })
+        </script>
+    @endif
+@endpush

@@ -18,17 +18,17 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="nama">Nama User</label>
-                                <input type="text" name="nama" id="lng" class="form-control" required
+                                <input type="text" name="nama" id="nama" class="form-control" required
                                     value="{{ $user->nama }}">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email User</label>
-                                <input type="text" name="email" id="lng" class="form-control" required
+                                <input type="text" name="email" id="email" class="form-control" required
                                     value="{{ $user->email }}">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" name="password" id="lng" class="form-control" required
+                                <input type="password" name="password" id="password" class="form-control" required
                                     value="{{ $user->password }}">
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nrp">NRP</label>
-                            <input type="text" name="nrp" class="form-control" required value="{{ $user->nrp }}">
+                            <input type="text" name="nrp" class="form-control" value="{{ $user->nrp }}">
                         </div>
                         <div class="form-group">
                             <label for="jabatan">Jabatan</label>

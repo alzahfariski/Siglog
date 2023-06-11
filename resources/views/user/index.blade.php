@@ -110,7 +110,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nrp">NRP</label>
-                            <input type="text" placeholder="masukan NRP" class="form-control" name="nrp" required
+                            <input type="number" placeholder="masukan NRP" class="form-control" name="nrp" required
                                 value='{{ old('nrp') }}'>
                         </div>
                         <div class="form-group">
@@ -160,16 +160,21 @@
                                 <input type="text" value="{{ $u->nama }}" class="form-control" name="nama">
                             </div>
                             <div class="form-group">
-                                <label for="email">email</label>
+                                <label for="email">Email</label>
                                 <input type="email" value="{{ $u->email }}" class="form-control" name="email">
                             </div>
                             <div class="form-group">
-                                <label for="nrp">nrp</label>
-                                <input type="nrp" value="{{ $u->nrp }}" class="form-control" name="nrp">
+                                <label for="pangkat">Pangkat</label>
+                                <input type="text" placeholder="masukan pangkat" class="form-control" name="pangkat"
+                                    required value='{{ $u->pangkat }}'>
+                            </div>
+                            <div class="form-group">
+                                <label for="nrp">NRP</label>
+                                <input type="number" value="{{ $u->nrp }}" class="form-control" name="nrp">
                             </div>
                             <div class="form-group">
                                 <label for="jabatan">jabatan</label>
-                                <input type="jabatan" value="{{ $u->jabatan }}" class="form-control" name="jabatan">
+                                <input type="text" value="{{ $u->jabatan }}" class="form-control" name="jabatan">
                             </div>
                             <div class="form-group">
                                 <label for="role">Role</label>

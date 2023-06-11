@@ -20,15 +20,19 @@ class BarangKeluarController extends Controller
                 ->select('barang_keluar.*', 'barang.nama_barang', 'users.nama')
                 ->where('barang.nama_barang', 'like', '%' . $search . '%')
                 ->orWhere('users.nama', 'like', '%' . $search . '%')
-                ->paginate(5)->fragment('keluar');
+                ->latest()->paginate(5)->fragment('keluar');
         } else {
-            $keluar = BarangKeluar::paginate(5)->fragment('keluar');
+            $keluar = BarangKeluar::latest()->paginate(5)->fragment('keluar');
         }
         $user = User::all();
         $barang = Barang::all();
+
+        $nama_barang = Barang::all()->groupBy('nama_barang');
+        $nama_penerima = User::all()->groupBy('nama');
+
         return view(
             'barang.keluar',
-            compact(['keluar', 'barang', 'user', 'search']),
+            compact(['keluar', 'barang', 'user', 'search', 'nama_barang', 'nama_penerima']),
             [
                 'page_title' => 'Data Penyerahann Barang'
             ]
@@ -76,7 +80,11 @@ class BarangKeluarController extends Controller
     }
     public function cetak()
     {
-        $keluar = BarangKeluar::all();
+        $keluar = BarangKeluar::filter()->get();
+
+        if ($keluar->count() === 0) {
+            return back()->with('nope', 'Data Kosong !');
+        };
         return view(
             'barang.cetakBKeluar',
             compact(['keluar']),

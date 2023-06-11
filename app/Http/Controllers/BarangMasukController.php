@@ -17,14 +17,18 @@ class BarangMasukController extends Controller
                 ->select('barang_masuk.*', 'barang.nama_barang')
                 ->where('barang.nama_barang', 'like', '%' . $search . '%')
                 ->orWhere('barang_masuk.pemasok', 'like', '%' . $search . '%')
-                ->paginate(5)->fragment('masuk');
+                ->latest()->paginate(5)->fragment('masuk');
         } else {
-            $masuk = BarangMasuk::paginate(5)->fragment('masuk');
+            $masuk = BarangMasuk::latest()->paginate(5)->fragment('masuk');
         }
         $barang = Barang::all();
+
+        $nama_pemasok = BarangMasuk::all()->groupBy('pemasok');
+        $nama_barang = Barang::all()->groupBy('nama_barang');
+
         return view(
             'barang.masuk',
-            compact(['masuk', 'barang', 'search']),
+            compact(['masuk', 'barang', 'search', 'nama_pemasok', 'nama_barang']),
             [
                 'page_title' => 'Data Barang Diterima'
             ]
@@ -58,7 +62,11 @@ class BarangMasukController extends Controller
     }
     public function cetak()
     {
-        $masuk = BarangMasuk::all();
+        $masuk = BarangMasuk::filter()->get();
+
+        if ($masuk->count() === 0) {
+            return back()->with('nope', 'Data Kosong !');
+        };
         return view(
             'barang.cetakBMasuk',
             compact(['masuk']),

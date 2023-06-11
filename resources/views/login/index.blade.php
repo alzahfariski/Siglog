@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SigLog | Log in </title>
+    <title>SiLog | Log in </title>
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -32,11 +32,11 @@
 
             <div class="card-header text-center">
 
-                <a href="#" class="h1"><b>SIG</b>LOG</a>
+                <a href="#" class="h1"><b>SI</b>LOG</a>
 
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Sistem informasi geografis Logistik</p>
+                <p class="login-box-msg">Sistem informasi Logistik</p>
                 <form action="{{ route('authenticate') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">

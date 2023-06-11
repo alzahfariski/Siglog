@@ -4,8 +4,11 @@
         <div class="col-12 mb-2">
             <button type="button" class="btn btn-primary" id="tambah-btn" data-toggle="modal" data-target="#modal-tambah">
                 <i class="fas fa-plus"></i> Serahkan barang</button>
-            <a href="{{ route('keluar.cetak') }}" target="_blank" type="button" class="btn btn-secondary">
-                <i class="fas fa-print"></i> Print Penyerahan Barang </a>
+            {{-- <a href="{{ route('keluar.cetak') }}" target="_blank" type="button" class="btn btn-secondary">
+                <i class="fas fa-print"></i> Print Penyerahan Barang </a> --}}
+
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-print">
+                <i class="fas fa-print"></i> Print Penyerahan Barang </button>
         </div>
         <div class="col-12">
             <div class="card">
@@ -34,7 +37,7 @@
                                 <th>Nama Barang</th>
                                 <th>Jumlah Keluar</th>
                                 <th>Penerima</th>
-                                <th>Tgl</th>
+                                <th>Tanggal</th>
                                 <th style="width: 40px">Aksi</th>
                             </tr>
                         </thead>
@@ -214,6 +217,45 @@
             </div>
         </div>
     @endforeach
+    {{-- Print Modal --}}
+    <div class="modal fade" id="modal-print">
+        <div class="modal-dialog">
+            <form action="{{ route('keluar.cetak') }}" method="GET" target="_blank">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Print Data Penyerahan Barang</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="id_user">Penerima</label>
+                            <select name="id_user" id="id_user" class="form-control">
+                                <option value="">Semua Data</option>
+                                @foreach ($nama_penerima as $index => $penerima)
+                                    <option value="{{ $index }}">{{ $index }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_barang">Nama Barang</label>
+                            <select name="id_barang" id="id_barang" class="form-control">
+                                <option value="">Semua Data</option>
+                                @foreach ($nama_barang as $index => $barang)
+                                    <option value="{{ $index }}">{{ $index }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Print</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection
 @push('script')
     @if ($massege = Session::get('failed'))
@@ -232,4 +274,15 @@
             $('[name=jumlah]').text(jumlah);
         });
     </script>
+    @if ($massege = Session::get('nope'))
+        <script>
+            const message = @json(session('nope'));
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal !',
+                text: message,
+            })
+        </script>
+    @endif
 @endpush

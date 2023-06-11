@@ -19,6 +19,15 @@ class Ranmor extends Model
                 ->select('ranmor.*', 'jenis_ranmor.roda')
                 ->where('jenis_ranmor.roda', request('id_jenisranmor'));
         }
+        if (request('id_ranmor') ?? false) {
+            $query->where('ranmor.tahun', request('id_ranmor'));
+        }
+        if (request('bagian') ?? false) {
+            $query->where('ranmor.bagian',  request('bagian'));
+        }
+        if (request('kondisi') ?? false) {
+            $query->where('ranmor.kondisi',  request('kondisi'));
+        }
 
         return $query;
     }

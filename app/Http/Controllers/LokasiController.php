@@ -27,9 +27,9 @@ class LokasiController extends Controller
                 ->orWhere('nama_gudang', 'like', '%' . $search . '%')
                 ->orwhere('kategori', 'like', '%' . $search . '%')
                 ->orWhere('alamat', 'like', '%' . $search . '%')
-                ->paginate()->fragment('lokasi');
+                ->latest()->paginate()->fragment('lokasi');
         } else {
-            $lokasi = Lokasi::paginate(5)->fragment('lokasi');
+            $lokasi = Lokasi::latest()->paginate(5)->fragment('lokasi');
         }
         return view(
             'lokasi.daftar',

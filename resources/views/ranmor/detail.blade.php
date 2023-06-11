@@ -21,9 +21,9 @@
                                         <tr>
                                             <th>Id ranmor</th>
                                             <th>Tahun</th>
-                                            <th>Nosin</th>
-                                            <th>Noka</th>
-                                            <th>Nopol</th>
+                                            <th>Nomor mesin</th>
+                                            <th>Nomor rangka</th>
+                                            <th>Nomor polisi</th>
                                             <th>kondisi</th>
                                         </tr>
                                     </thead>
