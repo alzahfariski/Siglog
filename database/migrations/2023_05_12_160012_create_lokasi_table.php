@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('lokasi', function (Blueprint $table) {
             $table->id('id_lokasi');
-            $table->string('nama_gudang');
+            $table->string('nama_gudang')->unique();
             $table->string('nama_jalan');
             $table->text('alamat');
             $table->float('longitude', 9, 6);

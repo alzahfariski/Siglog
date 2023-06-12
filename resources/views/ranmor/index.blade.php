@@ -249,7 +249,7 @@
             <form action="{{ route('ranmor.cetak') }}" method="GET" target="_blank">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Masukan Penaggung Jawab</h4>
+                        <h4 class="modal-title">Print data Ranmor</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -284,8 +284,8 @@
                             <label for="id_ranmor">Tahun Kendaraan</label>
                             <select class="form-control select2" style="width: 100%;" name="id_ranmor">
                                 <option value="">Semua Data</option>
-                                @foreach ($tahun_kendaraan as $index => $tahun)
-                                    <option value="{{ $index }}">{{ $index }}</option>
+                                @foreach ($tahun_kendaraan as $tahun)
+                                    <option value="{{ $tahun }}">{{ $tahun }}</option>
                                 @endforeach
                             </select>
                         </div>

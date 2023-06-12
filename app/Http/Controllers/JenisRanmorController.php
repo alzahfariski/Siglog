@@ -17,9 +17,9 @@ class JenisRanmorController extends Controller
             $jenis = JenisRanmor::where('roda', 'like', '%' . $search . '%')
                 ->orWhere('kendaraan', 'like', '%' . $search . '%')
                 ->orWhere('merek', 'like', '%' . $search . '%')
-                ->latest()->paginate(5)->fragment('jenisranmor');
+                ->latest()->paginate(10)->fragment('jenisranmor');
         } else {
-            $jenis = JenisRanmor::latest()->paginate(5)->fragment('jenisranor');
+            $jenis = JenisRanmor::latest()->paginate(10)->fragment('jenisranor');
         }
         return view(
             'ranmor.jenis',
@@ -31,6 +31,9 @@ class JenisRanmorController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'merek' => 'required|unique:jenis_ranmor'
+        ]);
         // dd($request->except('_token','submit'));
         JenisRanmor::create($request->except('_token', 'submit'));
         return redirect()->route('ranmor.jenis')->with('success', 'Berhasil!');

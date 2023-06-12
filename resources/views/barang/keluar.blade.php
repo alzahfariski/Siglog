@@ -51,7 +51,7 @@
                                     <td>{{ $k->barang->nama_barang }}</td>
                                     <td>{{ $k->jumlah_keluar }}</td>
                                     <td>{{ $k->user->nama }}</td>
-                                    <td>{{ $k->created_at }}</td>
+                                    <td>{{ $k->created_at->format('Y-m-d') }}</td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="{{ route('keluar.view', $k->id_keluar) }}">
                                             <i class="fas fa-folder">
@@ -244,6 +244,23 @@
                                 <option value="">Semua Data</option>
                                 @foreach ($nama_barang as $index => $barang)
                                     <option value="{{ $index }}">{{ $index }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bulan">Bulan</label>
+                            <select name="bulan" id="bulan" class="form-control">
+                                @foreach ($bulan as $index => $bln)
+                                    <option value="{{ $index }}">{{ $bln }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tahun">Tahun</label>
+                            <select name="tahun" id="tahun" class="form-control">
+                                <option value="">Semua Tahun</option>
+                                @foreach ($years as $year)
+                                    <option value="{{ $year }}">{{ $year }}</option>
                                 @endforeach
                             </select>
                         </div>

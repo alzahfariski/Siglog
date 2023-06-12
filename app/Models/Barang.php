@@ -25,6 +25,9 @@ class Barang extends Model
         if (request('id_jenis') ?? false) {
             $query->where('id_jenis', request('id_jenis'));
         }
+        if (request('tahun') ?? false) {
+            $query->whereYear('created_at', request('tahun'));
+        }
 
         return $query;
     }

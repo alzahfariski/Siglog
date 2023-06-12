@@ -27,9 +27,9 @@ class LokasiController extends Controller
                 ->orWhere('nama_gudang', 'like', '%' . $search . '%')
                 ->orwhere('kategori', 'like', '%' . $search . '%')
                 ->orWhere('alamat', 'like', '%' . $search . '%')
-                ->latest()->paginate()->fragment('lokasi');
+                ->latest()->paginate(10)->fragment('lokasi');
         } else {
-            $lokasi = Lokasi::latest()->paginate(5)->fragment('lokasi');
+            $lokasi = Lokasi::latest()->paginate(10)->fragment('lokasi');
         }
         return view(
             'lokasi.daftar',
@@ -61,6 +61,9 @@ class LokasiController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'nama_gudang' => 'required|unique:lokasi'
+        ]);
         Lokasi::create($request->except('_token', 'submit'));
         return redirect()->route('lokasi.daftar')->with('success', 'Berhasil!');
     }

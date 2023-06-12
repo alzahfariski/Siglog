@@ -34,7 +34,7 @@
                                 <th>NO</th>
                                 <th>Nama Gudang</th>
                                 <th>Nama Lokasi</th>
-                                <th>Alamat</th>
+                                <th>Keterangan</th>
                                 <th>kategori</th>
                                 <th style="width: 40px">Aksi</th>
                             </tr>
@@ -48,7 +48,7 @@
                                     <td>{{ $nomor++ }}</td>
                                     <td>{{ $l->nama_gudang }}</td>
                                     <td>{{ $l->nama_jalan }}</td>
-                                    <td>{{ $l->alamat }}</td>
+                                    <td>{{ $l->keterangan }}</td>
                                     <td>{{ $l->kategori }}</td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="{{ route('lokasi.view', $l->id_lokasi) }}">

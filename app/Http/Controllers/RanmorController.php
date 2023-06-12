@@ -25,13 +25,13 @@ class RanmorController extends Controller
                 ->orWhere('jenis_ranmor.kendaraan', 'LIKE', '%' . $search . '%')
                 ->orWhere('jenis_ranmor.roda', 'LIKE', '%' . $search . '%')
                 ->orWhere('jenis_ranmor.merek', 'LIKE', '%' . $search . '%')
-                ->latest()->paginate(5)->fragment('ranmor');
+                ->latest()->paginate(10)->fragment('ranmor');
         } else {
-            $ranmor = Ranmor::latest()->paginate(5)->fragment('ranmor');
+            $ranmor = Ranmor::latest()->paginate(10)->fragment('ranmor');
         }
 
         $nama_roda = JenisRanmor::all()->groupBy('roda');
-        $tahun_kendaraan = Ranmor::all()->groupBy('tahun');
+        $tahun_kendaraan = Ranmor::all()->unique('tahun')->pluck('tahun')->sortDesc();
         $bagian_kendaraan = Ranmor::all()->groupBy('bagian');
         $kondisi_kendaraan = Ranmor::all()->groupBy('kondisi');
 

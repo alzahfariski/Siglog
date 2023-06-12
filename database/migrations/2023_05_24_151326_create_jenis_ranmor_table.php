@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_jenisranmor');
             $table->string('roda');
             $table->string('kendaraan');
-            $table->string('merek');
+            $table->string('merek')->unique();
             $table->timestamps();
         });
     }

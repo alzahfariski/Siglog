@@ -17,18 +17,23 @@ class BarangMasukController extends Controller
                 ->select('barang_masuk.*', 'barang.nama_barang')
                 ->where('barang.nama_barang', 'like', '%' . $search . '%')
                 ->orWhere('barang_masuk.pemasok', 'like', '%' . $search . '%')
-                ->latest()->paginate(5)->fragment('masuk');
+                ->latest()->paginate(10)->fragment('masuk');
         } else {
-            $masuk = BarangMasuk::latest()->paginate(5)->fragment('masuk');
+            $masuk = BarangMasuk::latest()->paginate(10)->fragment('masuk');
         }
         $barang = Barang::all();
 
         $nama_pemasok = BarangMasuk::all()->groupBy('pemasok');
         $nama_barang = Barang::all()->groupBy('nama_barang');
 
+        $startYear = 2020;
+        $endYear = date('Y');
+        $years = range($startYear, $endYear);
+        $bulan = ['Semua Data', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'November', 'Oktober', 'Desember'];
+
         return view(
             'barang.masuk',
-            compact(['masuk', 'barang', 'search', 'nama_pemasok', 'nama_barang']),
+            compact(['masuk', 'barang', 'search', 'nama_pemasok', 'nama_barang', 'bulan', 'years']),
             [
                 'page_title' => 'Data Barang Diterima'
             ]

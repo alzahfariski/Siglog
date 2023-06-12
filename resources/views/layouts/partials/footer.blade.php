@@ -5,5 +5,5 @@
         <small>by: alzah fariski</small>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2023 <a href="{{ route('dashboard.index') }}">SIGLOG POLRESTA BENGKULU</a>.</strong>
+    <strong>Copyright &copy; 2023 <a href="{{ route('dashboard.index') }}">SILOG POLRESTA BENGKULU</a>.</strong>
 </footer>

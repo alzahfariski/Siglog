@@ -23,9 +23,9 @@ class TerimaController extends Controller
                     $query->where('barang.nama_barang', 'like', '%' . $search . '%')
                         ->orWhere('users.nama', 'like', '%' . $search . '%');
                 })
-                ->latest()->paginate(5)->fragment('keluar');
+                ->latest()->paginate(10)->fragment('keluar');
         } else {
-            $terima = BarangKeluar::where('id_user', $user)->latest()->paginate(2)->fragment('keluar');
+            $terima = BarangKeluar::where('id_user', $user)->latest()->paginate(10)->fragment('keluar');
         }
         return view(
             'barang.terima',

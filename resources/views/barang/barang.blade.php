@@ -109,8 +109,8 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="nama_barang">Nama Barang</label>
-                            <input type="text" placeholder="masukan nama barang" class="form-control" name="nama_barang"
-                                required>
+                            <input type="text" placeholder="masukan nama barang"
+                                class="form-control @error('nama_barang') is-invalid @enderror" name="nama_barang" required>
                         </div>
                         <div class="form-group">
                             <label for="id_jenis">Nama Jenis</label>
@@ -130,7 +130,8 @@
                         </div>
                         <div class="form-group">
                             <label for="jumlah">Jumlah Barang</label>
-                            <input type="number" placeholder="masukan nama barang" class="form-control" name="jumlah">
+                            <input type="number" placeholder="masukan nama barang" class="form-control" name="jumlah"
+                                required>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -285,6 +286,15 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="tahun">Tahun</label>
+                            <select name="tahun" id="tahun" class="form-control">
+                                <option value="">Semua Tahun</option>
+                                @foreach ($years as $year)
+                                    <option value="{{ $year }}">{{ $year }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="id_jenis">Nama Jenis</label>
                             <select name="id_jenis" id="id_jenis" class="form-control">
                                 <option value="">Semua Data</option>
@@ -315,4 +325,11 @@
             })
         </script>
     @endif
+    @push('script')
+        @if ($errors->any())
+            <script>
+                $('#modal-tambah').modal('show');
+            </script>
+        @endif
+    @endpush
 @endpush

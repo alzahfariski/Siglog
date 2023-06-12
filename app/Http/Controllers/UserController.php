@@ -15,9 +15,9 @@ class UserController extends Controller
         $search = $request->query('search');
         if (!empty($search)) {
             $user = User::where('users.nama', 'like', '%' . $search . '%')
-                ->latest()->paginate(5)->fragment('user');
+                ->latest()->paginate(10)->fragment('user');
         } else {
-            $user = User::latest()->paginate(5)->fragment('user');
+            $user = User::latest()->paginate(10)->fragment('user');
         }
         return view('user.index', compact(['user', 'search']), [
             'page_title' => 'Data user'
@@ -71,7 +71,7 @@ class UserController extends Controller
             'user.profil',
             compact(['user']),
             [
-                'page_title' => 'Profil Personel'
+                'page_title' => 'Profil'
             ]
         );
     }

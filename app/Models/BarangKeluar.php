@@ -24,6 +24,12 @@ class BarangKeluar extends Model
                 ->select('barang_keluar.*', 'barang.nama_barang')
                 ->where('barang.nama_barang', request('id_barang'));
         }
+        if (request('bulan') ?? false) {
+            $query->whereMonth('barang_keluar.created_at', request('bulan'));
+        }
+        if (request('tahun') ?? false) {
+            $query->whereYear('barang_keluar.created_at', request('tahun'));
+        }
 
         return $query;
     }

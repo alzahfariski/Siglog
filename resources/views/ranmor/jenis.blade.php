@@ -100,8 +100,8 @@
                         </div>
                         <div class="form-group">
                             <label for="merek">Merek</label>
-                            <input type="text" placeholder="masukan nama barang" class="form-control" name="merek"
-                                required>
+                            <input type="text" placeholder="masukan nama barang"
+                                class="form-control @error('merek') is-invalid @enderror" name="merek" required>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -207,3 +207,10 @@
         </div>
     </div>
 @endsection
+@push('script')
+    @if ($errors->any())
+        <script>
+            $('#modal-tambah').modal('show');
+        </script>
+    @endif
+@endpush

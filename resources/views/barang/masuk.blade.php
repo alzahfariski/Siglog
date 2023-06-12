@@ -231,6 +231,23 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="bulan">Bulan</label>
+                            <select name="bulan" id="bulan" class="form-control">
+                                @foreach ($bulan as $index => $bln)
+                                    <option value="{{ $index }}">{{ $bln }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tahun">Tahun</label>
+                            <select name="tahun" id="tahun" class="form-control">
+                                <option value="">Semua Tahun</option>
+                                @foreach ($years as $year)
+                                    <option value="{{ $year }}">{{ $year }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

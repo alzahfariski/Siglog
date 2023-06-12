@@ -88,8 +88,8 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="nama_barang">Nama Jenis</label>
-                            <input type="text" placeholder="masukan nama barang" class="form-control" name="nama_jenis"
-                                required>
+                            <input type="text" placeholder="masukan nama barang"
+                                class="form-control @error('nama_jenis') is-invalid @enderror" name="nama_jenis" required>
                         </div>
                         <div class="form-group">
                             <label for="nama_barang">Nama Satuan</label>
@@ -196,3 +196,10 @@
         </div>
     </div>
 @endsection
+@push('script')
+    @if ($errors->any())
+        <script>
+            $('#modal-tambah').modal('show');
+        </script>
+    @endif
+@endpush

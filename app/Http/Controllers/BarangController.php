@@ -25,18 +25,23 @@ class BarangController extends Controller
                 ->where('jenis_barang.nama_jenis', 'like', '%' . $search . '%')
                 ->orWhere('barang.nama_barang', 'like', '%' . $search . '%')
                 ->orWhere('lokasi.nama_gudang', 'like', '%' . $search . '%')
-                ->latest()->paginate(5)->fragment('barang');
+                ->latest()->paginate(10)->fragment('barang');
         } else {
-            $barang = Barang::latest()->paginate(5)->fragment('barang');
+            $barang = Barang::latest()->paginate(10)->fragment('barang');
         }
-        $bulan = ['Semua Data', 'januari', 'februari', 'maret', 'april', 'mei', 'juni', 'juli', 'agustus', 'september', 'november', 'oktober', 'desember'];
+
+        $startYear = 2020;
+        $endYear = date('Y');
+        $years = range($startYear, $endYear);
+
+        $bulan = ['Semua Data', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'November', 'Oktober', 'Desember'];
         $lokasi = Lokasi::all();
         $jenis = Jenis_barang::all();
         $nama_jenis = Jenis_barang::pluck('nama_jenis', 'id_jenis');
         $nama_gudang = Lokasi::pluck('nama_gudang', 'id_lokasi');
         return view(
             'barang.barang',
-            compact(['barang', 'lokasi', 'jenis', 'search', 'nama_gudang', 'bulan', 'nama_jenis']),
+            compact(['barang', 'lokasi', 'jenis', 'search', 'nama_gudang', 'bulan', 'years', 'nama_jenis']),
             [
                 'page_title' => 'Data Barang'
             ]
@@ -44,6 +49,9 @@ class BarangController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'nama_barang' => 'required|unique:barang'
+        ]);
         // dd($request->except('_token','submit'));
         Barang::create($request->except('_token', 'submit'));
         return redirect()->route('barang.barang')->with('success', 'Berhasil!');

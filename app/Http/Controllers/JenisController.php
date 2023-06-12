@@ -15,9 +15,9 @@ class JenisController extends Controller
         $search = $request->query('search');
         if (!empty($search)) {
             $jenis = Jenis_barang::where('jenis_barang.nama_jenis', 'like', '%' . $search . '%')
-                ->latest()->paginate(5)->fragment('jenis');
+                ->latest()->paginate(10)->fragment('jenis');
         } else {
-            $jenis = Jenis_barang::latest()->paginate(5)->fragment('jenis');
+            $jenis = Jenis_barang::latest()->paginate(10)->fragment('jenis');
         }
         return view(
             'barang.jenis',
@@ -29,6 +29,10 @@ class JenisController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'nama_jenis' => 'required|unique:jenis_barang'
+        ]);
+
         // dd($request->except('_token','submit'));
         Jenis_barang::create($request->except('_token', 'submit'));
         return redirect()->route('barang.jenis')->with('success', 'Berhasil!');

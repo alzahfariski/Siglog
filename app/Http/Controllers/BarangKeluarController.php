@@ -20,9 +20,9 @@ class BarangKeluarController extends Controller
                 ->select('barang_keluar.*', 'barang.nama_barang', 'users.nama')
                 ->where('barang.nama_barang', 'like', '%' . $search . '%')
                 ->orWhere('users.nama', 'like', '%' . $search . '%')
-                ->latest()->paginate(5)->fragment('keluar');
+                ->latest()->paginate(10)->fragment('keluar');
         } else {
-            $keluar = BarangKeluar::latest()->paginate(5)->fragment('keluar');
+            $keluar = BarangKeluar::latest()->paginate(10)->fragment('keluar');
         }
         $user = User::all();
         $barang = Barang::all();
@@ -30,9 +30,14 @@ class BarangKeluarController extends Controller
         $nama_barang = Barang::all()->groupBy('nama_barang');
         $nama_penerima = User::all()->groupBy('nama');
 
+        $startYear = 2020;
+        $endYear = date('Y');
+        $years = range($startYear, $endYear);
+        $bulan = ['Semua Data', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'November', 'Oktober', 'Desember'];
+
         return view(
             'barang.keluar',
-            compact(['keluar', 'barang', 'user', 'search', 'nama_barang', 'nama_penerima']),
+            compact(['keluar', 'barang', 'user', 'search', 'nama_barang', 'nama_penerima', 'bulan', 'years']),
             [
                 'page_title' => 'Data Penyerahann Barang'
             ]

@@ -38,7 +38,8 @@
                             @csrf
                             <div class="form-group">
                                 <label for="nama_gudang">Nama Gudang</label>
-                                <input type="text" id="nama_gudang" name="nama_gudang" class="form-control" required>
+                                <input type="text" id="nama_gudang" name="nama_gudang"
+                                    class="form-control  @error('nama_gudang') is-invalid @enderror" required>
                             </div>
                             <div class="form-group">
                                 <label for="longitude">Longitude</label>
